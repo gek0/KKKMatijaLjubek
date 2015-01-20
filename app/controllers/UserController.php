@@ -1,15 +1,13 @@
 <?php
 
-class UserController extends Controller {
+class UserController extends BaseController {
 
     /**
      * instantiate a new UserController instance
-     * authorization and csrf validation
      */
     public function __construct()
     {
-        //$this->beforeFilter('auth', array('except' => 'getLogout'));
-        $this->beforeFilter('csrf', array('on' => 'post'));
+        $this->beforeFilter('crfs', array('on' => array('post', 'put', 'patch', 'delete')));
     }
 
     /**
@@ -72,7 +70,7 @@ class UserController extends Controller {
             return Redirect::to('admin/login/');
         }
 
-        return "Hello admin";
+        return View::make('admin.index');
     }
 
 }

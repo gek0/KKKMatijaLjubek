@@ -16,11 +16,17 @@ class BaseController extends Controller {
 	 * @return void
 	 */
 
+	protected $layout = "layouts.main";
+	protected $header = "layouts.header";
+	protected $footer = "layouts.footer";
+
 	protected function setupLayout()
 	{
 		if (!is_null($this->layout))
 		{
 			$this->layout = View::make($this->layout);
+			$this->layout->header = View::make($this->header);
+			$this->layout->footer = View::make($this->footer);
 		}
 	}
 

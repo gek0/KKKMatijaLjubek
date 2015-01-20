@@ -2,23 +2,53 @@
 
 class HomeController extends BaseController {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Default Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| You may wish to use controllers instead of, or in addition to, Closure
-	| based routes. That's great! Here is an example controller method to
-	| get you started. To route to this controller, just add the route:
-	|
-	|	Route::get('/', 'HomeController@showWelcome');
-	|
-	*/
+	/**
+	 * instantiate a new HomeController instance
+	 * CSRF validation on requests
+	 */
+	public function __construct()
+	{
+		$this->beforeFilter('crfs', array('on' => array('post', 'put', 'patch', 'delete')));
+	}
 
+	/**
+	 * Setup the layout used by the controller.
+	 *
+	 * @return void
+	 */
+
+	protected $layout = "layouts.main";
+	protected $header = "layouts.header";
+	protected $footer = "layouts.footer";
+
+	protected function setupLayout()
+	{
+		if (!is_null($this->layout))
+		{
+			$this->layout = View::make($this->layout);
+			$this->layout->header = View::make($this->header);
+			$this->layout->footer = View::make($this->footer);
+		}
+	}
+
+	/**
+	 * @return mixed
+	 * homepage
+     */
 	public function getIndex()
 	{
-		return "Hello from home!";
+		$this->layout->header = View::make($this->header, array('pageTitle' => 'Početna'));
+		$this->layout->content = View::make('public.index');
+	}
 
+	/**
+	 * @return mixed
+	 * contact page
+     */
+	public function getKontakt()
+	{
+		$this->layout->header = View::make($this->header, array('pageTitle' => 'Kontakt'));
+		$this->layout->content = View::make('public.kontakt');
 	}
 
 }
