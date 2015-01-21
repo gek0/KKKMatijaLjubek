@@ -11,6 +11,26 @@ class UserController extends BaseController {
     }
 
     /**
+     * Setup the layout used by the controller.
+     *
+     * @return void
+     */
+
+    protected $layout = "adminLayouts.main";
+    protected $header = "adminLayouts.header";
+    protected $footer = "adminLayouts.footer";
+
+    protected function setupLayout()
+    {
+        if (!is_null($this->layout))
+        {
+            $this->layout = View::make($this->layout);
+            $this->layout->header = View::make($this->header);
+            $this->layout->footer = View::make($this->footer);
+        }
+    }
+
+    /**
      * @return mixed
      * logout from admin area
      */
@@ -70,7 +90,7 @@ class UserController extends BaseController {
             return Redirect::to('admin/login/');
         }
 
-        return View::make('admin.index');
+        $this->layout->content = View::make('admin.index');
     }
 
 }

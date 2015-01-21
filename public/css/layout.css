@@ -1,0 +1,327 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'Dosis';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Dosis Regular'), local('Dosis-Regular'), url(https://fonts.gstatic.com/s/dosis/v4/2G6sVpO-7ZhC0_ceUPvsmQ.woff2) format('woff2'), url(https://fonts.gstatic.com/s/dosis/v4/tYjwoPxcNbCapURVAi2M5g.woff) format('woff');
+}
+
+/**
+*   reset
+*/
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+*   body
+*/
+body{
+    background: #dddddd url('img/main_bg_static.png') repeat;
+    font-family: 'Dosis';
+    font-size: 100%;
+    color: #000000;
+}
+
+/**
+*   font size
+*/
+body, h1, h2, h3, h4, h5, h6 {
+    font-size-adjust: 0.5;
+}
+
+h1 { font-size: 2em; line-height: 1.25; }
+h2 { font-size: 1.625em; line-height: 1.15384615; }
+h3 { font-size: 1.375em; line-height: 1.13636364; }
+h4 { font-size: 1.125em; line-height: 1.11111111; }
+blockquote { font-size: 1.25em; line-height: 1.25; }
+
+@media (min-width: 43.75em) {
+    h1 { font-size: 2.5em; line-height: 1.125; }
+    h2 { font-size: 2em; line-height: 1.25; }
+    h3 { font-size: 1.5em; line-height: 1.25; }
+    h4 { line-height: 1.22222222; }
+    blockquote { font-size: 1.5em; line-height: 1.45833333; }
+}
+
+@media (min-width: 56.25em) {
+    h1 { font-size: 3em; line-height: 1.05; }
+    h2 { font-size: 2.25em; line-height: 1.25; }
+    h3 { font-size: 1.75em; line-height: 1.25; }
+}
+
+/**
+*   main content containers
+*/
+section#admin_content{
+    font-size: 1.5em;
+    line-height: 1.25;
+    width: 90%;
+    height: auto;
+    margin: 10px auto;
+    padding: 1em;
+    border: 0px none;
+    background: none repeat scroll 0% 0% #FFF;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+@media (min-width: 43.75em) {
+    section#admin_content{
+        font-size: 1.5em;
+        line-height: 1.375;
+    }
+}
+
+/**
+*   navigation
+*/
+.cbp-spmenu {
+    background: #47a3da;
+    position: fixed;
+}
+
+.cbp-spmenu h2 {
+    color: #afdefa;
+    padding: 20px;
+    margin: 0;
+    font-weight: 300;
+    background: #0d77b6;
+}
+
+.cbp-spmenu a {
+    display: block;
+    color: #FFF;
+    font-weight: 300;
+    font-size: 1.5em;
+}
+
+.cbp-spmenu a:hover {
+    background: #258ecd;
+}
+
+.cbp-spmenu a:active {
+    background: #afdefa;
+    color: #47a3da;
+}
+.cbp-spmenu li.active a{
+    background: #afdefa;
+    color: #FFF;
+}
+
+.cbp-spmenu-vertical {
+    width: 240px;
+    height: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.cbp-spmenu-vertical a {
+    border-bottom: 1px solid #258ecd;
+    padding: 1em;
+}
+
+.cbp-spmenu-left {
+    left: -240px;
+}
+
+.cbp-spmenu-right {
+    right: -240px;
+}
+
+.cbp-spmenu-left.cbp-spmenu-open {
+    left: 0px;
+}
+
+.cbp-spmenu-right.cbp-spmenu-open {
+    right: 0px;
+}
+
+.cbp-spmenu-push {
+    overflow-x: hidden;
+    position: relative;
+    left: 0;
+}
+
+.cbp-spmenu-push-toright {
+    left: 240px;
+}
+
+.cbp-spmenu-push-toleft {
+    left: -240px;
+}
+
+.cbp-spmenu,
+.cbp-spmenu-push {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 55.1875em){
+
+    .cbp-spmenu-horizontal {
+        font-size: 75%;
+        height: 110px;
+    }
+
+    .cbp-spmenu-top {
+        top: -110px;
+    }
+
+    .cbp-spmenu-bottom {
+        bottom: -110px;
+    }
+
+}
+
+@media screen and (max-height: 26.375em){
+
+    .cbp-spmenu-vertical {
+        font-size: 90%;
+        width: 190px;
+    }
+
+    .cbp-spmenu-left,
+    .cbp-spmenu-push-toleft {
+        left: -190px;
+    }
+
+    .cbp-spmenu-right {
+        right: -190px;
+    }
+
+    .cbp-spmenu-push-toright {
+        left: 190px;
+    }
+}
+
+button.btn-iconic{
+    padding: 0.4em;
+    font-size: 1.5em;
+}
+
+/**
+*   layout
+*/
+div#navigation_menu{
+    width: 100%;
+    height: auto;
+    border: none;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+*   media query for RWD
+*/
+/*------------------------------------------
+  Responsive Grid Media Queries - 1280, 1024, 768, 480
+   1280-1024   - desktop (default grid)
+   1024-768    - tablet landscape
+   768-480     - tablet
+   480-less    - phone landscape & smaller
+--------------------------------------------*/
+@media all and (min-width: 1024px) and (max-width: 1280px) {
+    section#admin_content{ width: 100%; }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+    section#admin_content{ width: 100%; }
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+    section#admin_content{ width: 100%; }
+}
+
+@media all and (max-width: 480px) {
+    section#admin_content{
+        width: 100%;
+        font-size: 1em;
+        line-height: 1.25;
+    }
+}
+
+
+/* Portrait */
+@media screen and (orientation:portrait) {
+
+}
+/* Landscape */
+@media screen and (orientation:landscape) {
+
+}
+
+
+/* CSS for iPhone, iPad, and Retina Displays */
+
+/* Non-Retina */
+@media screen and (-webkit-max-device-pixel-ratio: 1) {
+
+}
+
+/* Retina */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min--moz-device-pixel-ratio: 1.5),
+only screen and (min-device-pixel-ratio: 1.5) {
+
+}
+
+/* iPhone Portrait */
+@media screen and (max-device-width: 480px) and (orientation:portrait) {
+
+}
+
+/* iPhone Landscape */
+@media screen and (max-device-width: 480px) and (orientation:landscape) {
+
+}
+
+/* iPad Portrait */
+@media screen and (min-device-width: 481px) and (orientation:portrait) {
+
+}
+
+/* iPad Landscape */
+@media screen and (min-device-width: 481px) and (orientation:landscape) {
+
+}
