@@ -1,5 +1,7 @@
 /bootstrap/compiled.php
 /vendor
+**/.idea/workspace.xml
+**/.idea/tasks.xml
 composer.phar
 composer.lock
 .env.*.php
