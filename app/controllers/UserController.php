@@ -1,96 +1,132 @@
 <?php
 
-class UserController extends BaseController {
+class UserController extends AdminController{
 
     /**
-     * instantiate a new UserController instance
+     * output for user settings route
      */
-    public function __construct()
+    public function getPostavke()
     {
-        $this->beforeFilter('crfs', array('on' => array('post', 'put', 'patch', 'delete')));
+        $this->layout->content = View::make('admin.korisnik.postavke');
     }
 
     /**
-     * Setup the layout used by the controller.
-     *
-     * @return void
+     * @return mixed
+     * post Ajax data for changing current user settings
      */
-
-    protected $layout = "adminLayouts.main";
-    protected $header = "adminLayouts.header";
-    protected $footer = "adminLayouts.footer";
-
-    protected function setupLayout()
+    public function postPostavke()
     {
-        if (!is_null($this->layout))
-        {
-            $this->layout = View::make($this->layout);
-            $this->layout->header = View::make($this->header);
-            $this->layout->footer = View::make($this->footer);
+        if (Request::ajax()){
+
+            //get user input data
+            $inputData = Input::get('formData');
+            $token = Request::ajax() ? Request::header('X-CSRF-Token') : Input::get('_token');
+            $userData = array(
+                'username' => $inputData['username'],
+                'email' => $inputData['email'],
+                'password' => $inputData['password'],
+                'passwordAgain' => $inputData['passwordAgain'],
+            );
+
+            //validation
+            $validator = Validator::make($userData, User::$rulesLessStrict, User::$messages);
+
+            //check if csrf token is valid
+            if(Session::token() != $token){
+                //throw new Illuminate\Session\TokenMismatchException;
+                return Response::json(array(
+                    'status' => 'error',
+                    'errors' => 'CSRF token is not valid'
+                ));
+            }
+            else{
+                //check validation results and save user if ok
+                if($validator->fails()){
+                    return Response::json(array(
+                        'status' => 'error',
+                        'errors' => $validator->getMessageBag()->toArray()
+                    ));
+                }
+                else{
+                    $user = User::find(Auth::user()->id);
+                    $user->username = e($userData['username']);
+                    $user->email = e($userData['email']);
+                    //change user password if new is in input
+                    if(strlen($userData['password']) > 0) {
+                        $user->password = Hash::make($userData['password']);
+                    }
+                    $user->save();
+
+                    return Response::json(array(
+                        'status' => 'success'
+                    ));
+                }
+            }
+        }
+        else{
+            return Response::json(array(
+                'status' => 'error',
+                'errors' => 'Data not sent with Ajax'
+            ));
         }
     }
 
     /**
      * @return mixed
-     * logout from admin area
+     * post Ajax data for adding new user
      */
-    public function getLogout()
+    public function postNovi()
     {
-        Auth::logout();
-        return Redirect::to('/');
-    }
+        if (Request::ajax()){
 
-    /**
-     * @return string
-     * login page for admin area
-     */
-    public function getLogin()
-    {
-        //check if user is logged in
-        if(Auth::user()){
-            return Redirect::to('admin');
+            //get user input data
+            $inputData = Input::get('formData');
+            $token = Request::ajax() ? Request::header('X-CSRF-Token') : Input::get('_token');
+            $userData = array(
+                'username' => $inputData['newUsername'],
+                'email' => $inputData['newEmail'],
+                'password' => $inputData['newPassword'],
+                'passwordAgain' => $inputData['newPasswordAgain'],
+            );
+
+            //validation
+            $validator = Validator::make($userData, User::$rules, User::$messages);
+
+            //check if csrf token is valid
+            if(Session::token() != $token){
+                //throw new Illuminate\Session\TokenMismatchException;
+                return Response::json(array(
+                    'status' => 'error',
+                    'errors' => 'CSRF token is not valid'
+                ));
+            }
+            else{
+                //check validation results and save user if ok
+                if($validator->fails()){
+                    return Response::json(array(
+                        'status' => 'error',
+                        'errors' => $validator->getMessageBag()->toArray()
+                    ));
+                }
+                else{
+                    $user = new User;
+                    $user->username = e($userData['username']);
+                    $user->email = e($userData['email']);
+                    $user->password = Hash::make($userData['password']);
+                    $user->save();
+
+                    return Response::json(array(
+                        'status' => 'success'
+                    ));
+                }
+            }
         }
         else{
-            return View::make('admin.login');
+            return Response::json(array(
+                'status' => 'error',
+                'errors' => 'Data not sent with Ajax'
+            ));
         }
-    }
-
-    /**
-     * @return mixed
-     * login validation for user
-     */
-    public function postLogin()
-    {
-        if(Auth::user()){
-            return Redirect::to('admin');
-        }
-
-        $userdata = array(
-            'username' => e(Input::get('username')),
-            'password' => Input::get('password')
-        );
-
-        $isAuth = Auth::attempt($userdata);
-
-        if($isAuth){
-            return Redirect::to('admin');
-        }
-        else{
-            return Redirect::to('admin/login/');
-        }
-    }
-
-    /**
-     * @return string
-     * main page for admin area
-     */
-    public function getIndex()
-    {
-        if(Auth::guest()){
-            return Redirect::to('admin/login/');
-        }
-
-        $this->layout->content = View::make('admin.index');
     }
 
 }

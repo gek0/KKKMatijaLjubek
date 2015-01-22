@@ -17,11 +17,11 @@ jQuery(document).ready(function(){
 
         //navigation button
         var childClass = $(this).children().attr('class');
-        if(childClass == 'fui-list-columned') {
-            $(this).children().attr('class', 'fui-cross');
+        if(childClass == 'glyphicon glyphicon-menu-hamburger') {
+            $(this).children().attr('class', 'glyphicon glyphicon-remove');
         }
         else{
-            $(this).children().attr('class', 'fui-list-columned');
+            $(this).children().attr('class', 'glyphicon glyphicon-menu-hamburger');
         }
     };
 

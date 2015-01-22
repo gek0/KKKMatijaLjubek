@@ -14,7 +14,10 @@
 /**
  * admin area
  */
-Route::controller('admin', 'UserController');
+Route::group(array('before' => 'auth'), function() {
+    Route::controller('admin/korisnik', 'UserController');
+});
+Route::controller('admin', 'AdminController');
 
 /**
  * public area

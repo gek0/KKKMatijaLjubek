@@ -9,6 +9,7 @@
     <title>Matija Ljubek ~ Administracija</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_token" content="{{ csrf_token() }}">
 
     <!-- scripts -->
     {{ HTML::script('js/jquery.min.js') }}
@@ -21,11 +22,16 @@
 
     <!-- stylesheets -->
     {{ HTML::style('css/bootstrap.min.css') }}
-    {{ HTML::style('css/flat-ui.min.css') }}
     {{ HTML::style('css/layout.css') }}
 <body class="cbp-spmenu-push">
-    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-        <h2>Navigacija</h2>
-        {{ HTML::smartRoute_link('admin', 'Početna') }}
-        {{ HTML::smartRoute_link('admin/logout', 'Odjava') }}
-    </nav>
+    <!-- notifications -->
+    <div class="notificationOutput" id="outputMsg"></div>
+    <header>
+        <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" role="navigation">
+            <h2>Navigacija</h2>
+            {{ HTML::smartRoute_link('admin', 'Početna') }}
+            {{ HTML::smartRoute_link('admin/vijesti', 'Vijesti') }}
+            {{ HTML::smartRoute_link('admin/korisnik/postavke', 'Korisničke postavke') }}
+            {{ HTML::smartRoute_link('admin/logout', 'Odjava') }}
+        </nav>
+    </header>

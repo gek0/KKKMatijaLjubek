@@ -8,9 +8,6 @@
     <meta charset="utf-8">
     <title>Matija Ljubek ~ {{ $pageTitle }}</title>
 
-    <!-- scripts -->
-    {{ HTML::script('js/jquery-1.11.2.min.js') }}
-    {{ HTML::script('js/bootstrap.min.js') }}
     <!--[if lt IE 9]>
     {{ HTML::script('js/html5shiv.min.js') }}
     {{ HTML::script('js/respond.min.js') }}
@@ -18,4 +15,6 @@
 
     <!-- stylesheets -->
     {{ HTML::style('css/bootstrap.min.css') }}
-<body>
+    {{ HTML::style('css/layoutStyle.css') }}
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">

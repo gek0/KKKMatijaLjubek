@@ -12,26 +12,6 @@ class HomeController extends BaseController {
 	}
 
 	/**
-	 * Setup the layout used by the controller.
-	 *
-	 * @return void
-	 */
-
-	protected $layout = "layouts.main";
-	protected $header = "layouts.header";
-	protected $footer = "layouts.footer";
-
-	protected function setupLayout()
-	{
-		if (!is_null($this->layout))
-		{
-			$this->layout = View::make($this->layout);
-			$this->layout->header = View::make($this->header);
-			$this->layout->footer = View::make($this->footer);
-		}
-	}
-
-	/**
 	 * @return mixed
 	 * homepage
      */
@@ -41,14 +21,5 @@ class HomeController extends BaseController {
 		$this->layout->content = View::make('public.index');
 	}
 
-	/**
-	 * @return mixed
-	 * contact page
-     */
-	public function getKontakt()
-	{
-		$this->layout->header = View::make($this->header, array('pageTitle' => 'Kontakt'));
-		$this->layout->content = View::make('public.kontakt');
-	}
 
 }
