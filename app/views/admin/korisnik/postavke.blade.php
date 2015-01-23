@@ -12,7 +12,7 @@
                     {{ Form::email('email', Auth::user()->email, array('class' => 'form-control', 'placeholder' => 'E-mail adresa', 'id' => 'email', 'required')) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('password', 'Lozinka:') }}
+                    {{ Form::label('password', 'Nova lozinka:') }}
                     {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Lozinka', 'id' => 'password', 'autocomplete' => 'off')) }}
                 </div>
                 <div class="form-group">
@@ -20,14 +20,19 @@
                     {{ Form::password('passwordAgain', array('class' => 'form-control', 'placeholder' => 'Ponovite loziku', 'id' => 'passwordAgain', 'autocomplete' => 'off')) }}
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-info">Prihvati promjene <span class="glyphicon glyphicon-ok"></span></button>
+                    <button type="submit" class="btn btn-primary btn-info" id="changeData">Prihvati promjene <span class="glyphicon glyphicon-ok"></span></button>
+                    <div class='loader' id="novePostavkeLoad">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
             {{ Form::close() }}
         </div> <!-- end user settings form -->
     </div>
     <div class="col-md-6">
         <div class="formInput">
-            <h2 class="text-center">Novi korisnik</h2>
+            <h2 class="text-center">Dodaj novog korisnika</h2>
             {{ Form::open(array('url' => 'admin/korisnik/novi', 'id' => 'noviKorisnik', 'role' => 'form')) }}
             <div class="form-group">
                 {{ Form::label('newUsername', 'Korisničko ime:') }}
@@ -46,7 +51,12 @@
                 {{ Form::password('newPasswordAgain', array('class' => 'form-control', 'placeholder' => 'Ponovite loziku', 'id' => 'newPasswordAgain', 'autocomplete' => 'off',  'required')) }}
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-info">Dodaj korisnika <span class="glyphicon glyphicon-user"></span></button>
+                <button type="submit" class="btn btn-primary btn-info" id="addUser">Dodaj korisnika <span class="glyphicon glyphicon-user"></span></button>
+                <div class='loader' id="noviKorisnikLoad">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
             </div>
             {{ Form::close() }}
         </div> <!-- end new user form -->

@@ -9,12 +9,18 @@ jQuery(document).ready(function(){
     $("#noviKorisnik").submit(function(event){
         event.preventDefault();
 
+        //disable button click and show loader
+        $('button#addUser').addClass('disabled');
+        $('#noviKorisnikLoad').css('visibility', 'visible').fadeIn();
+
         //get input fields values
         var values = {};
         $.each($(this).serializeArray(), function(i, field) {
             values[field.name] = field.value;
         });
         var token = $('#noviKorisnik > input[name="_token"]').val();
+
+        //user output
         var outputMsg = $('#outputMsg');
         var errorMsg = "";
         var successMsg = "<h3>Korisnički račun je uspješno kreiran.</h3>";
@@ -31,12 +37,19 @@ jQuery(document).ready(function(){
                 //check status of validation and query
                 if(data.status === 'success'){
                     outputMsg.append(successMsg).addClass('successNotif').slideDown();
-                    setTimeout(function() {
-                        outputMsg.slideUp().empty();
-                        //restore old class to output div
-                        outputMsg.attr('class', 'notificationOutput');
-                        $("#noviKorisnik").trigger('reset');
-                    }, 2500);
+
+                    setTimeout(function(){
+                        //enable button click and hide loader
+                        $('button#addUser').attr('class', 'btn btn-primary btn-info');
+                        $('#noviKorisnikLoad').css('visibility', 'hidden').fadeOut();
+
+                        setTimeout(function() {
+                            outputMsg.slideUp().empty();
+                            //restore old class to output div
+                            outputMsg.attr('class', 'notificationOutput');
+                            $("#noviKorisnik").trigger('reset');
+                        }, 2500);
+                    }, 1500);
                 }
                 else{
                     $.each(data.errors, function(index, value) {
@@ -45,11 +58,18 @@ jQuery(document).ready(function(){
                         });
                     });
                     outputMsg.append(errorMsg).addClass('warningNotif').slideDown();
-                    setTimeout(function() {
-                        outputMsg.slideUp().empty();
-                        //restore old class to output div
-                        outputMsg.attr('class', 'notificationOutput');
-                    }, 5000);
+
+                    setTimeout(function(){
+                        //enable button click and hide loader
+                        $('button#addUser').attr('class', 'btn btn-primary btn-info');
+                        $('#noviKorisnikLoad').css('visibility', 'hidden').fadeOut();
+
+                        setTimeout(function() {
+                            outputMsg.slideUp().empty();
+                            //restore old class to output div
+                            outputMsg.attr('class', 'notificationOutput');
+                        }, 3500);
+                    }, 1500);
                 }
             }
         });
@@ -60,6 +80,10 @@ jQuery(document).ready(function(){
      */
     $("#novePostavke").submit(function(event){
         event.preventDefault();
+
+        //disable button click and show loader
+        $('button#changeData').addClass('disabled');
+        $('#novePostavkeLoad').css('visibility', 'visible').fadeIn();
 
         //get input fields values
         var values = {};
@@ -83,11 +107,19 @@ jQuery(document).ready(function(){
                 //check status of validation and query
                 if(data.status === 'success'){
                     outputMsg.append(successMsg).addClass('successNotif').slideDown();
-                    setTimeout(function() {
-                        outputMsg.slideUp().empty();
-                        //restore old class to output div
-                        outputMsg.attr('class', 'notificationOutput');
-                    }, 2500);
+
+                    setTimeout(function(){
+                        //enable button click and hide loader
+                        $('button#changeData').attr('class', 'btn btn-primary btn-info');
+                        $('#novePostavkeLoad').css('visibility', 'hidden').fadeOut();
+
+                        setTimeout(function() {
+                            outputMsg.slideUp().empty();
+                            //restore old class to output div
+                            outputMsg.attr('class', 'notificationOutput');
+                            $("#noviKorisnik").trigger('reset');
+                        }, 2500);
+                    }, 1500);
                 }
                 else{
                     $.each(data.errors, function(index, value) {
@@ -96,11 +128,18 @@ jQuery(document).ready(function(){
                         });
                     });
                     outputMsg.append(errorMsg).addClass('warningNotif').slideDown();
-                    setTimeout(function() {
-                        outputMsg.slideUp().empty();
-                        //restore old class to output div
-                        outputMsg.attr('class', 'notificationOutput');
-                    }, 5000);
+
+                    setTimeout(function(){
+                        //enable button click and hide loader
+                        $('button#changeData').attr('class', 'btn btn-primary btn-info');
+                        $('#novePostavkeLoad').css('visibility', 'hidden').fadeOut();
+
+                        setTimeout(function() {
+                            outputMsg.slideUp().empty();
+                            //restore old class to output div
+                            outputMsg.attr('class', 'notificationOutput');
+                        }, 3500);
+                    }, 1500);
                 }
             }
         });

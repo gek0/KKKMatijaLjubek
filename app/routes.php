@@ -16,6 +16,7 @@
  */
 Route::group(array('before' => 'auth'), function() {
     Route::controller('admin/korisnik', 'UserController');
+    Route::controller('admin/vijesti', 'NewsController');
 });
 Route::controller('admin', 'AdminController');
 

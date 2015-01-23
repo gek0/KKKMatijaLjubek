@@ -3156,3 +3156,134 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-name: slideOutUp;
     animation-name: slideOutUp;
 }
+
+
+
+@-webkit-keyframes uil-facebook {
+    0% {
+        -ms-transform: scale(2);
+        -moz-transform: scale(2);
+        -webkit-transform: scale(2);
+        -o-transform: scale(2);
+        transform: scale(2); }
+
+    90% {
+        -ms-transform: scale(1);
+        -moz-transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1); }
+
+    100% {
+        -ms-transform: scale(1);
+        -moz-transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1); } }
+
+@-moz-keyframes uil-facebook {
+    0% {
+        -ms-transform: scale(2);
+        -moz-transform: scale(2);
+        -webkit-transform: scale(2);
+        -o-transform: scale(2);
+        transform: scale(2); }
+
+    90% {
+        -ms-transform: scale(1);
+        -moz-transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1); }
+
+    100% {
+        -ms-transform: scale(1);
+        -moz-transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1); } }
+
+@-ms-keyframes uil-facebook {
+    0% {
+        -ms-transform: scale(2);
+        -moz-transform: scale(2);
+        -webkit-transform: scale(2);
+        -o-transform: scale(2);
+        transform: scale(2); }
+
+    90% {
+        -ms-transform: scale(1);
+        -moz-transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1); }
+
+    100% {
+        -ms-transform: scale(1);
+        -moz-transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1); } }
+
+@keyframes uil-facebook {
+    0% {
+        -ms-transform: scale(2);
+        -moz-transform: scale(2);
+        -webkit-transform: scale(2);
+        -o-transform: scale(2);
+        transform: scale(2); }
+
+    90% {
+        -ms-transform: scale(1);
+        -moz-transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1); }
+
+    100% {
+        -ms-transform: scale(1);
+        -moz-transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1); } }
+
+.loader {
+    width: 30px;
+    height: 28px;
+    background: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    border: none;
+    visibility: hidden;
+}
+
+.loader > div {
+    width: 5px;
+    display: inline-block;
+    height: 25px;
+    top: 40px;
+    left: 20px;
+    background: #47A3DA;
+    opacity: 0.6;
+    -ms-animation: uil-facebook 1s cubic-bezier(0.01, 0.73, 0.28, 0.93) infinite;
+    -moz-animation: uil-facebook 1s cubic-bezier(0.01, 0.73, 0.28, 0.93) infinite;
+    -webkit-animation: uil-facebook 1s cubic-bezier(0.01, 0.73, 0.28, 0.93) infinite;
+    -o-animation: uil-facebook 1s cubic-bezier(0.01, 0.73, 0.28, 0.93) infinite;
+    animation: uil-facebook 1s cubic-bezier(0.01, 0.73, 0.28, 0.93) infinite; }
+.loader > div:nth-of-type(2) {
+    left: 30px;
+    opacity: 0.8;
+    -ms-animation-delay: 0.1s;
+    -moz-animation-delay: 0.1s;
+    -webkit-animation-delay: 0.1s;
+    -o-animation-delay: 0.1s;
+    animation-delay: 0.1s; }
+.loader > div:nth-of-type(3) {
+    left: 40px;
+    opacity: 0.9;
+    -ms-animation-delay: 0.2s;
+    -moz-animation-delay: 0.2s;
+    -webkit-animation-delay: 0.2s;
+    -o-animation-delay: 0.2s;
+    animation-delay: 0.2s; }
