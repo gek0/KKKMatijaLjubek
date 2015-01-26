@@ -12,13 +12,26 @@
 */
 
 /**
+ * login to admin area
+ */
+Route::controller('login', 'LoginController');
+
+/**
  * admin area
  */
 Route::group(array('before' => 'auth'), function() {
     Route::controller('admin/korisnik', 'UserController');
     Route::controller('admin/vijesti', 'NewsController');
+    Route::controller('admin', 'AdminController');
 });
-Route::controller('admin', 'AdminController');
+
+/**
+ * logout from admin area
+ */
+Route::get('logout', function(){
+    Auth::logout();
+    return Redirect::to('/');
+});
 
 /**
  * public area

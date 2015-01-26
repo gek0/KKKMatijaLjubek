@@ -8,6 +8,7 @@ class News extends Eloquent{
      *  -	news_title VARCHAR(255) / UNIQUE
      *  - 	news_body TEXT
      *  -   news_author INT UNSIGNED / FOREIGN KEY@users
+     *  -   num_visited INT UNSIGNED
      *  - 	created_at TIMESTAMP
      *  - 	updated_at TIMESTAMP
      */
@@ -26,10 +27,10 @@ class News extends Eloquent{
      *
      */
     public static $messages = array(
-        'news_title.required' => 'Naslov vijesti je obavezan',
-        'news_title.between' => 'Naslov mora biti kraći od 255 znakova',
-        'news_title.unique' => 'Vijest s istim naslovom već postoji',
-        'news_body' => 'Tekst vijesti je obavezan'
+        'news_title.required' => 'Naslov vijesti je obavezan.',
+        'news_title.between' => 'Naslov mora biti kraći od 255 znakova.',
+        'news_title.unique' => 'Vijest s istim naslovom već postoji.',
+        'news_body' => 'Tekst vijesti je obavezan.'
     );
 
     /**
@@ -45,5 +46,10 @@ class News extends Eloquent{
     public function author()
     {
         return $this->belongsTo('User', 'news_author');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany('Tag');
     }
 }

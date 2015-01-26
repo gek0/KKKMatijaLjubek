@@ -23,15 +23,20 @@
     <!-- stylesheets -->
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/layout.css') }}
+    {{ HTML::style('wysibb/theme/default/wbbtheme.css') }}
 <body class="cbp-spmenu-push">
     <!-- notifications -->
     <div class="notificationOutput" id="outputMsg"></div>
     <header>
+        <!-- navigation -->
         <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" role="navigation">
             <h2>Navigacija</h2>
             {{ HTML::smartRoute_link('admin', 'Početna') }}
             {{ HTML::smartRoute_link('admin/vijesti', 'Vijesti') }}
+                <ul>
+                    {{ HTML::smartRoute_link('admin/vijesti/nova', 'Nova vijest') }}
+                </ul>
             {{ HTML::smartRoute_link('admin/korisnik/postavke', 'Korisničke postavke') }}
-            {{ HTML::smartRoute_link('admin/logout', 'Odjava') }}
+            {{ HTML::smartRoute_link('logout', 'Odjava') }}
         </nav>
     </header>

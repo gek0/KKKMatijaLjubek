@@ -25,4 +25,13 @@ jQuery(document).ready(function(){
         }
     };
 
+    /*
+    *   BBcode editor
+    */
+    var lg = {
+        lang: "hr",
+        buttons: "bold,italic,underline,strike,|,justifyleft,justifycenter,justifyright,|,bullist,numlist,|,link,video,removeFormat"
+    }
+    $("#codeEditor").wysibb(lg);
+
 });

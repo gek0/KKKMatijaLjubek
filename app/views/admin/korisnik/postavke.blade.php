@@ -21,7 +21,7 @@
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary btn-info" id="changeData">Prihvati promjene <span class="glyphicon glyphicon-ok"></span></button>
-                    <div class='loader' id="novePostavkeLoad">
+                    <div class="loader" id="novePostavkeLoad">
                         <div></div>
                         <div></div>
                         <div></div>
@@ -52,7 +52,7 @@
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary btn-info" id="addUser">Dodaj korisnika <span class="glyphicon glyphicon-user"></span></button>
-                <div class='loader' id="noviKorisnikLoad">
+                <div class="loader" id="noviKorisnikLoad">
                     <div></div>
                     <div></div>
                     <div></div>
