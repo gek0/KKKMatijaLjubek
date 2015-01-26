@@ -51,6 +51,12 @@
                             <div class="form-group-login">
                                 {{ Form::label('password', 'Lozinka:') }}
                                 {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Lozinka', 'id' => 'password', 'required')) }}
+                            </div>
+                            <div class="form-group-login text-center">
+                                <div class="checkbox checkbox-info">
+                                    {{ Form::checkbox('rememberMe', 1, true, array('id' => 'rememberMe')) }}
+                                    {{ Form::label('rememberMe', 'Zapamti me?', array('class' => 'checkbox-inline')) }}
+                                </div>
                             </div><br>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary btn-info" id="loginSubmit">Login</button>

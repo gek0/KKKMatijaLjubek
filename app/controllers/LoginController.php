@@ -39,12 +39,18 @@ class LoginController extends Controller{
 
         if (Request::ajax()) {
             $inputData = Input::get('formData');
-            $userdata = array(
+            $userData = array(
                 'username' => e($inputData['username']),
-                'password' => $inputData['password']
+                'password' => $inputData['password'],
+                'rememberMe' => e($inputData['rememberMe'])
             );
 
-            if (Auth::attempt($userdata)) {
+            $rememberMe = false;
+            if($userData['rememberMe'] == '1'){
+                $rememberMe = true;
+            }
+
+            if (Auth::attempt(array('username' => $userData['username'], 'password' => $userData['password']), $rememberMe)) {
                 return Response::json(array(
                     'status' => 'success'
                 ));
