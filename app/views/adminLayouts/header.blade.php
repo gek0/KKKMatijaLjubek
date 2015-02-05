@@ -15,6 +15,7 @@
     {{ HTML::script('js/jquery.min.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
     {{ HTML::script('js/modernizr.custom.js') }}
+    {{ HTML::script('js/fileinput.min.js') }}
     <!--[if lt IE 9]>
     {{ HTML::script('js/html5shiv.min.js') }}
     {{ HTML::script('js/respond.min.js') }}
@@ -22,8 +23,9 @@
 
     <!-- stylesheets -->
     {{ HTML::style('css/bootstrap.min.css') }}
-    {{ HTML::style('css/layout.css') }}
+    {{ HTML::style('css/layoutAdmin.css') }}
     {{ HTML::style('wysibb/theme/default/wbbtheme.css') }}
+    {{ HTML::style('css/fileinput.css') }}
 <body class="cbp-spmenu-push">
     <!-- notifications -->
     <div class="notificationOutput" id="outputMsg"></div>

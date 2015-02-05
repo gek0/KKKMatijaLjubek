@@ -69,6 +69,19 @@ App::down(function()
 
 /*
 |--------------------------------------------------------------------------
+| Route Not Found Handler
+|--------------------------------------------------------------------------
+|
+| If no controller for intended route is found, send 404 error code
+|
+*/
+
+/*App::missing(function($exception)
+{
+	return Response::view('admin.error', array('foo' => 'bar'), 404);
+});*/
+/*
+|--------------------------------------------------------------------------
 | Require The Filters File
 |--------------------------------------------------------------------------
 |

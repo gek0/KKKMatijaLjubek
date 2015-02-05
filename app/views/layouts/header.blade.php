@@ -15,6 +15,6 @@
 
     <!-- stylesheets -->
     {{ HTML::style('css/bootstrap.min.css') }}
-    {{ HTML::style('css/layoutStyle.css') }}
+    {{ HTML::style('css/layoutPublic.css') }}
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">

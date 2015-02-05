@@ -23,7 +23,7 @@
     <!-- stylesheets -->
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/animate.css') }}
-    {{ HTML::style('css/layout.css') }}
+    {{ HTML::style('css/layoutAdmin.css') }}
 </head>
 <body>
     <!-- notifications -->

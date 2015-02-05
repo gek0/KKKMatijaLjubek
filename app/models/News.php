@@ -30,7 +30,7 @@ class News extends Eloquent{
         'news_title.required' => 'Naslov vijesti je obavezan.',
         'news_title.between' => 'Naslov mora biti kraći od 255 znakova.',
         'news_title.unique' => 'Vijest s istim naslovom već postoji.',
-        'news_body' => 'Tekst vijesti je obavezan.'
+        'news_body.required' => 'Tekst vijesti je obavezan.'
     );
 
     /**
@@ -51,5 +51,10 @@ class News extends Eloquent{
     public function tags()
     {
         return $this->belongsToMany('Tag');
+    }
+
+    public function images()
+    {
+        return $this->hasMany('NewsImage', 'news_id');
     }
 }

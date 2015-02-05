@@ -1,4 +1,5 @@
-vijesti početna
+clanak broj: {{ $newsData->id }}
+
 
 
 @if($errors->has())
@@ -11,6 +12,18 @@ vijesti početna
     <script>
         jQuery(document).ready(function(){
             catchLaravelNotification('errorBag', 'warningNotif');
+        });
+    </script>
+@endif
+
+@if(Session::has('success'))
+    <div class="none" id="successBag">
+        <h3>{{ Session::get('success') }}</h3>
+    </div>
+
+    <script>
+        jQuery(document).ready(function(){
+            catchLaravelNotification('successBag', 'successNotif');
         });
     </script>
 @endif

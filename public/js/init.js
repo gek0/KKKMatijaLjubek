@@ -30,8 +30,23 @@ jQuery(document).ready(function(){
     */
     var lg = {
         lang: "hr",
-        buttons: "bold,italic,underline,strike,|,justifyleft,justifycenter,justifyright,|,bullist,numlist,|,link,video,removeFormat"
+        buttons: "bold,italic,underline,strike,sup,sub,|,justifyleft,justifycenter,justifyright,|,table,bullist,numlist,fontcolor,|,link,video,removeFormat"
     }
     $("#codeEditor").wysibb(lg);
 
 });
+
+
+/*
+ *   catch laravel form/route notifications
+ */
+function catchLaravelNotification(errorHtmlSourceID, notificationType) {
+    var outputMsg = $('#outputMsg');
+    var errorMsg = $('#'+errorHtmlSourceID).html();
+    outputMsg.append(errorMsg).addClass(notificationType).slideDown();
+
+    setTimeout(function () {
+        outputMsg.slideUp().empty();
+        outputMsg.attr('class', 'notificationOutput');
+    }, 3500);
+}
