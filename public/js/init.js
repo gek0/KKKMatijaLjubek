@@ -34,6 +34,18 @@ jQuery(document).ready(function(){
     }
     $("#codeEditor").wysibb(lg);
 
+
+    /*
+     *  bootstrap image gallery
+     */
+    $('.thumbnail').click(function(){
+        $('.modal-body').empty();
+        var title = $(this).parent('a').attr("title");
+        $('.modal-title').html(title);
+        $($(this).parents('a').html()).appendTo('.modal-body');
+        $('#myModal').modal({show:true});
+    });
+
 });
 
 

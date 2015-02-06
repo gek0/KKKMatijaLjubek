@@ -1,4 +1,5 @@
-vijesti početna
+početna vijesti
+
 
 
 @if($errors->has())

@@ -57,4 +57,22 @@ class News extends Eloquent{
     {
         return $this->hasMany('NewsImage', 'news_id');
     }
+
+    /**
+     * added functions
+     */
+    public function getDateFormated()
+    {
+        return date('d.m.Y \u H:i\h', strtotime($this->created_at));
+    }
+
+    public function nextNews()
+    {
+        return News::where('id', '>', $this->id)->orderBy('id', 'asc')->take(1)->get()->first();
+    }
+
+    public function previousNews()
+    {
+        return News::where('id', '<', $this->id)->orderBy('id', 'desc')->take(1)->get()->first();
+    }
 }

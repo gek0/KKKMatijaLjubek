@@ -8,7 +8,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('news_body', 'Tekst vijesti:') }}
-            {{ Form::textarea('news_body', null, array('class' => 'form-control', 'placeholder' => 'Tekst vijesti', 'id' => 'codeEditor', 'required')) }}
+            {{ Form::textarea('news_body', null, array('class' => 'form-control', 'placeholder' => 'Tekst vijesti', 'id' => 'codeEditor')) }}
         </div>
         <div class="form-group">
             {{ Form::label('news_images', 'Slike vijesti:') }}
@@ -25,6 +25,7 @@
     </div>
 </div>
 
+
 @if($errors->has())
     <div class="none" id="errorBag">
         @foreach($errors->all() as $error)
@@ -38,3 +39,19 @@
         });
     </script>
 @endif
+
+<script>
+    $("#news_images").fileinput({
+        showUpload: false,
+        layoutTemplates: {
+            main1: "{preview}\n" +
+                        "<div class=\'input-group {class}\'>\n" + "   " +
+                            "<div class=\'input-group-btn\'>\n" +
+                                "{browse}\n" + "" +
+                                "{remove}\n" +
+                            "</div>\n" +
+                            "{caption}\n" +
+                        "</div>"
+        }
+    });
+</script>
