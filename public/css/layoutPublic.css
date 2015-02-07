@@ -34,7 +34,7 @@
 body{
     width: 100%;
     height: 100%;
-    background: #dddddd url('img/main_bg_static.png') repeat;
+    background: #dddddd url('assets/images/main_bg_static.png') repeat;
     font-family: 'Dosis';
     font-size: 100%;
     color: #000000;
@@ -159,7 +159,7 @@ blockquote { font-size: 1.25em; line-height: 1.25; }
     padding: 100px 0;
     text-align: center;
     color: #fff;
-    background: url('img/intro-bg.jpg') no-repeat bottom center scroll;
+    background: url('assets/images/intro-bg.jpg') no-repeat bottom center scroll;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;

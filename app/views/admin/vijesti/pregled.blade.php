@@ -79,30 +79,17 @@
     <section id="news_image_gallery" data-role-link="{{ URL::to('admin/vijesti/galleryimagedelete') }}">
         <hr>
         <div class="container-fluid">
-            <div class="row padded">
+            <div class="row padded text-center">
                 <h2>Galerija slika  <small id="image_gallery_counter">{{ $newsData->images->count() }}</small></h2>
-                <div class="row">
                     @foreach($newsData->images as $img)
-                        <div class="col-lg-3 col-sm-4 col-6" id="img-container-{{ $img->id }}">
-                            <a href="#" title="{{ imageAlt($img->file_name) }}"><img src="{{ $img->file_location.$img->file_name }}" class="thumbnail img-responsive"></a>
-                            <button id="{{ $img->id }}" class="btn btn-danger btn-delete-image"><span class="glyphicon glyphicon-trash"></span></button>
+                        <div class="col-lg-3 col-sm-4 col-6 small-marg" id="img-container-{{ $img->id }}">
+                            <img src="{{ $img->file_location.$img->file_name }}" class="thumbnail img-responsive">
+                            <button id="{{ $img->id }}" class="btn btn-danger btn-delete-image" title="Brisanje slike {{ $img->file_name }}"><span class="glyphicon glyphicon-trash"></span></button>
                         </div>
+                        <div class="clearfix visible-xs"></div>
                     @endforeach
-                </div>
             </div>
         </div>  <!-- end image gallery -->
-
-        <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
-                        <h4 class="modal-title"></h4>
-                    </div>
-                    <div class="modal-body"></div>
-                </div>
-            </div>
-        </div> <!-- end image gallery modal window -->
     </section>
     @endif
 

@@ -39,7 +39,7 @@
                         <i class="glyphicon glyphicon-user"></i>
                     </div>
                     <div class="login-logo">
-                        {{ HTML::image('css/img/logo_main_log.png', 'Logo', array('title' => 'KKK Matija Ljubek')) }}
+                        {{ HTML::image('css/assets/images/logo_main_log.png', 'Logo', array('title' => 'KKK Matija Ljubek')) }}
                     </div>
                     <hr />
                     <div class="login-form">

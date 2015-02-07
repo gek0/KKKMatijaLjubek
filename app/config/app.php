@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost/+github/KKKMatijaLjubek',
+	'url' => 'localhost/+github/KKKMatijaLjubek',
 
 	/*
 	|--------------------------------------------------------------------------

@@ -90,6 +90,7 @@ class NewsController extends AdminController{
             if($news_images == true && $news_images[0] != null){
                 //check for image directory
                 $path = public_path().'/news_uploads/'.$newsID.'/';
+                $imageDBpath = '/news_uploads/'.$newsID.'/';
                 if (!file_exists($path)){
                     mkdir($path, 0777);
                 }
@@ -104,7 +105,7 @@ class NewsController extends AdminController{
                     if($file_uploaded){
                         $image = new NewsImage;
                         $image->file_name = $full_name;
-                        $image->file_location = $path;
+                        $image->file_location = $imageDBpath;
                         $image->file_size = $file_size;
                         $image->news_id = $newsID;
                         $image->save();
@@ -186,7 +187,7 @@ class NewsController extends AdminController{
                 //delete image if exists and return JSON response
                 if($newsImage){
                     try{
-                        $file_name = $newsImage->file_location.$newsImage->file_name;
+                        $file_name = public_path().$newsImage->file_location.$newsImage->file_name;
                         if(File::exists($file_name)){
                             File::delete($file_name);
                         }
