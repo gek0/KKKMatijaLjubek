@@ -37,8 +37,13 @@
             <div class="col-md-4">
                 <span class="glyphicon glyphicon-calendar glyphicon-large" alt="Datum objave" title="Datum objave"></span>
                 <span class="info-text">
-                    <time datetime="{{ $newsData->getDateFormated() }}">{{ $newsData->getDateFormated() }}</time>
+                    <time datetime="{{ $newsData->getDateCreatedFormatedHTML() }}">{{ $newsData->getDateCreatedFormated() }}</time>
                 </span>
+                @if($newsData->created_at != $newsData->updated_at)
+                    <br>
+                    <span class="glyphicon glyphicon-pencil glyphicon-large" alt="Datum izmjene" title="Datum izmjene"></span>
+                    <time datetime="{{ $newsData->getDateUpdatedFormatedHTML() }}">{{ $newsData->getDateUpdatedFormated() }}</time>
+                @endif
             </div>
             <div class="col-md-4">
                 <span class="glyphicon glyphicon-eye-open glyphicon-large" alt="Broj pregleda" title="Broj pregleda"></span>
@@ -83,7 +88,7 @@
                 <h2>Galerija slika  <small id="image_gallery_counter">{{ $newsData->images->count() }}</small></h2>
                     @foreach($newsData->images as $img)
                         <div class="col-lg-3 col-sm-4 col-6 small-marg" id="img-container-{{ $img->id }}">
-                            <img src="{{ $img->file_location.$img->file_name }}" class="thumbnail img-responsive">
+                            {{ HTML::image('/news_uploads/'.$newsData->id.'/'.$img->file_name, imageAlt($img->file_name), array('class' => 'thumbnail img-responsive')) }}
                             <button id="{{ $img->id }}" class="btn btn-danger btn-delete-image" title="Brisanje slike {{ $img->file_name }}"><span class="glyphicon glyphicon-trash"></span></button>
                         </div>
                         <div class="clearfix visible-xs"></div>

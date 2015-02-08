@@ -6,7 +6,6 @@ class NewsImage extends Eloquent{
      * NewsImage Database Model
      * 	-	id INT UNSIGNED / AUTO_INCREMENT PRIMARY KEY
      *  -	file_name_title VARCHAR(255) / UNIQUE
-     *  - 	file_location VARCHAR(255)
      *  -   file_size DOUBLE
      *  -   news_id INT UNSIGNED / FOREIGN KEY@news
      *  - 	created_at TIMESTAMP

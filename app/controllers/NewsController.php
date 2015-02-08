@@ -3,11 +3,12 @@
 class NewsController extends AdminController{
 
     /**
-     * news homepage
+     *  news admin homepage, list all news by 9 per page / 3 rows
      */
     public function getIndex()
     {
-        $this->layout->content = View::make('admin.vijesti.index');
+        $newsData = News::paginate(9);
+        $this->layout->content = View::make('admin.vijesti.index')->with('newsData', $newsData);
     }
 
     /**
@@ -90,7 +91,6 @@ class NewsController extends AdminController{
             if($news_images == true && $news_images[0] != null){
                 //check for image directory
                 $path = public_path().'/news_uploads/'.$newsID.'/';
-                $imageDBpath = '/news_uploads/'.$newsID.'/';
                 if (!file_exists($path)){
                     mkdir($path, 0777);
                 }
@@ -105,7 +105,6 @@ class NewsController extends AdminController{
                     if($file_uploaded){
                         $image = new NewsImage;
                         $image->file_name = $full_name;
-                        $image->file_location = $imageDBpath;
                         $image->file_size = $file_size;
                         $image->news_id = $newsID;
                         $image->save();
