@@ -7,7 +7,7 @@ class NewsImage extends Eloquent{
      * 	-	id INT UNSIGNED / AUTO_INCREMENT PRIMARY KEY
      *  -	file_name_title VARCHAR(255) / UNIQUE
      *  -   file_size DOUBLE
-     *  -   news_id INT UNSIGNED / FOREIGN KEY@news
+     *  -   news_id INT UNSIGNED / FOREIGN KEY@news / ON DELETE CASCADE
      *  - 	created_at TIMESTAMP
      *  - 	updated_at TIMESTAMP
      */

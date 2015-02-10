@@ -42,4 +42,4 @@
             {{ HTML::smartRoute_link('admin/korisnik/postavke', 'Korisničke postavke') }}
             {{ HTML::smartRoute_link('logout', 'Odjava') }}
         </nav>
-    </header>
+    </header> <!-- end header -->

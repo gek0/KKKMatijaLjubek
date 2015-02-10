@@ -36,7 +36,7 @@ jQuery(document).ready(function(){
 
 
     /*
-     *  bootstrap image gallery
+     *   bootstrap image gallery
      */
     /*$('.thumbnail').click(function(){
         $('.modal-body').empty();
@@ -62,3 +62,30 @@ function catchLaravelNotification(errorHtmlSourceID, notificationType) {
         outputMsg.attr('class', 'notificationOutput');
     }, 3500);
 }
+
+/*
+ *   date and time
+ */
+function startTime() {
+    var e = new Date;
+    var t = e.getHours();
+    var n = e.getMinutes();
+    var r = e.getSeconds();
+    var i = e.getDay();
+    var s = e.getMonth();
+    var o = e.getFullYear();
+    n = checkTime(n);
+    r = checkTime(r);
+    $('#time-data').html(i + "." + s + "." + o + ". " + t + ":" + n + ":" + r);
+    var u = setTimeout(function() {
+        startTime()
+    }, 500)
+}
+
+function checkTime(e) {
+    if (e < 10) {
+        e = "0" + e;
+    }
+    return e;
+}
+startTime();

@@ -57,7 +57,6 @@ class News extends Eloquent{
     {
         return $this->hasMany('NewsImage', 'news_id');
     }
-
     /**
      * added functions
      */

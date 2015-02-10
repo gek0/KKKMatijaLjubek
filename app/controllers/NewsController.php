@@ -142,6 +142,39 @@ class NewsController extends AdminController{
     }
 
     /**
+     * @param null $id
+     * @return mixed
+     * find and delete news data if it exists
+     */
+    public function getBrisanje($id = null)
+    {
+        if($id !== null){
+            $dataDeleted = false;
+            $news = News::find(e($id));
+
+            //check if news exists
+            if($news){
+                $news->delete();
+
+                //delete images from disk
+                rrmdir(public_path().'/news_uploads/'.$id.'/');
+                $dataDeleted = true;
+
+                //check if news is deleted
+                if($dataDeleted){
+                    return Redirect::to('admin/vijesti')->with(array('success' => 'Članak je uspješno obrisan'));
+                }
+                else{
+                    return Redirect::to('admin/vijesti')->withErrors('Članak nije mogao biti obrisan.'); //TODO: redirect to news itself if not deleted
+                }
+            }
+            else{
+                return Redirect::to('admin/vijesti')->withErrors('Članak ne postoji.');
+            }
+        }
+    }
+
+    /**
      * @param $tagQuery
      * @return mixed
      * return list of tags as JSON (used it in autocomplete forms)
