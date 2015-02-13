@@ -53,7 +53,7 @@
     </div>
     <div class="row padded">
         <div class="col-md-9">
-            {{ BBCode::parse($newsData->news_body) }}
+            {{ removeEmptyP(nl2p(BBCode::parse($newsData->news_body))) }}
         </div>
         <div class="col-md-3">
             <div class="sidebar-content">
@@ -92,7 +92,7 @@
                 <h2>Galerija slika  <small id="image_gallery_counter">{{ $newsData->images->count() }}</small></h2>
                     @foreach($newsData->images as $img)
                         <div class="col-lg-3 col-sm-4 col-6 small-marg" id="img-container-{{ $img->id }}">
-                            {{ HTML::image('/news_uploads/'.$newsData->id.'/'.$img->file_name, imageAlt($img->file_name), array('class' => 'thumbnail img-responsive')) }}
+                            <img data-original="{{ URL::to('/news_uploads/'.$newsData->id.'/'.$img->file_name) }}" alt="{{ imageAlt($img->file_name) }}" class="thumbnail img-responsive lazy" />
                             <button id="{{ $img->id }}" class="btn btn-danger btn-delete-image" title="Brisanje slike {{ $img->file_name }}"><span class="glyphicon glyphicon-trash"></span></button>
                         </div>
                         <div class="clearfix visible-xs"></div>
@@ -116,6 +116,15 @@
                 if(result == true){
                     window.location = '{{ URL::to('admin/vijesti/brisanje/'.$newsData->id) }}';
                 }
+            });
+        });
+
+        /*
+        *   add lazy loading to images out of screen viewport
+        */
+        $(function() {
+            $("img.lazy").lazyload({
+                effect : "fadeIn"
             });
         });
     });

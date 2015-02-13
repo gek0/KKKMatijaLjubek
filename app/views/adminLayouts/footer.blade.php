@@ -7,5 +7,6 @@
     {{ HTML::script('js/bootstrap-tagsinput.min.js', array('charset' => 'utf-8')) }}
     {{ HTML::script('js/radiocheck.js', array('charset' => 'utf-8')) }}
     {{ HTML::script('js/init.js', array('charset' => 'utf-8')) }}
+    {{ HTML::script('js/jquery.lazyload.min.js', array('charset' => 'utf-8')) }}
 </body>
 </html>

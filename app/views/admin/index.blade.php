@@ -3,7 +3,6 @@
     <li>tagovi - poseban view / učestalost tagova (public)</li>
     <li>ispis svih vijesti - infinite scroll</li>
     <li>404, odkomentirat start/global i uredit view</li>
-    <li>lazy load slika dodat</li>
 </ul>
 
 

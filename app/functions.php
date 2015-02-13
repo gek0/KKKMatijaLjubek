@@ -78,3 +78,46 @@ function rrmdir($dir) {
 function imageAlt($image_name){
     return substr($image_name, 0, -4);
 }
+
+/**
+ * @param $string
+ * @return string
+ * place BBcode parsed text to <p> HTML tags
+ */
+function nl2p($string) {
+    $arr = explode('\n', $string);
+    $out = '';
+    $arr_len = count($arr);
+
+    for($i = 0; $i < $arr_len; $i++){
+        if(strlen(trim($arr[$i])) > 0) {
+            $out .= '<p>'.trim($arr[$i]).'</p>';
+        }
+    }
+
+    return $out;
+}
+
+/**
+ * @param $content
+ * @return mixed
+ * remove empty <p> HTML tags left after BBcode parser
+ */
+function removeEmptyP($content) {
+    $content = preg_replace(array(
+        '#<p>\s*<(div|aside|section|article|header|footer)#',
+        '#</(div|aside|section|article|header|footer)>\s*</p>#',
+        '#</(div|aside|section|article|header|footer)>\s*<br ?/?>#',
+        '#<(div|aside|section|article|header|footer)(.*?)>\s*</p>#',
+        '#<p>\s*</(div|aside|section|article|header|footer)#',
+    ),
+    array(
+        '<$1',
+        '</$1>',
+        '</$1>',
+        '<$1$2>',
+        '</$1',
+    ), $content );
+
+    return preg_replace('#<p>(\s|&nbsp;)*+(<br\s*/*>)*(\s|&nbsp;)*</p>#i', '', $content);
+}
