@@ -61,11 +61,15 @@
                     <span class="glyphicon glyphicon-tags glyphicon-large" alt="Tagovi" title="Tagovi"></span> <span class="info-text">Tagovi članka</span>
                 </div>
                 <div class="sidebar-body">
-                    <ul class="tags">
-                        @foreach($newsData->tags as $tag)
-                            <li>{{ $tag->tag }}</li>
-                        @endforeach
-                    </ul>
+                    @if($newsData->tags->count() > 0)
+                        <ul class="tags">
+                            @foreach($newsData->tags as $tag)
+                                <li>{{ $tag->tag }}</li>
+                            @endforeach
+                        </ul>
+                    @else
+                        <p>Trenutno nema tagova.</p>
+                    @endif
                 </div>
             </div>
             <div class="sidebar-content">

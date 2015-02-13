@@ -22,6 +22,11 @@ class News extends Eloquent{
         'news_body' => 'required'
     );
 
+    public static $rulesLessStrict = array(
+        'news_title' => 'required|between:1,255',
+        'news_body' => 'required'
+    );
+
     /**
      * validation error messages
      *

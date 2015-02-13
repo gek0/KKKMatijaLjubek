@@ -36,7 +36,7 @@ class UserController extends AdminController{
                 //throw new Illuminate\Session\TokenMismatchException;
                 return Response::json(array(
                     'status' => 'error',
-                    'errors' => 'CSRF token is not valid'
+                    'errors' => 'CSRF token is not valid.'
                 ));
             }
             else{
@@ -66,7 +66,7 @@ class UserController extends AdminController{
         else{
             return Response::json(array(
                 'status' => 'error',
-                'errors' => 'Data not sent with Ajax'
+                'errors' => 'Data not sent with Ajax.'
             ));
         }
     }
@@ -97,7 +97,7 @@ class UserController extends AdminController{
                 //throw new Illuminate\Session\TokenMismatchException;
                 return Response::json(array(
                     'status' => 'error',
-                    'errors' => 'CSRF token is not valid'
+                    'errors' => 'CSRF token is not valid.'
                 ));
             }
             else{
@@ -124,7 +124,7 @@ class UserController extends AdminController{
         else{
             return Response::json(array(
                 'status' => 'error',
-                'errors' => 'Data not sent with Ajax'
+                'errors' => 'Data not sent with Ajax.'
             ));
         }
     }

@@ -34,7 +34,6 @@ jQuery(document).ready(function(){
     }
     $("#codeEditor").wysibb(lg);
 
-
     /*
      *   bootstrap image gallery
      */
