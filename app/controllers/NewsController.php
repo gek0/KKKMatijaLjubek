@@ -16,7 +16,8 @@ class NewsController extends AdminController{
      */
     public function getNova()
     {
-        $this->layout->content = View::make('admin.vijesti.nova');
+        $tag_collection = Tag::distinct()->select('tag')->get();    //get all tags for input suggestion
+        $this->layout->content = View::make('admin.vijesti.nova')->with('tag_collection', $tag_collection);
     }
 
     /**
@@ -288,7 +289,7 @@ class NewsController extends AdminController{
             }
         }
         else{
-            return Redirect::to('admin/vijesti')->withErrors('Vijestne postoji.');
+            return Redirect::to('admin/vijesti')->withErrors('Vijest ne postoji.');
         }
     }
 
@@ -312,7 +313,8 @@ class NewsController extends AdminController{
                     $tags = json_encode($tags);
                 }
 
-                $this->layout->content = View::make('admin/vijesti/izmjena')->with(array('newsData' => $newsData, 'newsTags' => $tags));
+                $tag_collection = Tag::distinct()->select('tag')->get();    //get all tags for input suggestion
+                $this->layout->content = View::make('admin/vijesti/izmjena')->with(array('newsData' => $newsData, 'newsTags' => $tags, 'tag_collection' => $tag_collection));
             }
             else{
                 return Redirect::to('admin/vijesti')->withErrors('Vijest ne postoji.');

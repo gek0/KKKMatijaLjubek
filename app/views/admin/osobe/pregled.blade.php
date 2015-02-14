@@ -1,0 +1,1 @@
+osoba {{ $personData['person_full_name'] }}

@@ -93,3 +93,4 @@ App::down(function()
 
 require app_path().'/filters.php';
 require app_path().'/functions.php';
+require app_path().'/validators.php';

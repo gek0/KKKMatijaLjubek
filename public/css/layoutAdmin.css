@@ -1,5 +1,7 @@
 @charset "utf-8";
 @import 'animate.css';
+@import 'bootstrap-select.min.css';
+@import 'datepicker.min.css';
 
 @font-face {
     font-family: 'Dosis';
@@ -600,6 +602,13 @@ span.info-text{ margin-left: 0.5em; }
 }
 .news-all-tools{ margin: 0.5em auto; }
 
+#tags-collection{
+    width: 90%; height: auto;
+    margin: 1.5em auto;
+    padding: 0.75em;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); -o-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+    display: none;
+}
 
 
 

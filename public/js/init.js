@@ -35,6 +35,31 @@ jQuery(document).ready(function(){
     $("#codeEditor").wysibb(lg);
 
     /*
+     *   toogle tags-collection container view
+     */
+    $("#toogle-tags-collection").click(function(event){
+        event.preventDefault();
+
+        //update element value
+        if($(this).children().attr('class') == 'glyphicon glyphicon-chevron-down'){
+            $(this).children().attr('class', 'glyphicon glyphicon-chevron-up');
+        }
+        else if($(this).children().attr('class') == 'glyphicon glyphicon-chevron-up'){
+            $(this).children().attr('class', 'glyphicon glyphicon-chevron-down');
+        }
+
+        $("#tags-collection").toggle(250);
+    });
+
+    /*
+     *   add selected tag to tags input
+     */
+    $("#tags-collection ul li").click(function() {
+        $('#news_tags').tagsinput('add', $(this).text());
+    });
+
+
+    /*
      *   bootstrap image gallery
      */
     /*$('.thumbnail').click(function(){

@@ -18,6 +18,23 @@
             {{ Form::label('news_tags', 'Tagovi vijesti: ("Enter" za unos taga)') }}
             {{ Form::select('tags[]', array(), null, array('placeholder' => 'Tagovi vijesti', 'multiple' => 'true', 'id' => 'news_tags', 'data-role' => 'tagsinput')) }}
         </div>
+
+        <button class="btn btn-primary btn-info" id="toogle-tags-collection">Lista postojećih tagova <span class="glyphicon glyphicon-chevron-down"></span></button>
+        <div class="form-group text-center" id="tags-collection">
+            <ul class="tags">
+                @if($tag_collection->count() > 0)
+                    <h4>Klik na tag za odabir:</h4>
+                    <ul class="tags">
+                        @foreach($tag_collection as $tag)
+                            <li>{{ $tag->tag }}</li>
+                        @endforeach
+                    </ul>
+                @else
+                    <h4>Trenutno nema tagova.</h4>
+                @endif
+            </ul>
+        </div><hr>
+
         <div class="text-center">
             <button type="submit" class="btn btn-primary btn-block btn-lg btn-info">Objavi vijest <span class="glyphicon glyphicon-ok"></span></button>
         </div>
