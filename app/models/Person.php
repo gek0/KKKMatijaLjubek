@@ -32,6 +32,10 @@ class Person extends Eloquent{
         'person_birthday' => 'date'
     );
 
+    public static $rulesCategorySort = array(
+        'person_category' => 'integer|between:1,7'
+    );
+
     /**
      * validation error messages
      *

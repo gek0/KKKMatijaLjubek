@@ -3,12 +3,40 @@
 class PersonController extends AdminController{
 
     /**
-     *  persons admin homepage - athletes and coaches, list all persons by 8 per page / 2 rows
+     *  persons admin homepage - athletes and coaches, list all persons by 6 per page / 2 rows
      */
     public function getIndex()
     {
         $personsData = Person::paginate(6);
-        $this->layout->content = View::make('admin.osobe.index')->with('personsData', $personsData);
+        //get all categories from DB to populate dropdown
+        $person_categories = PersonCategory::orderBy('id')->lists('category_name', 'id');
+        $category_id = null; //default value
+
+        $this->layout->content = View::make('admin.osobe.index', compact('person_categories'))->with(array('personsData' => $personsData, 'category_id' => $category_id));
+    }
+
+    /**
+     *  sort persons by selected category and return to main view, list all persons by 6 per page / 2 rows
+     */
+    public function getCategorySort()
+    {
+        $category_id = e(Input::get('category'));
+
+        $personsData = Person::where('category_id', '=', $category_id)->paginate(6);
+
+        //get all categories from DB to populate dropdown
+        $person_categories = PersonCategory::orderBy('id')->lists('category_name', 'id');
+
+        //category validation
+        $category_data = array('person_category' => $category_id);
+        $validator = Validator::make($category_data, Person::$rulesCategorySort, Person::$messages);
+        if($validator->fails()){
+            $error = $validator->messages();
+            $this->layout->content = View::make('admin.osobe.index', compact('person_categories'))->with(array('personsData' => $personsData, 'category_id' => $category_id))->withErrors($error);
+        }
+        else{
+            $this->layout->content = View::make('admin.osobe.index', compact('person_categories'))->with(array('personsData' => $personsData, 'category_id' => $category_id));
+        }
     }
 
     /**
@@ -291,7 +319,7 @@ class PersonController extends AdminController{
      * @return mixed
      * AJAX image delete form person gallery
      */
-    public function postGalleryimagedelete()
+    public function postGalleryImageDelete()
     {
         if(Request::ajax()){
 

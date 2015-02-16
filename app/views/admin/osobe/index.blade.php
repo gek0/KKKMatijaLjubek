@@ -1,3 +1,18 @@
+<section id="person_sort">
+    <div class="row" id="person_sort">
+        <div class="formSort padded">
+            {{ Form::open(array('url' => 'admin/osobe/category-sort', 'method' => 'GET', 'id' => 'sortiranjeOsoba', 'role' => 'form')) }}
+                <div class="form-group">
+                    {{ Form::label('category', 'Sortiranje po kategoriji osobe:') }}<br>
+                    {{ Form::select('category', array('Izaberi kategoriju osobe...' => $person_categories),
+                                      $category_id, array('class' => 'selectpicker show-tick', 'data-style' => 'btn-info', 'title' => 'Odaberi kategoriju osobe...', 'data-size' => '5'))
+                    }}
+                </div>
+            {{ Form::close() }}
+        </div>
+    </div>
+</section> <!-- end person_sort section -->
+
 <section id="persons_data_all" data-role="persons_data">
     @if(count($personsData->all()) > 0)
         @foreach(array_chunk($personsData->all(), 3) as $person)
@@ -30,7 +45,7 @@
         @endforeach
 
         <div class="pagination-layout pagination-centered">
-            {{ $personsData->links() }}
+            {{ $personsData->appends(Request::except('stranica'))->links() }}
         </div> <!-- end pagination -->
     @else
         <div class="text-center">
@@ -38,7 +53,18 @@
             <a href="{{ url('admin/osobe/nova') }}"><button class="btn btn-primary btn-info btn-half">Dodaj novu osobu <span class="glyphicon glyphicon-plus"></span></button></a>
         </div>
     @endif
-</section>
+</section>  <!-- end persons_data_all section -->
+
+<script>
+    jQuery(document).ready(function(){
+        /*
+        *   submit form if option changed in dropdown menu
+        */
+        $('select#category').change(function(){
+            $('form#sortiranjeOsoba').submit();
+        });
+    });
+</script>
 
 @if($errors->has())
     <div class="none" id="errorBag">

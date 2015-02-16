@@ -363,7 +363,7 @@ class NewsController extends AdminController{
      * @return mixed
      * return list of tags as JSON (used it in autocomplete forms)
      */
-    public function getDohvatitagove($tagQuery)
+    public function getDohvatiTagove($tagQuery)
     {
         $tagData = array();
         $tagQuery = e($tagQuery); //sanitize input
@@ -381,7 +381,7 @@ class NewsController extends AdminController{
      * @return mixed
      * AJAX image delete form news gallery
      */
-    public function postGalleryimagedelete()
+    public function postGalleryImageDelete()
     {
         if(Request::ajax()){
 
