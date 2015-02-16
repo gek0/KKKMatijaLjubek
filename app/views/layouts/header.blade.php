@@ -8,6 +8,10 @@
     <meta charset="utf-8">
     <title>Matija Ljubek ~ {{ $pageTitle }}</title>
 
+    <!-- scripts -->
+    {{ HTML::script('js/jquery.min.js', array('charset' => 'utf-8')) }}
+    {{ HTML::script('js/bootstrap.min.js', array('charset' => 'utf-8')) }}
+    {{ HTML::script('js/modernizr.custom.js', array('charset' => 'utf-8')) }}
     <!--[if lt IE 9]>
     {{ HTML::script('js/html5shiv.min.js') }}
     {{ HTML::script('js/respond.min.js') }}

@@ -3,11 +3,12 @@
 class PersonController extends AdminController{
 
     /**
-     *  persons admin homepage - athletes and coaches
+     *  persons admin homepage - athletes and coaches, list all persons by 8 per page / 2 rows
      */
     public function getIndex()
     {
-        $this->layout->content = View::make('admin.osobe.index');
+        $personsData = Person::paginate(6);
+        $this->layout->content = View::make('admin.osobe.index')->with('personsData', $personsData);
     }
 
     /**
@@ -64,7 +65,7 @@ class PersonController extends AdminController{
             $person = new Person;
             $person->person_full_name = $person_data['person_full_name'];
             $person->person_description = $person_data['person_description'];
-            $person->person_birthday = $birthday_date->format('Y-m-d');;
+            $person->person_birthday = $birthday_date->format('Y-m-d');
             $person->category_id = $person_data['person_category'];
             $person->is_athlete = $is_athlete;
             $person->save();
@@ -106,6 +107,106 @@ class PersonController extends AdminController{
         }
     }
 
+
+    /**
+     * @param null $id
+     * @return mixed
+     * post data for person edit
+     */
+    public function postIzmjena($id = null)
+    {
+        if($id !== null){
+            $person = Person::find(e($id));
+
+            if($person){
+                //get form data
+                $person_images = Input::file('person_images');
+                $person_data = array('person_full_name' => e(Input::get('person_full_name')),
+                                     'person_description' => e(Input::get('person_description')),
+                                     'person_category' => e(Input::get('person_category')),
+                                     'person_birthday' => e(Input::get('person_birthday'))
+                                );
+
+                $is_athlete = ($person_data['person_category'] == 7 ? 'no' : 'yes');
+
+                /*
+                 *  validation
+                 */
+                $success = true;
+                $error_list = null;
+
+                $validator = Validator::make($person_data, Person::$rulesLessStrict, Person::$messages);
+                if($validator->fails()){
+                    $error_list = $validator->messages();
+                    $success = false;
+                }
+
+                if($person_images == true){
+                    foreach($person_images as $img){
+                        $validator_images = Validator::make(array('images' => $img), PersonImage::$rules, PersonImage::$messages);
+                        if($validator_images->fails()){
+                            $error_list = $validator->messages()->merge($validator_images->messages());
+                            $success = false;
+                        }
+                    }
+                }
+
+                //store changes to database if no errors
+                if($success == true){
+                    //convert input date to timestamp format
+                    $birthday_date = new DateTime($person_data['person_birthday']);
+
+                    $person->person_full_name = $person_data['person_full_name'];
+                    $person->person_description = $person_data['person_description'];
+                    $person->person_birthday = $birthday_date->format('Y-m-d');
+                    $person->category_id = $person_data['person_category'];
+                    $person->is_athlete = $is_athlete;
+                    $person->save();
+
+                    $personName = safe_name($person->person_full_name);
+
+                    //add new images
+                    if($person_images == true && $person_images[0] != null){
+                        //check for image directory
+                        $path = public_path().'/person_uploads/'.$person->id.'/';
+                        if(!File::exists($path)){
+                            File::makeDirectory($path, 0777);
+                        }
+
+                        foreach($person_images as $img){
+                            $file_name = $personName.'_'.Str::random(5);
+                            $file_exstension = $img->getClientOriginalExtension();
+                            $full_name = $file_name.'.'.$file_exstension;
+                            $file_size = $img->getSize();
+
+                            $file_uploaded = $img->move($path, $full_name);
+                            if($file_uploaded){
+                                $image = new PersonImage;
+                                $image->file_name = $full_name;
+                                $image->file_size = $file_size;
+                                $image->person_id = $person->id;
+                                $image->save();
+                            }
+                        }
+                    }
+
+
+                    //redirect on finish
+                    return Redirect::to('admin/osobe/pregled/'.$person->id)->with(array('success' => 'Osoba je uspješno izmjenjena.'));
+                }
+                else{
+                    return Redirect::back()->withErrors($error_list)->withInput();
+                }
+            }
+            else{
+                return Redirect::to('admin/osobe')->withErrors('Osoba ne postoji.');
+            }
+        }
+        else{
+            return Redirect::to('admin/osobe')->withErrors('Osoba ne postoji.');
+        }
+    }
+
     /**
      * @param null $id
      * @return mixed
@@ -126,6 +227,123 @@ class PersonController extends AdminController{
         }
         else{
             return Redirect::to('admin/osobe')->withErrors('Osoba ne postoji.');
+        }
+    }
+
+    /**
+     * @param null $id
+     * @return mixed
+     * find and get data for individuals person to populate edit form
+     */
+    public function getIzmjena($id = null){
+        if($id !== null){
+            $personData = Person::find(e($id));
+
+            //check if person exists
+            if($personData){
+                //get all categories from DB to populate dropdown
+                $person_categories = PersonCategory::orderBy('id')->lists('category_name', 'id');
+                $this->layout->content = View::make('admin/osobe/izmjena')->with(array('personData' => $personData, 'person_categories' => $person_categories));
+            }
+            else{
+                return Redirect::to('admin/osobe')->withErrors('Osoba ne postoji.');
+            }
+        }
+        else{
+            return Redirect::to('admin/osobe')->withErrors('Osoba ne postoji.');
+        }
+    }
+
+    /**
+     * @param null $id
+     * @return mixed
+     * find and delete person data if it exists
+     */
+    public function getBrisanje($id = null)
+    {
+        if($id !== null){
+            $person = Person::find(e($id));
+
+            //check if person exists
+            if($person){
+                try{
+                    //delete data from database
+                    $person->delete();
+                    //delete images from disk
+                    File::deleteDirectory(public_path().'/person_uploads/'.$id.'/');
+
+                    return Redirect::to('admin/osobe')->with(array('success' => 'Osoba je uspješno obrisana.'));
+                }
+                catch(Exception $e){
+                    return Redirect::to('admin/osobe/pregled/'.$id)->withErrors('Osob nije mogla biti obrisana.');
+                }
+            }
+            else{
+                return Redirect::to('admin/osobe')->withErrors('Osob ne postoji.');
+            }
+        }
+        else{
+            return Redirect::to('admin/osobe')->withErrors('Osob ne postoji.');
+        }
+    }
+
+    /**
+     * @return mixed
+     * AJAX image delete form person gallery
+     */
+    public function postGalleryimagedelete()
+    {
+        if(Request::ajax()){
+
+            //get image ID and token
+            $image_id = e(Input::get('imageData'));
+            $token = Request::header('X-CSRF-Token');
+
+            //check if csrf token is valid
+            if(Session::token() != $token){
+                //throw new Illuminate\Session\TokenMismatchException;
+                return Response::json(array(
+                    'status' => 'error',
+                    'errors' => 'CSRF token is not valid.'
+                ));
+            }
+            else{
+                $personImage = PersonImage::find($image_id);
+                $personID = $personImage->person_id;
+
+                //delete image if exists and return JSON response
+                if($personImage){
+                    try{
+                        $file_name = public_path().'/person_uploads/'.$personID.'/'.$personImage->file_name;
+                        if(File::exists($file_name)){
+                            File::delete($file_name);
+                        }
+                        $personImage->delete();
+
+                        return Response::json(array(
+                            'status' => 'success'
+                        ));
+                    }
+                    catch(Exception $e){
+                        return Response::json(array(
+                            'status' => 'error',
+                            'errors' => 'Brisanje slike nije uspjelo.'
+                        ));
+                    }
+                }
+                else{
+                    return Response::json(array(
+                        'status' => 'error',
+                        'errors' => 'Slika ne postoji.'
+                    ));
+                }
+            }
+        }
+        else{
+            return Response::json(array(
+                'status' => 'error',
+                'errors' => 'Data not sent with Ajax.'
+            ));
         }
     }
 

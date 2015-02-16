@@ -11,6 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="_token" content="{{ csrf_token() }}">
 
+    <!--[if IE]><link rel="shortcut icon" href="{{ asset('favicon.ico') }}"><![endif]-->
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('apple-touch-icon-precomposed.png') }}">
+    <link rel="icon" href="{{ asset('favicon.png') }}">
+
     <!-- scripts -->
     {{ HTML::script('js/jquery.min.js', array('charset' => 'utf-8')) }}
     {{ HTML::script('js/bootstrap.min.js', array('charset' => 'utf-8')) }}

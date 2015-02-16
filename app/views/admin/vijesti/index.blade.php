@@ -5,18 +5,18 @@
                 @foreach($news as $item)
                     <div class="col-md-4 news-all-content" id="news-{{ $item->id }}">
                         <div class="news-all-header">
-                            <h3 class="news-all-header-title">{{ $item->news_title }}</h3>
+                            <h3 class="news-all-header-title">{{{ $item->news_title }}}</h3>
                             @if($item->images->count() > 0)
                                 {{ HTML::image('/news_uploads/'.$item->id.'/'.$item->images->first()->file_name, imageAlt($item->images->first()->file_name), array('class' => 'thumbnail img-responsive')) }}
                             @else
                                 {{ HTML::image('css/assets/images/logo_main_log.png', 'Nema slike', array('class' => 'thumbnail img-responsive')) }}
                             @endif
                         </div> <!-- end news-all-header -->
-                        <div class="news_data_info">
+                        <div class="data_info">
                             <div class="row">
                                 <div class="col-md-12">
                                     <span class="glyphicon glyphicon-user" alt="Autor objave" title="Autor objave"></span>
-                                    <span class="info-text">{{ $item->author->username }}</span>
+                                    <span class="info-text">{{{ $item->author->username }}}</span>
                                 </div>
                                 <div class="col-md-12">
                                     <span class="glyphicon glyphicon-calendar" alt="Datum objave" title="Datum objave"></span>

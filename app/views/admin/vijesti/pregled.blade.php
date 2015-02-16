@@ -1,38 +1,12 @@
-@if($errors->has())
-    <div class="none" id="errorBag">
-        @foreach($errors->all() as $error)
-            <h3>{{ $error }}</h3>
-        @endforeach
-    </div>
-
-    <script>
-        jQuery(document).ready(function(){
-            catchLaravelNotification('errorBag', 'warningNotif');
-        });
-    </script>
-@endif
-
-@if(Session::has('success'))
-    <div class="none" id="successBag">
-        <h3>{{ Session::get('success') }}</h3>
-    </div>
-
-    <script>
-        jQuery(document).ready(function(){
-            catchLaravelNotification('successBag', 'successNotif');
-        });
-    </script>
-@endif
-
-<article class="news_data_individual" data-role="news_data">
+<article class="data_individual" data-role="news_data">
     <div class="page-header">
-        <h1>{{ $newsData->news_title }}</h1>
+        <h1>{{{ $newsData->news_title }}}</h1>
     </div>
-    <div class="news_data_info">
+    <div class="data_info">
         <div class="row">
             <div class="col-md-4">
                 <span class="glyphicon glyphicon-user glyphicon-large" alt="Autor objave" title="Autor objave"></span>
-                <span class="info-text">{{ $newsData->author->username }}</span>
+                <span class="info-text">{{{ $newsData->author->username }}}</span>
             </div>
             <div class="col-md-4">
                 <span class="glyphicon glyphicon-calendar glyphicon-large" alt="Datum objave" title="Datum objave"></span>
@@ -101,11 +75,35 @@
         </div>  <!-- end image gallery -->
     </section>
     @endif
-
 </article> <!-- end article of news_data -->
 
-{{ HTML::script('js/ajaxJS.js', array('charset' => 'utf-8')) }}
+@if($errors->has())
+    <div class="none" id="errorBag">
+        @foreach($errors->all() as $error)
+            <h3>{{ $error }}</h3>
+        @endforeach
+    </div>
 
+    <script>
+        jQuery(document).ready(function(){
+            catchLaravelNotification('errorBag', 'warningNotif');
+        });
+    </script>
+@endif
+
+@if(Session::has('success'))
+    <div class="none" id="successBag">
+        <h3>{{ Session::get('success') }}</h3>
+    </div>
+
+    <script>
+        jQuery(document).ready(function(){
+            catchLaravelNotification('successBag', 'successNotif');
+        });
+    </script>
+@endif
+
+{{ HTML::script('js/ajaxJS.js', array('charset' => 'utf-8')) }}
 <script>
     jQuery(document).ready(function(){
         /*

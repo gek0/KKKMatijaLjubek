@@ -341,7 +341,7 @@ class NewsController extends AdminController{
                     //delete data from database
                     $news->delete();
                     //delete images from disk
-                    File::deleteDirectory(public_path() . '/news_uploads/' . $id . '/');
+                    File::deleteDirectory(public_path().'/news_uploads/'.$id.'/');
 
                     return Redirect::to('admin/vijesti')->with(array('success' => 'Vijest je uspješno obrisana.'));
                 }

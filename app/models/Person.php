@@ -25,6 +25,12 @@ class Person extends Eloquent{
         'person_birthday' => 'date'
     );
 
+    public static $rulesLessStrict = array(
+        'person_full_name' => 'required|between:1,255|alpha_spaces',
+        'person_description' => 'required',
+        'person_category' => 'integer|between:1,7',
+        'person_birthday' => 'date'
+    );
 
     /**
      * validation error messages
@@ -60,5 +66,19 @@ class Person extends Eloquent{
     {
         return $this->belongsTo('PersonCategory', 'category_id');
     }
+
+    /**
+     * added functions
+     */
+    public function getDateBirthdayFormated()
+    {
+        return date('d.m.Y.', strtotime($this->person_birthday));
+    }
+
+    public function getDateBirthdayInput()
+    {
+        return date('d.m.Y', strtotime($this->person_birthday));
+    }
+
 
 }

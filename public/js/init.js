@@ -56,6 +56,7 @@ jQuery(document).ready(function(){
      */
     $("#tags-collection ul li").click(function() {
         $('#news_tags').tagsinput('add', $(this).text());
+        $(this).fadeOut(300, function(){ $(this).remove(); }); //remove used tag from DOM
     });
 
 

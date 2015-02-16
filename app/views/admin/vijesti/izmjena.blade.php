@@ -1,7 +1,7 @@
 <div class="row">
     <div class="formInput">
         <h2 class="text-center">Izmjena vijesti<br> <b>{{ $newsData->news_title }}</b></h2>
-        {{ Form::open(array('url' => 'admin/vijesti/izmjena/'.$newsData->id, 'id' => 'novaVijest', 'files' => true, 'enctype' => 'multipart/form-data', 'role' => 'form')) }}
+        {{ Form::open(array('url' => 'admin/vijesti/izmjena/'.$newsData->id, 'id' => 'izmjeniVijest', 'files' => true, 'role' => 'form')) }}
         <div class="form-group">
             {{ Form::label('news_title', 'Naslov vijesti:') }}
             {{ Form::text('news_title', $newsData->news_title, array('class' => 'form-control', 'placeholder' => 'Naslov vijesti', 'id' => 'news_title', 'required')) }}

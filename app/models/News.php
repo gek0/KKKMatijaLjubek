@@ -68,22 +68,22 @@ class News extends Eloquent{
      */
     public function getDateCreatedFormated()
     {
-        return date('d.m.Y \u H:i\h', strtotime($this->created_at));
+        return date('d.m.Y. \u H:i\h', strtotime($this->created_at));
     }
 
     public function getDateCreatedFormatedHTML()
     {
-        return date('d.m.Y H:i:s', strtotime($this->created_at));
+        return date('d.m.Y. H:i:s', strtotime($this->created_at));
     }
 
     public function getDateUpdatedFormated()
     {
-        return date('d.m.Y \u H:i\h', strtotime($this->updated_at));
+        return date('d.m.Y. \u H:i\h', strtotime($this->updated_at));
     }
 
     public function getDateUpdatedFormatedHTML()
     {
-        return date('d.m.Y H:i:s', strtotime($this->updated_at));
+        return date('d.m.Y. H:i:s', strtotime($this->updated_at));
     }
 
     public function nextNews()
