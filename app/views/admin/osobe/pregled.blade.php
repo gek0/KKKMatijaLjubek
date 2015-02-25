@@ -26,7 +26,7 @@
                     <span class="glyphicon glyphicon-cog glyphicon-large" alt="Alati" title="Alati"></span> <span class="info-text">Admin alati</span>
                 </div>
                 <div class="sidebar-body">
-                    <a href="{{ URL::to('admin/osobe/izmjena/'.$personData->id) }}" id="personEdit"><button class="btn btn-primary btn-info btn-half"><span class="glyphicon glyphicon-pencil"></span> Uredi osobu</button></a>
+                    <a href="{{ URL::to('admin/osobe/izmjena/'.$personData->slug) }}" id="personEdit"><button class="btn btn-primary btn-info btn-half"><span class="glyphicon glyphicon-pencil"></span> Uredi osobu</button></a>
                     <button class="btn btn-primary btn-danger btn-half" id="personDelete"><span class="glyphicon glyphicon-trash"></span> Obriši osobu</button>
                 </div>
             </div>
@@ -87,7 +87,7 @@
         $("#personDelete").click(function(){
             bootbox.confirm("Stvarno želiš obrisati ovu osobu?", function(result) {
                 if(result == true){
-                    window.location = '{{ URL::to('admin/osobe/brisanje/'.$personData->id) }}';
+                    window.location = '{{ URL::to('admin/osobe/brisanje/'.$personData->slug) }}';
                 }
             });
         });

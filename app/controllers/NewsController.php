@@ -116,7 +116,7 @@ class NewsController extends AdminController{
             }
 
             //redirect on finish
-            return Redirect::to('admin/vijesti/pregled/'.$newsID)->with(array('success' => 'Vijest je uspješno dodana.'));
+            return Redirect::to('admin/vijesti/pregled/'.$news->slug)->with(array('success' => 'Vijest je uspješno dodana.'));
 
         }
         else{
@@ -125,14 +125,14 @@ class NewsController extends AdminController{
     }
 
     /**
-     * @param null $id
+     * @param null $slug
      * @return mixed
      * post data for news edit
      */
-    public function postIzmjena($id = null)
+    public function postIzmjena($slug = null)
     {
-        if($id !== null){
-            $news = News::find(e($id));
+        if($slug !== null){
+            $news = News::findBySlug(e($slug));
 
             if($news){
                 //get form data
@@ -255,7 +255,7 @@ class NewsController extends AdminController{
 
 
                     //redirect on finish
-                    return Redirect::to('admin/vijesti/pregled/'.$news->id)->with(array('success' => 'Vijest je uspješno izmjenjena.'));
+                    return Redirect::to('admin/vijesti/pregled/'.$news->slug)->with(array('success' => 'Vijest je uspješno izmjenjena.'));
                 }
                 else{
                     return Redirect::back()->withErrors($error_list)->withInput();
@@ -271,14 +271,14 @@ class NewsController extends AdminController{
     }
 
     /**
-     * @param null $id
+     * @param null $slug
      * @return mixed
      * find and show data for individual news if exists
      */
-    public function getPregled($id = null)
+    public function getPregled($slug = null)
     {
-        if ($id !== null){
-            $newsData = News::find(e($id));
+        if ($slug !== null){
+            $newsData = News::findBySlug(e($slug));
 
             //check if news exists
             if($newsData){
@@ -294,13 +294,13 @@ class NewsController extends AdminController{
     }
 
     /**
-     * @param null $id
+     * @param null $slug
      * @return mixed
      * find and get data for individuals news to populate edit form
      */
-    public function getIzmjena($id = null){
-        if($id !== null){
-            $newsData = News::find(e($id));
+    public function getIzmjena($slug = null){
+        if($slug !== null){
+            $newsData = News::findBySlug(e($slug));
 
             //check if news exists
             if($newsData){
@@ -326,27 +326,28 @@ class NewsController extends AdminController{
     }
 
     /**
-     * @param null $id
+     * @param null $slug
      * @return mixed
      * find and delete news data if it exists
      */
-    public function getBrisanje($id = null)
+    public function getBrisanje($slug = null)
     {
-        if($id !== null){
-            $news = News::find(e($id));
+        if($slug !== null){
+            $news = News::findBySlug(e($slug));
 
             //check if news exists
             if($news){
                 try{
+                    $newsID = $news->id;
                     //delete data from database
                     $news->delete();
                     //delete images from disk
-                    File::deleteDirectory(public_path().'/news_uploads/'.$id.'/');
+                    File::deleteDirectory(public_path().'/news_uploads/'.$newsID.'/');
 
                     return Redirect::to('admin/vijesti')->with(array('success' => 'Vijest je uspješno obrisana.'));
                 }
                 catch(Exception $e){
-                    return Redirect::to('admin/vijesti/pregled/'.$id)->withErrors('Vijest nije mogla biti obrisana.');
+                    return Redirect::to('admin/vijesti/pregled/'.$slug)->withErrors('Vijest nije mogla biti obrisana.');
                 }
             }
             else{

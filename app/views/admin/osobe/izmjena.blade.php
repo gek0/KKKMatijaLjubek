@@ -1,7 +1,7 @@
 <div class="row">
     <div class="formInput">
         <h2 class="text-center">Izmjena osobe<br> <b>{{ $personData->person_full_name }}</b></h2>
-        {{ Form::open(array('url' => 'admin/osobe/izmjena/'.$personData->id, 'id' => 'izmjeniOsobu', 'files' => true, 'role' => 'form')) }}
+        {{ Form::open(array('url' => 'admin/osobe/izmjena/'.$personData->slug, 'id' => 'izmjeniOsobu', 'files' => true, 'role' => 'form')) }}
             <div class="form-group">
                 {{ Form::label('person_full_name', 'Ime i prezime:') }}
                 {{ Form::text('person_full_name', $personData->person_full_name, array('class' => 'form-control', 'placeholder' => 'Ime i prezime', 'id' => 'person_full_name', 'required')) }}

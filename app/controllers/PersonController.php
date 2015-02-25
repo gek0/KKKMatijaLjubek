@@ -127,7 +127,7 @@ class PersonController extends AdminController{
             }
 
             //redirect on finish
-            return Redirect::to('admin/osobe/pregled/'.$personID)->with(array('success' => 'Osoba je uspješno dodana.'));
+            return Redirect::to('admin/osobe/pregled/'.$person->slug)->with(array('success' => 'Osoba je uspješno dodana.'));
 
         }
         else{
@@ -137,14 +137,14 @@ class PersonController extends AdminController{
 
 
     /**
-     * @param null $id
+     * @param null $slug
      * @return mixed
      * post data for person edit
      */
-    public function postIzmjena($id = null)
+    public function postIzmjena($slug = null)
     {
-        if($id !== null){
-            $person = Person::find(e($id));
+        if($slug !== null){
+            $person = Person::findBySlug(e($slug));
 
             if($person){
                 //get form data
@@ -220,7 +220,7 @@ class PersonController extends AdminController{
 
 
                     //redirect on finish
-                    return Redirect::to('admin/osobe/pregled/'.$person->id)->with(array('success' => 'Osoba je uspješno izmjenjena.'));
+                    return Redirect::to('admin/osobe/pregled/'.$person->slug)->with(array('success' => 'Osoba je uspješno izmjenjena.'));
                 }
                 else{
                     return Redirect::back()->withErrors($error_list)->withInput();
@@ -236,14 +236,14 @@ class PersonController extends AdminController{
     }
 
     /**
-     * @param null $id
+     * @param null $slug
      * @return mixed
      * find and show data for individual persons if exists
      */
-    public function getPregled($id = null)
+    public function getPregled($slug = null)
     {
-        if ($id !== null){
-            $personData = Person::find(e($id));
+        if ($slug !== null){
+            $personData = Person::findBySlug(e($slug));
 
             //check if news exists
             if($personData){
@@ -259,13 +259,13 @@ class PersonController extends AdminController{
     }
 
     /**
-     * @param null $id
+     * @param null $slug
      * @return mixed
      * find and get data for individuals person to populate edit form
      */
-    public function getIzmjena($id = null){
-        if($id !== null){
-            $personData = Person::find(e($id));
+    public function getIzmjena($slug = null){
+        if($slug !== null){
+            $personData = Person::findBySlug(e($slug));
 
             //check if person exists
             if($personData){
@@ -283,27 +283,28 @@ class PersonController extends AdminController{
     }
 
     /**
-     * @param null $id
+     * @param null $slug
      * @return mixed
      * find and delete person data if it exists
      */
-    public function getBrisanje($id = null)
+    public function getBrisanje($slug = null)
     {
-        if($id !== null){
-            $person = Person::find(e($id));
+        if($slug !== null){
+            $person = Person::findBySlug(e($slug));
 
             //check if person exists
             if($person){
                 try{
+                    $personID = $person->id;
                     //delete data from database
                     $person->delete();
                     //delete images from disk
-                    File::deleteDirectory(public_path().'/person_uploads/'.$id.'/');
+                    File::deleteDirectory(public_path().'/person_uploads/'.$personID.'/');
 
                     return Redirect::to('admin/osobe')->with(array('success' => 'Osoba je uspješno obrisana.'));
                 }
                 catch(Exception $e){
-                    return Redirect::to('admin/osobe/pregled/'.$id)->withErrors('Osob nije mogla biti obrisana.');
+                    return Redirect::to('admin/osobe/pregled/'.$slug)->withErrors('Osob nije mogla biti obrisana.');
                 }
             }
             else{

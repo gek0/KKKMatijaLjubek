@@ -39,13 +39,13 @@
         <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" role="navigation">
             <h2>Navigacija</h2>
             {{ HTML::smartRoute_link('admin', 'Početna') }}
-            {{ HTML::smartRoute_link('admin/osobe', 'Osobe') }}
-                <ul>
-                    {{ HTML::smartRoute_link('admin/osobe/nova', 'Nova osoba') }}
-                </ul>
             {{ HTML::smartRoute_link('admin/vijesti', 'Vijesti') }}
                 <ul>
                     {{ HTML::smartRoute_link('admin/vijesti/nova', 'Nova vijest') }}
+                </ul>
+            {{ HTML::smartRoute_link('admin/osobe', 'Osobe') }}
+                <ul>
+                    {{ HTML::smartRoute_link('admin/osobe/nova', 'Nova osoba') }}
                 </ul>
             {{ HTML::smartRoute_link('admin/korisnik/postavke', 'Korisničke postavke') }}
             {{ HTML::smartRoute_link('logout', 'Odjava') }}

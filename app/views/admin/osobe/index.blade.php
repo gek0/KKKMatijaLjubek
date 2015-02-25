@@ -37,7 +37,7 @@
                         </div> <!-- end news info -->
                         <hr>
                         <div class="persons-all-tools text-center">
-                            <a href="{{ url('admin/osobe/pregled/'.$item->id) }}"><button class="btn btn-primary btn-info btn-half">Pregledaj <span class="glyphicon glyphicon-chevron-right"></span></button></a>
+                            <a href="{{ url('admin/osobe/pregled/'.$item->slug) }}"><button class="btn btn-primary btn-info btn-half">Pregledaj <span class="glyphicon glyphicon-chevron-right"></span></button></a>
                         </div>
                     </div>
                 @endforeach

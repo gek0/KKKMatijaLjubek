@@ -1,6 +1,8 @@
 <?php
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class News extends Eloquent{
+class News extends Eloquent implements SluggableInterface{
 
     /**
      * News Database Model
@@ -9,9 +11,17 @@ class News extends Eloquent{
      *  - 	news_body TEXT
      *  -   news_author INT UNSIGNED / FOREIGN KEY@users
      *  -   num_visited INT UNSIGNED
+     *  -   slug VARCHAR(255)
      *  - 	created_at TIMESTAMP
      *  - 	updated_at TIMESTAMP
      */
+
+    use SluggableTrait;
+
+    protected $sluggable = array(
+        'build_from' => 'news_title',
+        'save_to'    => 'slug',
+    );
 
     /**
      * validation rules for news entities
@@ -74,16 +84,6 @@ class News extends Eloquent{
     public function getDateCreatedFormatedHTML()
     {
         return date('d.m.Y. H:i:s', strtotime($this->created_at));
-    }
-
-    public function getDateUpdatedFormated()
-    {
-        return date('d.m.Y. \u H:i\h', strtotime($this->updated_at));
-    }
-
-    public function getDateUpdatedFormatedHTML()
-    {
-        return date('d.m.Y. H:i:s', strtotime($this->updated_at));
     }
 
     public function nextNews()

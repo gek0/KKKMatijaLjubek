@@ -13,11 +13,6 @@
                 <span class="info-text">
                     <time datetime="{{ $newsData->getDateCreatedFormatedHTML() }}">{{ $newsData->getDateCreatedFormated() }}</time>
                 </span>
-                @if($newsData->created_at != $newsData->updated_at)
-                    <br>
-                    <span class="glyphicon glyphicon-pencil glyphicon-large" alt="Datum izmjene" title="Datum izmjene"></span>
-                    <time datetime="{{ $newsData->getDateUpdatedFormatedHTML() }}">{{ $newsData->getDateUpdatedFormated() }}</time>
-                @endif
             </div>
             <div class="col-md-4">
                 <span class="glyphicon glyphicon-eye-open glyphicon-large" alt="Broj pregleda" title="Broj pregleda"></span>
@@ -51,7 +46,7 @@
                     <span class="glyphicon glyphicon-cog glyphicon-large" alt="Alati" title="Alati"></span> <span class="info-text">Admin alati</span>
                 </div>
                 <div class="sidebar-body">
-                    <a href="{{ URL::to('admin/vijesti/izmjena/'.$newsData->id) }}" id="newsEdit"><button class="btn btn-primary btn-info btn-half"><span class="glyphicon glyphicon-pencil"></span> Uredi članak</button></a>
+                    <a href="{{ URL::to('admin/vijesti/izmjena/'.$newsData->slug) }}" id="newsEdit"><button class="btn btn-primary btn-info btn-half"><span class="glyphicon glyphicon-pencil"></span> Uredi članak</button></a>
                     <button class="btn btn-primary btn-danger btn-half" id="newsDelete"><span class="glyphicon glyphicon-trash"></span> Obriši članak</button>
                 </div>
             </div>
@@ -112,7 +107,7 @@
         $("#newsDelete").click(function(){
             bootbox.confirm("Stvarno želiš obrisati ovaj članak?", function(result) {
                 if(result == true){
-                    window.location = '{{ URL::to('admin/vijesti/brisanje/'.$newsData->id) }}';
+                    window.location = '{{ URL::to('admin/vijesti/brisanje/'.$newsData->slug) }}';
                 }
             });
         });

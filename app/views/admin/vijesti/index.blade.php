@@ -22,12 +22,6 @@
                                     <span class="glyphicon glyphicon-calendar" alt="Datum objave" title="Datum objave"></span>
                                     <time datetime="{{ $item->getDateCreatedFormatedHTML() }}">{{ $item->getDateCreatedFormated() }}</time>
                                 </div>
-                                @if($item->created_at != $item->updated_at)
-                                    <div class="col-md-12">
-                                        <span class="glyphicon glyphicon-pencil" alt="Datum izmjene" title="Datum izmjene"></span>
-                                        <time datetime="{{ $item->getDateUpdatedFormatedHTML() }}">{{ $item->getDateUpdatedFormated() }}</time>
-                                    </div>
-                                @endif
                             </div>
                         </div> <!-- end news info -->
                         <div class="news-all-body">
@@ -35,7 +29,7 @@
                         </div> <!-- end news-all-body -->
                         <hr>
                         <div class="news-all-tools text-center">
-                            <a href="{{ url('admin/vijesti/pregled/'.$item->id) }}"><button class="btn btn-primary btn-info btn-half">Pregledaj <span class="glyphicon glyphicon-chevron-right"></span></button></a>
+                            <a href="{{ url('admin/vijesti/pregled/'.$item->slug) }}"><button class="btn btn-primary btn-info btn-half">Pregledaj <span class="glyphicon glyphicon-chevron-right"></span></button></a>
                           </div>
                     </div>
                 @endforeach

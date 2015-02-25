@@ -1,6 +1,8 @@
 <?php
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class Person extends Eloquent{
+class Person extends Eloquent implements SluggableInterface{
 
     /**
      * Persons Database Model
@@ -10,9 +12,17 @@ class Person extends Eloquent{
      *  -   person_birthday TIMESTAMP
      *  -   category_id INT UNSIGNED / FOREIGN KEY@person_category
      *  -   is_athlete ENUM / DEFAULT 'yes'
+     *  -   slug VARCHAR(255)
      *  - 	created_at TIMESTAMP
      *  - 	updated_at TIMESTAMP
      */
+
+    use SluggableTrait;
+
+    protected $sluggable = array(
+        'build_from' => 'person_full_name',
+        'save_to'    => 'slug',
+    );
 
     /**
      * validation rules for news entities
