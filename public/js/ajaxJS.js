@@ -200,7 +200,6 @@ jQuery(document).ready(function(){
         });
     });
 
-
     /**
      * delete image from person gallery
      */
@@ -215,6 +214,61 @@ jQuery(document).ready(function(){
         var imageGallery = $('#person_image_gallery');
         var imageCount = parseInt($('#image_gallery_counter').html()) - 1;
         var dataURL = $('#person_image_gallery').attr('data-role-link');
+
+        $.ajax({
+            type: 'post',
+            url: dataURL,
+            dataType: 'json',
+            headers: { 'X-CSRF-Token' : token },
+            data: { imageData: imageID },
+            success: function(data){
+                outputMsg.fadeOut().empty();
+
+                //check status of validation and query
+                if(data.status === 'success'){
+                    outputMsg.append(successMsg).addClass('successNotif').slideDown();
+                    $('#img-container-'+imageID).fadeOut();   //hide parent div
+
+                    //update gallery counter and hide gallery if counter equals 0
+                    $('#image_gallery_counter').html(imageCount);
+                    if(imageCount < 1){
+                        imageGallery.fadeOut();
+                    }
+
+                    setTimeout(function() {
+                        outputMsg.slideUp().empty();
+                        //restore old class to output div
+                        outputMsg.attr('class', 'notificationOutput');
+                    }, 2500);
+                }
+                else{
+                    errorMsg = "<h3>" + data.errors + "</h3>";
+                    outputMsg.append(errorMsg).addClass('warningNotif').slideDown();
+
+                    setTimeout(function() {
+                        outputMsg.slideUp().empty();
+                        //restore old class to output div
+                        outputMsg.attr('class', 'notificationOutput');
+                    }, 2500);
+                }
+            }
+        });
+    });
+
+    /**
+     * delete image from homepage image gallery
+     */
+    $('.btn-delete-image').click(function(){
+        var imageID = $(this).attr('id'); //image ID to delete
+        var token = $('meta[name="_token"]').attr('content');
+        var outputMsg = $('#outputMsg');
+        var errorMsg = "";
+        var successMsg = "<h3>Slika je uspješno obrisana.</h3>";
+
+        //gallery counter
+        var imageGallery = $('#image_gallery');
+        var imageCount = parseInt($('#image_gallery_counter').html()) - 1;
+        var dataURL = $('#image_gallery').attr('data-role-link');
 
         $.ajax({
             type: 'post',

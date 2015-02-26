@@ -3,6 +3,8 @@
     <li>tagovi - poseban view / učestalost tagova (public)</li>
     <li>ispis svih vijesti - infinite scroll</li>
     <li>404, odkomentirat start/global i uredit view</li>
+    <li>jQuery povećanje veličine slova na prikazu teksta za public dio</li>
+    <li>RSS za vijesti</li>
 </ul>
 
 

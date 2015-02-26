@@ -45,32 +45,10 @@
             <a href="{{ url('admin/vijesti/nova') }}"><button class="btn btn-primary btn-info btn-half">Dodaj novi članak <span class="glyphicon glyphicon-plus"></span></button></a>
         </div>
     @endif
-</section>
+</section> <!-- end news_data_all section -->
 
-@if($errors->has())
-    <div class="none" id="errorBag">
-        @foreach($errors->all() as $error)
-            <h3>{{ $error }}</h3>
-        @endforeach
-    </div>
-
-    <script>
-        jQuery(document).ready(function(){
-            catchLaravelNotification('errorBag', 'warningNotif');
-        });
-    </script>
-@endif
-@if(Session::has('success'))
-    <div class="none" id="successBag">
-        <h3>{{ Session::get('success') }}</h3>
-    </div>
-
-    <script>
-        jQuery(document).ready(function(){
-            catchLaravelNotification('successBag', 'successNotif');
-        });
-    </script>
-@endif
+{{-- include session notification output --}}
+@include('admin.notification')
 
 <script>
     jQuery(document).ready(function(){

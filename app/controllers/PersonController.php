@@ -304,15 +304,15 @@ class PersonController extends AdminController{
                     return Redirect::to('admin/osobe')->with(array('success' => 'Osoba je uspješno obrisana.'));
                 }
                 catch(Exception $e){
-                    return Redirect::to('admin/osobe/pregled/'.$slug)->withErrors('Osob nije mogla biti obrisana.');
+                    return Redirect::to('admin/osobe/pregled/'.$slug)->withErrors('Osoba nije mogla biti obrisana.');
                 }
             }
             else{
-                return Redirect::to('admin/osobe')->withErrors('Osob ne postoji.');
+                return Redirect::to('admin/osobe')->withErrors('Osoba ne postoji.');
             }
         }
         else{
-            return Redirect::to('admin/osobe')->withErrors('Osob ne postoji.');
+            return Redirect::to('admin/osobe')->withErrors('Osoba ne postoji.');
         }
     }
 

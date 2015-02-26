@@ -37,8 +37,9 @@
     <header>
         <!-- navigation -->
         <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" role="navigation">
-            <h2>Navigacija</h2>
+            <h2>Administracija</h2>
             {{ HTML::smartRoute_link('admin', 'Početna') }}
+            {{ HTML::smartRoute_link('admin/naslovnica', 'Naslovnica') }}
             {{ HTML::smartRoute_link('admin/vijesti', 'Vijesti') }}
                 <ul>
                     {{ HTML::smartRoute_link('admin/vijesti/nova', 'Nova vijest') }}

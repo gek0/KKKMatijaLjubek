@@ -52,31 +52,8 @@
     @endif
 </article> <!-- end article of person_data -->
 
-@if($errors->has())
-    <div class="none" id="errorBag">
-        @foreach($errors->all() as $error)
-            <h3>{{ $error }}</h3>
-        @endforeach
-    </div>
-
-    <script>
-        jQuery(document).ready(function(){
-            catchLaravelNotification('errorBag', 'warningNotif');
-        });
-    </script>
-@endif
-
-@if(Session::has('success'))
-    <div class="none" id="successBag">
-        <h3>{{ Session::get('success') }}</h3>
-    </div>
-
-    <script>
-        jQuery(document).ready(function(){
-            catchLaravelNotification('successBag', 'successNotif');
-        });
-    </script>
-@endif
+{{-- include session notification output --}}
+@include('admin.notification')
 
 {{ HTML::script('js/ajaxJS.js', array('charset' => 'utf-8')) }}
 <script>

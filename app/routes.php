@@ -20,8 +20,9 @@ Route::controller('login', 'LoginController');
  * admin area
  */
 Route::group(array('before' => 'auth'), function() {
-    Route::controller('admin/korisnik', 'UserController');
+    Route::controller('admin/naslovnica', 'GalleryController');
     Route::controller('admin/vijesti', 'NewsController');
+    Route::controller('admin/korisnik', 'UserController');
     Route::controller('admin/osobe', 'PersonController');
     Route::controller('admin', 'AdminController');
 });

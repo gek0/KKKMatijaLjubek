@@ -654,7 +654,7 @@ span.info-text{ margin-left: 0.5em; }
 footer{
     width: 90%;
     height: auto;
-    margin: 10px auto;
+    margin: 10px auto 0 auto;
     text-align: center;
     padding: 1em;
     border: 0px none;
