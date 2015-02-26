@@ -5,17 +5,17 @@
     <div class="data_info">
         <div class="row">
             <div class="col-md-4">
-                <span class="glyphicon glyphicon-user glyphicon-large" alt="Autor objave" title="Autor objave"></span>
+                <span class="glyphicon glyphicon-user glyphicon-large" title="Autor objave"></span>
                 <span class="info-text">{{{ $newsData->author->username }}}</span>
             </div>
             <div class="col-md-4">
-                <span class="glyphicon glyphicon-calendar glyphicon-large" alt="Datum objave" title="Datum objave"></span>
+                <span class="glyphicon glyphicon-calendar glyphicon-large" title="Datum objave"></span>
                 <span class="info-text">
                     <time datetime="{{ $newsData->getDateCreatedFormatedHTML() }}">{{ $newsData->getDateCreatedFormated() }}</time>
                 </span>
             </div>
             <div class="col-md-4">
-                <span class="glyphicon glyphicon-eye-open glyphicon-large" alt="Broj pregleda" title="Broj pregleda"></span>
+                <span class="glyphicon glyphicon-eye-open glyphicon-large" title="Broj pregleda"></span>
                 <span class="info-text">{{ $newsData->num_visited }} pregleda</span>
             </div>
         </div>
@@ -27,7 +27,7 @@
         <div class="col-md-3">
             <div class="sidebar-content">
                 <div class="sidebar-header">
-                    <span class="glyphicon glyphicon-tags glyphicon-large" alt="Tagovi" title="Tagovi"></span> <span class="info-text">Tagovi članka</span>
+                    <span class="glyphicon glyphicon-tags glyphicon-large" title="Tagovi"></span> <span class="info-text">Tagovi članka</span>
                 </div>
                 <div class="sidebar-body">
                     @if($newsData->tags->count() > 0)
@@ -43,7 +43,7 @@
             </div>
             <div class="sidebar-content">
                 <div class="sidebar-header">
-                    <span class="glyphicon glyphicon-cog glyphicon-large" alt="Alati" title="Alati"></span> <span class="info-text">Admin alati</span>
+                    <span class="glyphicon glyphicon-cog glyphicon-large" title="Alati"></span> <span class="info-text">Admin alati</span>
                 </div>
                 <div class="sidebar-body">
                     <a href="{{ URL::to('admin/vijesti/izmjena/'.$newsData->slug) }}" id="newsEdit"><button class="btn btn-primary btn-info btn-half"><span class="glyphicon glyphicon-pencil"></span> Uredi članak</button></a>

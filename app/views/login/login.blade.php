@@ -6,10 +6,24 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="hr" class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title>Matija Ljubek ~ Login</title>
+    <title>Matija Ljubek ~ Prijava</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="_token" content="{{ csrf_token() }}">
+    <meta name="keywords" content="kayak, canoe, kajak, kanu, matija, ljubek, klub, zagreb">
+    <meta name="description" content="Kajak Kanu Klub Matija Ljubek administracija">
+    <meta name="author" content="Matija Buriša">
+    <meta name="robots" content="noindex">
+    <meta property="og:title" content="Kajak Kanu Klub Matija Ljubek, administracija" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ Request::url() }}" />
+    <meta property="og:site_name" content="kkkmatijaljubek.hr" />
+    <meta property="og:description" content="Kajak Kanu Klub Matija Ljubek, administracija" />
+
+    <!--[if IE]><link rel="shortcut icon" href="{{ asset('favicon.ico') }}"><![endif]-->
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('apple-touch-icon-precomposed.png') }}">
+    <link rel="icon" href="{{ asset('favicon.png') }}">
+    <link rel="canonical" href="{{ Request::url() }}" />
 
     <!-- scripts -->
     {{ HTML::script('js/jquery.min.js') }}
@@ -59,7 +73,7 @@
                                 </div>
                             </div><br>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-info" id="loginSubmit">Login</button>
+                                <button type="submit" class="btn btn-primary btn-info" id="loginSubmit">Prijava</button>
                                 <div class="loader" id="adminLoginLoad">
                                     <div></div>
                                     <div></div>

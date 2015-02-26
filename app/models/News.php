@@ -83,7 +83,7 @@ class News extends Eloquent implements SluggableInterface{
 
     public function getDateCreatedFormatedHTML()
     {
-        return date('d.m.Y. H:i:s', strtotime($this->created_at));
+        return date('Y-m-d', strtotime($this->created_at));
     }
 
     public function nextNews()

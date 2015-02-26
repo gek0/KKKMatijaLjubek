@@ -86,7 +86,7 @@ class Person extends Eloquent implements SluggableInterface{
      */
     public function getDateBirthdayFormated()
     {
-        return date('d.m.Y.', strtotime($this->person_birthday));
+        return date('Y-m-d', strtotime($this->person_birthday));
     }
 
     public function getDateBirthdayInput()

@@ -4,6 +4,7 @@
         <button role="button" aria-label="Navigacija" class="btn btn-info btn-iconic" id="showNavigation" title="Navigacija"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
     </div>
     <div id="navigation_data">
+        Pozdrav <strong>{{ Auth::user()->username }}</strong>   <em>({{ Auth::user()->email }})</em>
         <div id="time-data" data-role="clock" class="pull-right"></div>
     </div>
     <hr>

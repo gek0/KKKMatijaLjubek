@@ -5,11 +5,11 @@
     <div class="data_info">
         <div class="row">
             <div class="col-md-4">
-                <span class="glyphicon glyphicon-star glyphicon-large" alt="Kategorija osobe" title="Kategorija osobe"></span>
+                <span class="glyphicon glyphicon-star glyphicon-large" title="Kategorija osobe"></span>
                 <span class="info-text">{{{ $personData->category->category_name }}}</span>
             </div>
             <div class="col-md-4">
-                <span class="glyphicon glyphicon-calendar glyphicon-large" alt="Datum rođenja" title="Datum rođenja"></span>
+                <span class="glyphicon glyphicon-calendar glyphicon-large" title="Datum rođenja"></span>
                 <span class="info-text">
                     <time datetime="{{ $personData->getDateBirthdayFormated() }}">{{ $personData->getDateBirthdayFormated() }}</time>
                 </span>
@@ -23,7 +23,7 @@
         <div class="col-md-3">
             <div class="sidebar-content">
                 <div class="sidebar-header">
-                    <span class="glyphicon glyphicon-cog glyphicon-large" alt="Alati" title="Alati"></span> <span class="info-text">Admin alati</span>
+                    <span class="glyphicon glyphicon-cog glyphicon-large" title="Alati"></span> <span class="info-text">Admin alati</span>
                 </div>
                 <div class="sidebar-body">
                     <a href="{{ URL::to('admin/osobe/izmjena/'.$personData->slug) }}" id="personEdit"><button class="btn btn-primary btn-info btn-half"><span class="glyphicon glyphicon-pencil"></span> Uredi osobu</button></a>
