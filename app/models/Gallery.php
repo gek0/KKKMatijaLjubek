@@ -7,6 +7,7 @@ class Gallery extends Eloquent{
      * 	-	id INT UNSIGNED / AUTO_INCREMENT PRIMARY KEY
      *  -	file_name_title VARCHAR(255) / UNIQUE
      *  -   file_size DOUBLE
+     *  -   caption VARCHAR(255)
      *  - 	created_at TIMESTAMP
      *  - 	updated_at TIMESTAMP
      */
@@ -16,7 +17,8 @@ class Gallery extends Eloquent{
      *
      */
     public static $rules = array(
-        'images' => 'image|max:6000'
+        'caption' => 'between:1,255',
+        'image' => 'image|max:6000'
     );
 
     /**
@@ -24,8 +26,9 @@ class Gallery extends Eloquent{
      *
      */
     public static $messages = array(
-        'images.image' => 'Dozvoljeni formati slike su: .jpeg, .png, .bmp i .gif.',
-        'images.max' => 'Maksimalna veličina slike je 6MB.'
+        'caption.between' => 'Tekst slike mora biti kraći od 255 znakova.',
+        'image.image' => 'Dozvoljeni formati slike su: .jpeg, .png, .bmp i .gif.',
+        'image.max' => 'Maksimalna veličina slike je 6MB.'
     );
 
     /**

@@ -20,9 +20,14 @@
     <meta property="og:site_name" content="kkkmatijaljubek.hr" />
     <meta property="og:description" content="Kajak Kanu Klub Matija Ljubek, administracija" />
 
+    <!-- favicons and apple icon -->
     <!--[if IE]><link rel="shortcut icon" href="{{ asset('favicon.ico') }}"><![endif]-->
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('apple-touch-icon-precomposed.png') }}">
     <link rel="icon" href="{{ asset('favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('touch-icon-iphone.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('touch-icon-ipad.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('touch-icon-iphone-retina.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('touch-icon-ipad-retina.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('touch-icon-iphone-6-plus.png') }}">
     <link rel="canonical" href="{{ Request::url() }}" />
 
     <!-- scripts -->
@@ -53,7 +58,7 @@
                         <i class="glyphicon glyphicon-user"></i>
                     </div>
                     <div class="login-logo">
-                        {{ HTML::image('css/assets/images/logo_main_log.png', 'Logo', array('title' => 'KKK Matija Ljubek')) }}
+                        {{ HTML::image('css/assets/images/logo_main_log.png', 'Logo', array('title' => 'KKK Matija Ljubek', 'class' => 'img-responsive')) }}
                     </div>
                     <hr />
                     <div class="login-form">

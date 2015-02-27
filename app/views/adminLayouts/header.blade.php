@@ -20,9 +20,14 @@
     <meta property="og:site_name" content="kkkmatijaljubek.hr" />
     <meta property="og:description" content="Kajak Kanu Klub Matija Ljubek, administracija" />
 
+    <!-- favicons and apple icon -->
     <!--[if IE]><link rel="shortcut icon" href="{{ asset('favicon.ico') }}"><![endif]-->
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('apple-touch-icon-precomposed.png') }}">
     <link rel="icon" href="{{ asset('favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('touch-icon-iphone.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('touch-icon-ipad.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('touch-icon-iphone-retina.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('touch-icon-ipad-retina.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('touch-icon-iphone-6-plus.png') }}">
     <link rel="canonical" href="{{ Request::url() }}" />
 
     <!-- scripts -->
@@ -32,8 +37,8 @@
     {{ HTML::script('js/fileinput.min.js', array('charset' => 'utf-8')) }}
     {{ HTML::script('js/bootbox.js', array('charset' => 'utf-8')) }}
     <!--[if lt IE 9]>
-    {{ HTML::script('js/html5shiv.min.js') }}
-    {{ HTML::script('js/respond.min.js') }}
+    {{ HTML::script('js/html5shiv.min.js', array('charset' => 'utf-8')) }}
+    {{ HTML::script('js/respond.min.js', array('charset' => 'utf-8')) }}
     <![endif]-->
 
     <!-- stylesheets -->
@@ -41,6 +46,7 @@
     {{ HTML::style('css/layoutAdmin.css') }}
     {{ HTML::style('wysibb/theme/default/wbbtheme.css') }}
     {{ HTML::style('css/fileinput.css') }}
+</head>
 <body class="cbp-spmenu-push">
     <!-- notifications -->
     <div class="notificationOutput" id="outputMsg"></div>

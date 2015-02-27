@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends BaseController {
+class HomeController extends Controller {
 
 	/**
 	 * instantiate a new HomeController instance
@@ -17,8 +17,13 @@ class HomeController extends BaseController {
      */
 	public function getIndex()
 	{
-		$this->layout->header = View::make($this->header, array('pageTitle' => 'Početna'));
-		$this->layout->content = View::make('public.index');
+        //get data for gallery image slider
+        $galleryData = Gallery::orderBy('id', 'DESC')->get();
+        $galleryCount = $galleryData->count();
+
+		return View::make('public.index')->with(array('galleryData' => $galleryData,
+                                                      'galleryCount' => $galleryCount)
+                                                );
 	}
 
 

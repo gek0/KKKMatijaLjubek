@@ -310,4 +310,61 @@ jQuery(document).ready(function(){
         });
     });
 
+    /**
+     *   edit image caption from homepage image gallery
+     */
+    $(".btn-edit-image").click(function(){
+        var imgCaption = $(this).siblings('img:first').attr('data-caption');
+        var imageID = $(this).attr('id'); //image ID to edit
+        bootbox.prompt({
+            title: "Tekst slike:",
+            value: imgCaption,
+            callback: function(result) {
+                if(result !== null) {
+                    var token = $('meta[name="_token"]').attr('content');
+                    var imageCaption = result;
+                    var outputMsg = $('#outputMsg');
+                    var errorMsg = "";
+                    var successMsg = "<h3>Tekst slike je uspješno izmjenjen.</h3>";
+                    var dataURL = $('#image_gallery').attr('data-role-edit-link');
+
+                    $.ajax({
+                        type: 'post',
+                        url: dataURL,
+                        dataType: 'json',
+                        headers: { 'X-CSRF-Token' : token },
+                        data: { imageID: imageID, imageCaption: imageCaption },
+                        success: function(data){
+                            outputMsg.fadeOut().empty();
+
+                            //check status of validation and query
+                            if(data.status === 'success'){
+                                outputMsg.append(successMsg).addClass('successNotif').slideDown();
+
+                                //set new caption to DOM
+                                $('.btn-edit-image').siblings('img:first').attr('data-caption', imageCaption);
+
+                                setTimeout(function() {
+                                    outputMsg.slideUp().empty();
+                                    //restore old class to output div
+                                    outputMsg.attr('class', 'notificationOutput');
+                                }, 2500);
+                            }
+                            else{
+                                errorMsg = "<h3>" + data.errors + "</h3>";
+                                outputMsg.append(errorMsg).addClass('warningNotif').slideDown();
+
+                                setTimeout(function() {
+                                    outputMsg.slideUp().empty();
+                                    //restore old class to output div
+                                    outputMsg.attr('class', 'notificationOutput');
+                                }, 2500);
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    });
+
 });
