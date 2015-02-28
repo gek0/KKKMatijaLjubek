@@ -17,11 +17,9 @@ class HomeController extends Controller {
      */
 	public function getIndex()
 	{
-        //get data for gallery image slider
         $galleryData = Gallery::orderBy('id', 'DESC')->get();
         $galleryCount = $galleryData->count();
-
-		return View::make('public.index')->with(array('galleryData' => $galleryData,
+        return View::make('public.index')->with(array('galleryData' => $galleryData,
                                                       'galleryCount' => $galleryCount)
                                                 );
 	}

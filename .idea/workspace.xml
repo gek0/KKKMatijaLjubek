@@ -2,30 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9363a560-d63c-466a-b4f2-df87f83b744e" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\xampp\htdocs\+github\KKKMatijaLjubek\app\views\layouts\footer.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\+github\KKKMatijaLjubek\app\views\layouts\header.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\+github\KKKMatijaLjubek\app\views\layouts\main.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\+github\KKKMatijaLjubek\app\views\public\kontakt.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\+github\KKKMatijaLjubek\public\apple-touch-icon-precomposed.PNG" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\+github\KKKMatijaLjubek\public\css\assets\images\intro-bg.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\+github\KKKMatijaLjubek\public\fonts\fontawesome.eot" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\+github\KKKMatijaLjubek\public\fonts\fontawesome.svg" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\+github\KKKMatijaLjubek\public\fonts\fontawesome.ttf" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\+github\KKKMatijaLjubek\public\fonts\fontawesome.woff" afterPath="" />
-      <change type="MOVED" beforePath="C:\xampp\htdocs\+github\KKKMatijaLjubek\public\css\assets\images\logo_main_log.PNG" afterPath="$PROJECT_DIR$/public/css/assets/images/logo_main_log.png" />
-      <change type="MOVED" beforePath="C:\xampp\htdocs\+github\KKKMatijaLjubek\public\favicon.PNG" afterPath="$PROJECT_DIR$/public/favicon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/favicon.ico" afterPath="$PROJECT_DIR$/public/favicon.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Gallery.php" afterPath="$PROJECT_DIR$/app/models/Gallery.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/GalleryController.php" afterPath="$PROJECT_DIR$/app/controllers/GalleryController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/public/vijesti.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/controllers/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/ajaxJS.js" afterPath="$PROJECT_DIR$/public/js/ajaxJS.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/animate.css" afterPath="$PROJECT_DIR$/public/css/animate.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/adminLayouts/header.blade.php" afterPath="$PROJECT_DIR$/app/views/adminLayouts/header.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin/naslovnica/index.blade.php" afterPath="$PROJECT_DIR$/app/views/admin/naslovnica/index.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/public/index.blade.php" afterPath="$PROJECT_DIR$/app/views/public/index.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/initJS.js" afterPath="$PROJECT_DIR$/public/js/initJS.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/layoutPublic.css" afterPath="$PROJECT_DIR$/public/css/layoutPublic.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/login/login.blade.php" afterPath="$PROJECT_DIR$/app/views/login/login.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="KKKMatijaLjubek.iws" />
@@ -58,7 +40,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/models/Image.php" />
         <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Str.php" />
         <option value="$PROJECT_DIR$/public/.htaccess" />
         <option value="$PROJECT_DIR$/app/models/NewsImage.php" />
@@ -82,7 +63,6 @@
         <option value="$PROJECT_DIR$/app/config/app.php" />
         <option value="$PROJECT_DIR$/app/controllers/NewsController.php" />
         <option value="$PROJECT_DIR$/app/views/admin/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/app/views/admin/notification.blade.php" />
         <option value="$PROJECT_DIR$/app/views/admin/osobe/index.blade.php" />
         <option value="$PROJECT_DIR$/app/views/admin/osobe/nova.blade.php" />
@@ -98,17 +78,19 @@
         <option value="$PROJECT_DIR$/app/models/News.php" />
         <option value="$PROJECT_DIR$/app/models/Person.php" />
         <option value="$PROJECT_DIR$/app/views/layouts/footer.blade.php" />
-        <option value="$PROJECT_DIR$/public/css/animate.css" />
-        <option value="$PROJECT_DIR$/app/controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/app/models/Gallery.php" />
         <option value="$PROJECT_DIR$/app/views/admin/naslovnica/index.blade.php" />
         <option value="$PROJECT_DIR$/public/js/ajaxJS.js" />
         <option value="$PROJECT_DIR$/app/controllers/GalleryController.php" />
-        <option value="$PROJECT_DIR$/public/js/initJS.js" />
         <option value="$PROJECT_DIR$/app/views/login/login.blade.php" />
         <option value="$PROJECT_DIR$/app/views/adminLayouts/header.blade.php" />
-        <option value="$PROJECT_DIR$/public/css/layoutPublic.css" />
+        <option value="$PROJECT_DIR$/public/css/animate.css" />
         <option value="$PROJECT_DIR$/app/views/public/index.blade.php" />
+        <option value="$PROJECT_DIR$/public/js/initJS.js" />
+        <option value="$PROJECT_DIR$/public/css/layoutPublic.css" />
+        <option value="$PROJECT_DIR$/app/views/public/vijesti.blade.php" />
+        <option value="$PROJECT_DIR$/app/routes.php" />
+        <option value="$PROJECT_DIR$/app/controllers/HomeController.php" />
       </list>
     </option>
   </component>
@@ -191,6 +173,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KKKMatijaLjubek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KKKMatijaLjubek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -248,10 +248,6 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="login" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -272,28 +268,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="adminLayouts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KKKMatijaLjubek" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KKKMatijaLjubek" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -603,14 +577,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3232662" vertical-offset="0" max-vertical-offset="894">
-          <caret line="26" column="50" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/BaseController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="894">
@@ -653,14 +619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/animate.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.1434782" vertical-offset="0" max-vertical-offset="58429">
-          <caret line="116" column="24" selection-start-line="116" selection-start-column="19" selection-end-line="116" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/jquery.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="907">
@@ -668,14 +626,6 @@
           <folding>
             <element signature="n#!!doc" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43736017" vertical-offset="0" max-vertical-offset="894">
-          <caret line="23" column="84" selection-start-line="23" selection-start-column="84" selection-end-line="23" selection-end-column="84" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -691,14 +641,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.07606264" vertical-offset="0" max-vertical-offset="1139">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="7" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/NewsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30425057" vertical-offset="255" max-vertical-offset="7582">
-          <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -767,14 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/initJS.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18478261" vertical-offset="0" max-vertical-offset="2142">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/login/login.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-28.76923" vertical-offset="0" max-vertical-offset="2686">
@@ -783,30 +717,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/adminLayouts/header.blade.php">
+    <entry file="file://$PROJECT_DIR$/public/css/animate.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9127517" vertical-offset="0" max-vertical-offset="1275">
-          <caret line="48" column="7" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.46413043" vertical-offset="58257" max-vertical-offset="59789">
+          <caret line="3452" column="18" selection-start-line="3452" selection-start-column="18" selection-end-line="3452" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/initJS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3936053" vertical-offset="0" max-vertical-offset="2431">
+          <caret line="21" column="60" selection-start-line="21" selection-start-column="60" selection-end-line="21" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/layoutPublic.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6326087" vertical-offset="1322" max-vertical-offset="19754">
-          <caret line="112" column="20" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.6130435" vertical-offset="4145" max-vertical-offset="20196">
+          <caret line="277" column="53" selection-start-line="277" selection-start-column="53" selection-end-line="277" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/public/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.90692395" vertical-offset="4845" max-vertical-offset="6273">
-          <caret line="332" column="63" selection-start-line="332" selection-start-column="63" selection-end-line="332" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.7877412" vertical-offset="5562" max-vertical-offset="6477">
+          <caret line="368" column="70" selection-start-line="368" selection-start-column="70" selection-end-line="368" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/adminLayouts/header.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48657718" vertical-offset="381" max-vertical-offset="1275">
+          <caret line="48" column="7" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/NewsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.803132" vertical-offset="3927" max-vertical-offset="7582">
+          <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/public/vijesti.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="894">
+          <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41834453" vertical-offset="0" max-vertical-offset="894">
+          <caret line="22" column="86" selection-start-line="22" selection-start-column="86" selection-end-line="22" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7606264" vertical-offset="0" max-vertical-offset="894">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#7#392#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -21,12 +21,12 @@
 
     <!-- favicons and apple icon -->
     <!--[if IE]><link rel="shortcut icon" href="{{ asset('favicon.ico') }}"><![endif]-->
-    <link rel="icon" href="{{ asset('favicon.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('touch-icon-iphone.png') }}">
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('touch-icon-ipad.png') }}">
     <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('touch-icon-iphone-retina.png') }}">
     <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('touch-icon-ipad-retina.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('touch-icon-iphone-6-plus.png') }}">
+    <link rel="icon" href="{{ asset('favicon.png') }}">
     <link rel="canonical" href="{{ Request::url() }}" />
 
     <!-- scripts -->
@@ -50,7 +50,7 @@
             <div class="col-md-4">
                 <div class="header-left clearfix">
                     <div class="logo smooth-scroll">
-                        <a href="#banner"><img id="logo" src="" alt="KKK Matija Ljubek Logo" title="KKK Matija Ljubek"></a>
+                        <a href="#banner">{{ HTML::image('css/assets/images/logo_nav.png', 'KKK Matija Ljubek Logo', array('id' => 'logo', 'title' => 'KKK Matija Ljubek', 'class' => 'img-responsive')) }}</a>
                     </div>
                     <div class="site-name-and-slogan smooth-scroll">
                         <div class="site-name"><a href="#banner">Matija Ljubek</a></div>
@@ -205,14 +205,14 @@
                                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 uprava-col">
                                                 <div class="uprava">
                                                     {{ HTML::image('css/assets/images/matija_ljubek_predsjednik.png', 'Predsjednik kluba', array('title' => 'Predsjednik kluba')) }}
                                                     <p class="name">dipl. oecc Ivan Lončarević</p>
                                                     <p class="title">Predsjednik kluba</p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 uprava-col">
                                                 <div class="uprava">
                                                     {{ HTML::image('css/assets/images/matija_ljubek_dopredsjednik.png', 'Dopredsjednik kluba', array('title' => 'Dopredsjednik kluba')) }}
                                                     <p class="name">Mislav Mandac</p>
@@ -261,8 +261,10 @@
 <div class="default-bg space blue">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h1 class="text-center">Prikaži sve vijesti...</h1>
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <div class="link-eff cl-link-effect">
+                    <a href="{{ URL::to('vijesti') }}" id="news-data-link"><h4>Prikaži sve vijesti</h4></a>
+                </div>
             </div>
         </div>
     </div>
@@ -289,6 +291,14 @@
         ......
     </div>
 </div> <!-- section young-members end -->
+
+<!-- section map start -->
+<div class="section" id="map">
+    <div class="container object-non-visible" data-animation-effect="fadeIn">
+        <div class="space"></div>
+        <noscript>Morate imati omogućen JavaScript u Vašem internet pregledniku kako bi se prikazala mapa, hvala na razumijevanju.</noscript>
+    </div>
+</div> <!-- section map end -->
 
 <!-- footer start -->
 <footer id="footer">
@@ -357,6 +367,8 @@
 {{ HTML::script('js/isotope.pkgd.min.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/jquery.backstretch.min.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/jquery.appear.js', array('charset' => 'utf-8')) }}
+{{ HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false', array('charset' => 'utf-8')) }}
+{{ HTML::script('js/gmaps.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/initJS.js', array('charset' => 'utf-8')) }}
 
 </body>

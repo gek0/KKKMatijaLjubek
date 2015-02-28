@@ -104,7 +104,7 @@ blockquote {
 }
 
 h1 span, h2 span, h3 span, h4 span { color: #339BEB; }
-a{ color: #55acee; }
+a{ color: #55acee; text-decoration: none; }
 a:hover{ color: #339BEB; }
 a:focus, a:active{ outline: none; }
 .large{ font-size: 18px; }
@@ -216,11 +216,13 @@ img {
 }
 .main-navigation .navbar-default .navbar-nav > li.active > a {
     background-color: transparent;
-    color: #55acee;
+    color: #FFFFFF;
+    font-weight: bold;
 }
 .main-navigation .navbar-default .navbar-nav > li > a:hover,
 .main-navigation .navbar-default .navbar-nav > li.active > a:hover {
-    color: #55acee;
+    color: #FFFFFF;
+    font-weight: bold;
 }
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{
     background-color: rgba(138, 189, 219, 0.95);
@@ -273,7 +275,7 @@ img {
 }
 
 .fixed-header-on .header {
-    background-color: rgba(138, 189, 219, 0.95);
+    background-color: rgba(0, 0, 0, 0.35); /* #88C5F3 */
     padding: 5px 0;
 }
 .fixed-header-on .site-name {
@@ -307,6 +309,10 @@ img {
     background-color: #ffffff;
     padding: 80px 0;
 }
+#map{
+    height: 500px;
+    border: none;
+}
 
 .subfooter {
     background-color: #fafafa;
@@ -319,7 +325,7 @@ img {
 }
 footer:hover .pulseAnim {
     -moz-animation: pulse 1s;    -webkit-animation: pulse 1s;    animation: pulse 1s;
-    -moz-animation-iteration-count: 10;    -webkit-animation-iteration-count: 10;    animation-iteration-count: 10;
+    -moz-animation-iteration-count: 100;    -webkit-animation-iteration-count: 100;    animation-iteration-count: 100;
 }
 
 .logo {
@@ -356,6 +362,10 @@ footer:hover .pulseAnim {
 }
 .site-slogan {
     font-size: 12px;
+}
+
+a#news-data-link{
+    text-decoration: none;
 }
 
 /**
@@ -576,6 +586,9 @@ textarea {
 .panel-title a i {
     padding-right: 10px;
     font-size: 20px;
+}
+.uprava-col{
+    padding: 0.5em;
 }
 
 /**
@@ -802,6 +815,19 @@ body {
         width: 100%;
         display: block;
     }
+}
+
+
+@media only screen and (max-width : 991px) {
+    .uprava-col{
+        width: 80%;
+        text-align: center;
+        margin: 1em auto;
+    }
+    .uprava-col img{
+        margin: 0 auto;
+    }
+
 }
 
 

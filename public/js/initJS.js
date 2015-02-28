@@ -12,6 +12,23 @@ jQuery(document).ready(function(){
         cycle: true,
         pause: "false"
     });
+
+    /*
+    *   google maps
+    */
+    var map;
+    // main directions
+    map = new GMaps({
+        el: '#map', lat: 45.787143, lng: 15.912107, zoom: 15, zoomControl : true,
+        zoomControlOpt: { style : 'SMALL', position: 'TOP_LEFT' }, panControl : false, scrollwheel: false
+    });
+
+    // add address markers
+    var image = 'css/assets/images/map-marker.png';
+    map.addMarker({ lat: 45.787143, lng: 15.912107, title: 'KKK Matija Ljubek', icon: image });
+    //apply custom styles
+    var styles = [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#46bcec"},{"visibility":"on"}]}    ];
+    map.setOptions({styles: styles});
 });
 
 /*
