@@ -6,7 +6,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="hr" class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title> ~ KKK Matija Ljubek</title>
+    <title>KKK Matija Ljubek</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="kayak, canoe, kajak, kanu, matija, ljubek, klub, zagreb">
@@ -251,9 +251,36 @@
 <div class="section translucent-bg bg-image-1 blue">
     <div class="container object-non-visible" data-animation-effect="fadeIn">
         <h1 id="news" class="text-center title">Zadnje vijesti</h1>
-        <div class="space"></div>
         <div class="row">
-            ....
+            @if($newsData->count() > 0)
+                <div id="main-news-slider" class="liquid-slider">
+                    @foreach($newsData as $news)
+                        <article id="news-post-{{ $news->id }}">
+                            <h3 class="text-center">{{ $news->news_title }}</h3>
+                            <p>{{ Str::limit(removeEmptyP(nl2p(BBCode::parse($news->news_body))), 500) }}</p>
+
+                            @if($news->tags->count() > 0)
+                                <div class="text-center tags-collection">
+                                    <ul class="tags">
+                                        @foreach($news->tags as $tag)
+                                            <a href="{{ URL::to('tag/'.$tag->id) }}"><li>{{ $tag->tag }}</li></a>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div class="space"></div>
+                            @endif
+
+                            <div class="text-center">
+                                <a href="{{ URL::to('vijesti/'.$news->slug) }}"><button class="btn btn-primary btn-square">Pročitaj više</button></a>
+                            </div>
+                        </article>
+                    @endforeach
+                </div>
+            @else
+                <div class="text-center">
+                    <h3>Trenutno nema novih vijesti.</h3>
+                </div>
+            @endif
         </div>
     </div>
 </div>
@@ -278,7 +305,40 @@
         <p class="lead text-center">Sportaši i treneri u Kajak Kanu Klub Matija Ljubek.</p>
         <br>
         <div class="row object-non-visible" data-animation-effect="fadeIn">
-            ...
+            <div class="col-md-12">
+                <!-- isotope filters start -->
+                <div class="filters text-center">
+                    <ul class="nav nav-pills">
+                        <li class="active"><a href="#" data-filter="*">Svi</a></li>
+                        @foreach($person_categories as $category)
+                            <li><a href="#" data-filter=".{{ safe_name($category->category_name) }}">{{ $category->category_name }}i</a></li>
+                        @endforeach
+                    </ul>
+                </div> <!-- isotope filters end -->
+
+                <!-- persons list start -->
+                <div class="isotope-container row grid-space-20">
+                    @foreach($personsData as $person)
+                        <div class="col-sm-6 col-md-3 isotope-item {{ safe_name($person->category->category_name) }}">
+                            <div class="image-box">
+                                <div class="overlay-container">
+                                    @if($person->images->count() > 0)
+                                        {{ HTML::image('/person_uploads/'.$person->id.'/'.$person->images->first()->file_name, imageAlt($person->images->first()->file_name), array('class' => 'thumbnail img-responsive lazy')) }}
+                                    @else
+                                        {{ HTML::image('css/assets/images/logo_main_log.png', 'Nema slike', array('class' => 'thumbnail img-responsive lazy')) }}
+                                    @endif
+                                    <a href="{{ URL::to('clan/'.$person->slug) }}" target="_blank" class="overlay">
+                                        <i class="fa fa-search-plus"></i>
+                                        <span>{{ $person->category->category_name }}</span>
+                                    </a>
+                                </div>
+                                <a href="{{ URL::to('clan/'.$person->slug) }}" target="_blank" class="btn btn-overlay btn-block">{{ $person->person_full_name }}</a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <!-- persons list end -->
+            </div>
         </div>
     </div>
 </div> <!-- section persons end -->
@@ -367,6 +427,9 @@
 {{ HTML::script('js/isotope.pkgd.min.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/jquery.backstretch.min.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/jquery.appear.js', array('charset' => 'utf-8')) }}
+{{ HTML::script('js/jquery.easing.min.js', array('charset' => 'utf-8')) }}
+{{ HTML::script('js/jquery.touchSwipe.min.js', array('charset' => 'utf-8')) }}
+{{ HTML::script('js/jquery.liquid-slider.min.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/gmaps.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/initJS.js', array('charset' => 'utf-8')) }}

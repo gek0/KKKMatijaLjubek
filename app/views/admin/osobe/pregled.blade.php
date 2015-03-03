@@ -11,7 +11,7 @@
             <div class="col-md-4">
                 <span class="glyphicon glyphicon-calendar glyphicon-large" title="Datum rođenja"></span>
                 <span class="info-text">
-                    <time datetime="{{ $personData->getDateBirthdayFormated() }}">{{ $personData->getDateBirthdayFormated() }}</time>
+                    <time datetime="{{ $personData->getDateBirthdayFormatedHTML() }}">{{ $personData->getDateBirthdayFormated() }}</time>
                 </span>
             </div>
         </div>

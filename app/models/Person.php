@@ -9,7 +9,7 @@ class Person extends Eloquent implements SluggableInterface{
      * 	-	id INT UNSIGNED / AUTO_INCREMENT PRIMARY KEY
      *  -	person_full_name VARCHAR(255) / UNIQUE
      *  - 	person_description TEXT
-     *  -   person_birthday TIMESTAMP
+     *  -   person_birthday DATE
      *  -   category_id INT UNSIGNED / FOREIGN KEY@person_category
      *  -   is_athlete ENUM / DEFAULT 'yes'
      *  -   slug VARCHAR(255)
@@ -85,6 +85,11 @@ class Person extends Eloquent implements SluggableInterface{
      * added functions
      */
     public function getDateBirthdayFormated()
+    {
+        return date('d.m.Y', strtotime($this->person_birthday));
+    }
+
+    public function getDateBirthdayFormatedHTML()
     {
         return date('Y-m-d', strtotime($this->person_birthday));
     }

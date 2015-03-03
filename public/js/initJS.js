@@ -2,7 +2,6 @@
  * main JS file for initialization
  */
 
-
 jQuery(document).ready(function(){
     /*
      *   gallery image scroll
@@ -14,13 +13,25 @@ jQuery(document).ready(function(){
     });
 
     /*
+     *   latest news slider
+     */
+    $('#main-news-slider').liquidSlider({
+        autoSlide: true,
+        autoSlideInterval: 4500,
+        includeTitle: false,
+        mobileNavigation: false,
+        autoHeight: false,
+        swipe: true
+    });
+
+    /*
     *   google maps
     */
     var map;
     // main directions
     map = new GMaps({
-        el: '#map', lat: 45.787143, lng: 15.912107, zoom: 15, zoomControl : true,
-        zoomControlOpt: { style : 'SMALL', position: 'TOP_LEFT' }, panControl : false, scrollwheel: false
+        el: '#map', lat: 45.787143, lng: 15.912107, zoom: 15, linksControl:true, zoomControl : false,
+        panControl : true, scrollwheel: false, streetViewControl: true
     });
 
     // add address markers

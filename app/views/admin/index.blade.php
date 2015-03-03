@@ -5,6 +5,12 @@
     <li>404, odkomentirat start/global i uredit view</li>
     <li>jQuery povećanje veličine slova na prikazu teksta za public dio</li>
     <li>RSS za vijesti</li>
+    <li>kalendar natjecanja?</li>
+
+    - lazy load na sve
+    - dodaj captchu na mail
+    - isotope nije responsive
+    - css uredi po google pravilima
 </ul>
 
 

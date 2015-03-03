@@ -681,7 +681,7 @@ body {
     bottom: -1px;
     left: 0;
     right: -1px;
-    background-color: rgba(85, 172, 238, 0.9);
+    background-color: rgba(136, 197, 243, 0.9);
     cursor: pointer;
     overflow: hidden;
     opacity: 0;
@@ -704,15 +704,14 @@ body {
     text-align: center;
     width: 100%;
     color: #ffffff;
-    font-size: 13px;
-    font-weight: 300;
+    font-weight: bold;
 }
 .overlay i {
     position: absolute;
     left: 50%;
     top: 50%;
     font-size: 18px;
-    line-height: 1x;
+    line-height: 1px;
     color: #ffffff;
     margin-top: -8px;
     margin-left: -8px;
@@ -724,6 +723,13 @@ body {
     -webkit-transform: scale(1);
     transform: scale(1);
 }
+
+.btn-overlay{
+    background-color: #55acee;
+    border-color: #55acee;
+    color: #ffffff;
+}
+.btn-overlay:hover, .btn-overlay:focus, .btn-overlay:active{ color: #FFFFFF; }
 
 /**
 *   social links
@@ -787,6 +793,108 @@ body {
     color: #ffffff;
 }
 
+/**
+*   news liquid slider
+*/
+
+#main-news-slider-wrapper{
+    width: 80%;
+    height: auto;
+    margin: 1em auto;
+    border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px;
+}
+.tags-collection{
+    margin: 0.5em auto;
+}
+
+.no-js .liquid-slider {
+    height: 400px;
+    overflow: scroll;
+}
+
+.ls-wrapper {
+    clear: both;
+    overflow: auto;
+    position: relative;
+}
+.liquid-slider {
+    background: rgba(255, 255, 255, 0.15);
+    width: 80%;
+    margin: 0 auto;
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+.arrows .liquid-slider {
+    margin: 0 10px;
+}
+.ls-responsive .liquid-slider {
+    width: 100%;
+    margin: 0;
+}
+.panel-container {
+    position: relative;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+}
+.liquid-slider .panel-container .fade {
+    width: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+}
+
+.liquid-slider .ls-panel {
+    width: 80%;
+    display: block;
+    float: left;
+}
+.panel-wrapper {
+    padding: 15px 40px;
+    position: relative;
+}
+
+.ls-nav-left-arrow, .ls-nav-right-arrow {
+    cursor: pointer;
+    float: left;
+    clear: both;
+}
+.ls-nav-left-arrow a, .ls-nav-right-arrow a {
+    display: block;
+}
+[class$="-arrow"] {
+    width: 25px;
+    height: 25px;
+    background: url('assets/images/liquid-slider-arrows.png') no-repeat;
+    margin-top: 50px;
+    position:relative;
+}
+.ls-nav-right-arrow {
+    background-position: top right;
+    margin-right: 5px;
+}
+.ls-nav-left-arrow {
+    background-position: top left;
+    margin-left: 5px;
+}
+.ls-nav-left-arrow:hover {
+    background-position: bottom left;
+}
+.ls-nav-right-arrow:hover {
+    background-position: bottom right;
+}
+.ls-responsive .ls-nav-left-arrow {
+    position: absolute;
+    left: 0;
+    z-index: 2;
+}
+.ls-responsive .ls-nav-right-arrow {
+    position: absolute;
+    right: 0;
+    z-index: 2;
+}
 
 /**
 *   media query for RWD
@@ -921,8 +1029,33 @@ only screen and (min-device-pixel-ratio: 1.5) {
     font-size: 1.15em;
 }
 /**
-*   checkbox / radio input buttons
+*   checkbox / radio input buttons, buttons
 */
+.nav-pills > li > a{
+    border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px;
+    border-color: rgba(5, 90, 206, .15);
+    background: none;
+    text-transform: uppercase;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); -o-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+}
+.btn-square{
+    border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px;
+    border-color: rgba(255, 255, 255, .75);
+    background: none;
+    text-transform: uppercase;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); -o-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+}
+.btn-square:hover, .btn-square:focus, .btn-square:active, .btn-square:visited{
+    background: #88C5F3;
+    border-color: rgba(255, 255, 255, 0.55);
+}
+
 
 .checkbox {
     padding-left: 20px;

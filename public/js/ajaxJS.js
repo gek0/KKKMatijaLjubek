@@ -316,15 +316,25 @@ jQuery(document).ready(function(){
     $(".btn-edit-image").click(function(){
         var imgCaption = $(this).siblings('img:first').attr('data-caption');
         var imageID = $(this).attr('id'); //image ID to edit
+        var outputMsg = $('#outputMsg');
+        var errorMsg = "";
         bootbox.prompt({
             title: "Tekst slike:",
             value: imgCaption,
             callback: function(result) {
-                if(result !== null) {
+                if(result == ''){
+                    errorMsg = "<h3>Tekst slike je obavezan.</h3>";
+                    outputMsg.append(errorMsg).addClass('warningNotif').slideDown();
+
+                    setTimeout(function() {
+                        outputMsg.slideUp().empty();
+                        //restore old class to output div
+                        outputMsg.attr('class', 'notificationOutput');
+                    }, 2500);
+                }
+                else if(result !== null) {
                     var token = $('meta[name="_token"]').attr('content');
                     var imageCaption = result;
-                    var outputMsg = $('#outputMsg');
-                    var errorMsg = "";
                     var successMsg = "<h3>Tekst slike je uspješno izmjenjen.</h3>";
                     var dataURL = $('#image_gallery').attr('data-role-edit-link');
 

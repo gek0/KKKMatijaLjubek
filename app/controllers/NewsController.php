@@ -7,7 +7,7 @@ class NewsController extends AdminController{
      */
     public function getIndex()
     {
-        $newsData = News::paginate(9);
+        $newsData = News::orderBy('id', 'DESC')->paginate(9);
         $this->layout->content = View::make('admin.vijesti.index')->with('newsData', $newsData);
     }
 
