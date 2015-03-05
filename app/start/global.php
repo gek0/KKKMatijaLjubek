@@ -76,10 +76,21 @@ App::down(function()
 |
 */
 
-/*App::missing(function($exception)
+App::missing(function($exception)
 {
-	return Response::view('admin.error', array('foo' => 'bar'), 404);
-});*/
+    if(App::environment() == 'production') {
+
+        //check exception message
+        if($exception->getMessage() == 'Controller method not found.'){
+            $exception_message = 'Stranica nije pronađena.';
+        }
+        else{
+            $exception_message = $exception->getMessage();
+        }
+
+        return Response::view('error', array('exception' => $exception_message), 404);
+    }
+});
 /*
 |--------------------------------------------------------------------------
 | Require The Filters File

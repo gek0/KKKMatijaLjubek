@@ -2,15 +2,18 @@
     <li>tagovi - tražilica (public)</li>
     <li>tagovi - poseban view / učestalost tagova (public)</li>
     <li>ispis svih vijesti - infinite scroll</li>
-    <li>404, odkomentirat start/global i uredit view</li>
-    <li>jQuery povećanje veličine slova na prikazu teksta za public dio</li>
     <li>RSS za vijesti</li>
     <li>kalendar natjecanja?</li>
+    <li>uredi admin notification css</li>
+    <li>prevedi sve iz hr u eng (kod) ako je šta ostalo</li>
+    <li>camelCase za JS, snake_trail za PHP - pretvori sve zaostalo</li>
+    <li>dodavanje osobe/vijesti sa 'š/Š' u imenu/naslovu?</li>
 
-    - lazy load na sve
-    - dodaj captchu na mail
-    - isotope nije responsive
-    - css uredi po google pravilima
+    <li>lazy load na sve</li>
+    <li>dodaj captchu na mail</li>
+    <li>isotope nije responsive</li>
+    <li>css datoteke uredi po google pravilima</li>
+    <li>isotope no item event - vrati poruku</li>
 </ul>
 
 

@@ -86,7 +86,7 @@ class Person extends Eloquent implements SluggableInterface{
      */
     public function getDateBirthdayFormated()
     {
-        return date('d.m.Y', strtotime($this->person_birthday));
+        return date('d.m.Y.', strtotime($this->person_birthday));
     }
 
     public function getDateBirthdayFormatedHTML()
@@ -97,6 +97,16 @@ class Person extends Eloquent implements SluggableInterface{
     public function getDateBirthdayInput()
     {
         return date('d.m.Y', strtotime($this->person_birthday));
+    }
+
+    public function nextPerson()
+    {
+        return Person::where('id', '>', $this->id)->orderBy('id', 'asc')->take(1)->get()->first();
+    }
+
+    public function previousPerson()
+    {
+        return Person::where('id', '<', $this->id)->orderBy('id', 'desc')->take(1)->get()->first();
     }
 
 

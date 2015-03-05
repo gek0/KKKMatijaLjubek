@@ -12,7 +12,6 @@
     <meta name="keywords" content="kayak, canoe, kajak, kanu, matija, ljubek, klub, zagreb">
     <meta name="description" content="Kajak Kanu Klub Matija Ljubek">
     <meta name="author" content="Matija Buriša">
-    <meta name="robots" content="noindex">
     <meta property="og:title" content="Kajak Kanu Klub Matija Ljubek" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ Request::url() }}" />
@@ -149,7 +148,7 @@
 </section> <!-- section banner end -->
 
 <!-- section about-us start -->
-<div class="section clearfix object-non-visible" data-animation-effect="fadeIn">
+<section class="section clearfix object-non-visible" data-animation-effect="fadeIn">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -245,10 +244,10 @@
             </div>
         </div>
     </div>
-</div> <!-- section about-us end -->
+</section> <!-- section about-us end -->
 
 <!-- section news start -->
-<div class="section translucent-bg bg-image-1 blue">
+<section class="section translucent-bg bg-image-1 blue">
     <div class="container object-non-visible" data-animation-effect="fadeIn">
         <h1 id="news" class="text-center title">Zadnje vijesti</h1>
         <div class="row">
@@ -283,9 +282,9 @@
             @endif
         </div>
     </div>
-</div>
+</section>
 
-<div class="default-bg space blue">
+<section class="default-bg space blue">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center">
@@ -295,10 +294,10 @@
             </div>
         </div>
     </div>
-</div> <!-- section news end -->
+</section> <!-- section news end -->
 
 <!-- section persons start -->
-<div class="section">
+<section class="section">
     <div class="container">
         <h1 class="text-center title" id="persons">Članovi kluba</h1>
         <div class="separator"></div>
@@ -327,12 +326,12 @@
                                     @else
                                         {{ HTML::image('css/assets/images/logo_main_log.png', 'Nema slike', array('class' => 'thumbnail img-responsive lazy')) }}
                                     @endif
-                                    <a href="{{ URL::to('clan/'.$person->slug) }}" target="_blank" class="overlay">
+                                    <a href="{{ URL::to('clan/'.$person->slug) }}" class="overlay">
                                         <i class="fa fa-search-plus"></i>
                                         <span>{{ $person->category->category_name }}</span>
                                     </a>
                                 </div>
-                                <a href="{{ URL::to('clan/'.$person->slug) }}" target="_blank" class="btn btn-overlay btn-block">{{ $person->person_full_name }}</a>
+                                <a href="{{ URL::to('clan/'.$person->slug) }}" class="btn btn-overlay btn-block">{{ $person->person_full_name }}</a>
                             </div>
                         </div>
                     @endforeach
@@ -341,24 +340,24 @@
             </div>
         </div>
     </div>
-</div> <!-- section persons end -->
+</section> <!-- section persons end -->
 
 <!-- section young-members start -->
-<div class="section translucent-bg bg-image-2 blue">
+<section class="section translucent-bg bg-image-2 blue">
     <div class="container object-non-visible" data-animation-effect="fadeIn">
         <h1 id="young-members" class="title text-center">Škola kajaka i kanua</h1>
         <div class="space"></div>
         ......
     </div>
-</div> <!-- section young-members end -->
+</section> <!-- section young-members end -->
 
 <!-- section map start -->
-<div class="section" id="map">
+<section class="section" id="map">
     <div class="container object-non-visible" data-animation-effect="fadeIn">
         <div class="space"></div>
         <noscript>Morate imati omogućen JavaScript u Vašem internet pregledniku kako bi se prikazala mapa, hvala na razumijevanju.</noscript>
     </div>
-</div> <!-- section map end -->
+</section> <!-- section map end -->
 
 <!-- footer start -->
 <footer id="footer">
@@ -417,7 +416,6 @@
             </div>
         </div>
     </div>
-
 </footer> <!-- footer end -->
 
 <!-- scripts -->
@@ -430,6 +428,7 @@
 {{ HTML::script('js/jquery.easing.min.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/jquery.touchSwipe.min.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/jquery.liquid-slider.min.js', array('charset' => 'utf-8')) }}
+{{ HTML::script('js/jquery.lazyload.min.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/gmaps.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/initJS.js', array('charset' => 'utf-8')) }}

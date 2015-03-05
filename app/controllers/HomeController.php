@@ -39,5 +39,53 @@ class HomeController extends Controller {
                                                 );
 	}
 
+    public function tag($id)
+    {
+        return View::make('public.tag');
+    }
+
+    /**
+     * @param $slug
+     * @return mixed
+     * individual person view for public
+     */
+    public function showPerson($slug)
+    {
+        //find person ande get data if exists
+        $personData = Person::findBySlug(e($slug));
+
+        //check if person exists
+        if($personData){
+            //find previous and next person after current
+            $previousPerson = $personData->previousPerson();
+            $nextPerson = $personData->nextPerson();
+
+            //check if there are persons before/after or not
+            if($previousPerson){
+                $previousPerson = array('slug' => $previousPerson->slug, 'full_name' => $previousPerson->person_full_name);
+            }
+            else{
+                $previousPerson = false;
+            }
+
+            if($nextPerson){
+                $nextPerson = array('slug' => $nextPerson->slug, 'full_name' => $nextPerson->person_full_name);
+            }
+            else{
+                $nextPerson = false;
+            }
+
+            return View::make('public.clan')->with(array('personData' => $personData,
+                                                         'page_title' => $personData->person_full_name,
+                                                         'previousPerson' => $previousPerson,
+                                                         'nextPerson' => $nextPerson
+                                                        )
+                                                  );
+        }
+        else{
+            App::abort(404, 'Korisnik nije pronađen.');
+        }
+    }
+
 
 }
