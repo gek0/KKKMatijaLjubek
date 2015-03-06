@@ -1,6 +1,4 @@
 <ul>
-    <li>extendaj golonka parser i dodaj unparse za fix admin ispisa</li>
-
     <li>tagovi - tražilica (public)</li>
     <li>ispis svih vijesti - infinite scroll</li>
     <li>RSS za vijesti</li>

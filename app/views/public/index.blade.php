@@ -256,7 +256,7 @@
                     @foreach($newsData as $news)
                         <article id="news-post-{{ $news->id }}">
                             <h3 class="text-center">{{ $news->news_title }}</h3>
-                            <p>{{ Str::limit(removeEmptyP(nl2p(BBCode::parse($news->news_body))), 500) }}</p>
+                            <p>{{ Str::limit(removeEmptyP(nl2p((new BBCParser)->unparse($news->news_body))), 500)  }}</p>
 
                             @if($news->tags->count() > 0)
                                 <div class="text-center tags-collection">
