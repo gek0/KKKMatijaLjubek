@@ -423,6 +423,26 @@ a#news-data-link{
     box-sizing: border-box;
 }
 
+.sidebar-content{
+    width: 100%; height: auto;
+    margin: 2em auto; padding: 0;
+}
+.sidebar-header{
+    width: 100%; height: auto;
+    background-color: rgba(71, 163, 218, 0.55);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); -o-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    color: #FFF;
+    padding: 0.8em;
+    border-top-right-radius: 4px; -webkit-border-top-right-radius: 4px; -o-border-top-right-radius: 4px;
+    border-top-left-radius: 4px; -webkit-border-top-left-radius: 4px; -o-border-top-left-radius: 4px;
+}
+.sidebar-body{
+    width: 100%; height: auto;
+    padding: 0.8em;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); -o-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
 /**
 *   backgrounds
 */
@@ -1139,6 +1159,7 @@ body {
     animation: fade-in .25s linear;
 }
 
+
 /**
 *   media query for RWD
 */
@@ -1149,12 +1170,17 @@ body {
    768-480     - tablet
    480-less    - phone landscape & smaller
 --------------------------------------------*/
-@media all and (min-width: 1024px) and (max-width: 1280px) {
+@media all and (min-width: 1280px) {
+    img.thumbnail{ height: 200px; }
+}
 
+@media all and (min-width: 1024px) and (max-width: 1280px) {
+    img.thumbnail{ height: 175px; }
 }
 
 @media all and (min-width: 768px) and (max-width: 1024px) {
     .title-offtop{ margin-top: 4em; }
+    img.thumbnail{ height: 155px; }
 }
 
 @media all and (min-width: 480px) and (max-width: 768px) {
@@ -1323,8 +1349,9 @@ only screen and (min-device-pixel-ratio: 1.5) {
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); -o-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
 }
 .btn-square:hover, .btn-square:focus, .btn-square:active, .btn-square:visited{
-    background: #88C5F3;
-    border-color: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, .85);
+    border-color: rgba(255, 255, 255, .55);
+    color: #55ACEE;
 }
 
 

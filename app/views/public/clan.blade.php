@@ -39,7 +39,7 @@
             </div> <!-- end data_info -->
 
             <div class="row padded">
-                <div class="col-md-10" id="content-description-body">
+                <div class="col-md-12" id="content-description-body">
                     {{ removeEmptyP(nl2p(BBCode::parse($personData->person_description))) }}
                 </div>
             </div>

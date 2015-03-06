@@ -47,11 +47,11 @@ class HomeController extends Controller {
     /**
      * @param $slug
      * @return mixed
-     * individual person view for public
+     * individual person view
      */
     public function showPerson($slug)
     {
-        //find person ande get data if exists
+        //find person and get data if exists
         $personData = Person::findBySlug(e($slug));
 
         //check if person exists
@@ -87,6 +87,10 @@ class HomeController extends Controller {
         }
     }
 
+    /**
+     * @return mixed
+     * tags collection view
+     */
     public function showTagsList()
     {
         $tagsData = Tag::all();
@@ -98,5 +102,65 @@ class HomeController extends Controller {
                                                 );
     }
 
+    /**
+     * @return mixed
+     * news collection view - paginated by 6 / 3 rows
+     */
+    public function showNewsList()
+    {
+        $newsData = News::orderBy('id', 'DESC')->paginate(6);
+        $page_title = 'Vijesti';
+
+        return View::make('public.vijesti')->with(array('newsData' => $newsData,
+                                                        'page_title' => $page_title
+                                                    )
+                                                );
+    }
+
+    /**
+     * @param $slug
+     * @return mixed
+     * individual news view
+     */
+    public function showNews($slug)
+    {
+        //find news and get data if exists
+        $newsData = News::findBySlug(e($slug));
+
+        //check if news exists
+        if($newsData){
+            //increment number of news views
+            $newsData->increment('num_visited');
+
+            //find previous and next person after current
+            $previousNews = $newsData->previousNews();
+            $nextNews = $newsData->nextNews();
+
+            //check if there are persons before/after or not
+            if($previousNews){
+                $previousNews = array('slug' => $previousNews->slug, 'news_title' => $previousNews->news_title);
+            }
+            else{
+                $previousNews = false;
+            }
+
+            if($nextNews){
+                $nextNews = array('slug' => $nextNews->slug, 'news_title' => $nextNews->news_title);
+            }
+            else{
+                $nextNews = false;
+            }
+
+            return View::make('public.clanak')->with(array('newsData' => $newsData,
+                    'page_title' => $newsData->news_title,
+                    'previousNews' => $previousNews,
+                    'nextNews' => $nextNews
+                )
+            );
+        }
+        else{
+            App::abort(404, 'Članak nije pronađen.');
+        }
+    }
 
 }
