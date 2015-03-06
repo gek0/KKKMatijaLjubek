@@ -87,5 +87,16 @@ class HomeController extends Controller {
         }
     }
 
+    public function showTagsList()
+    {
+        $tagsData = Tag::all();
+        $page_title = 'Tagovi';
+
+        return View::make('public.tagovi')->with(array('tagsData' => $tagsData,
+                                                       'page_title' => $page_title
+                                                      )
+                                                );
+    }
+
 
 }

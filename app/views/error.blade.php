@@ -32,7 +32,7 @@
 </head>
 <body class="no-trans">
     <!-- section exception start -->
-    <section class="exception translucent-bg blue full-height-section">
+    <section class="exception translucent-bg blue full-height-section wave-bg">
         <div class="container exception-container">
             {{ HTML::image('css/assets/images/logo_main_log.png', 'KKK Matija Ljubek logo', array('id' => 'exception-logo', 'class' => 'img-responsive')) }}
                 <div class="space"></div>
@@ -40,7 +40,7 @@
                 <div class="space"></div>
 
             <div class="text-center">
-                <a href="{{ URL::previous() }}"><button class="btn btn-primary btn-square">Povratak na prethodnu stranicu</button></a>
+                <a href="{{ URL::previous() }}"><button class="btn btn-primary btn-square"><i class="fa fa-angle-left fa-med pr-10"></i> Povratak na prethodnu stranicu</button></a>
             </div>
         </div>
     </section> <!-- section exception end -->

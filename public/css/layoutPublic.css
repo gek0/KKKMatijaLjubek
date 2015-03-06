@@ -137,6 +137,7 @@ hr{
     list-style: none;
     font-weight: bold;
 }
+.tags .marginated-tags{ margin: 0.625em; }
 .tags li{
     height: 24px;
     display: inline-block;
@@ -144,8 +145,6 @@ hr{
     position: relative;
     margin: 1px;
     cursor: pointer;
-}
-.tags li{
     margin-left: 20px;
     padding: 0 10px 0 12px;
     background-color: rgba(71, 163, 218, 0.55);
@@ -343,6 +342,11 @@ hr{
 }
 
 .padded{ padding: 1.1em; }
+.marginated{ margin: 0.625em; }
+.centered-col{
+    float: none;
+    margin: 0.1em auto;
+}
 
 .subfooter {
     background-color: #fafafa;
@@ -461,6 +465,10 @@ a#news-data-link{
 .default-bg a:hover,
 .translucent-bg a:hover {
     text-decoration: none;
+}
+
+.wave-bg{
+    background: url("assets/images/wave-bg.png") 50% 0px no-repeat;
 }
 .translucent-bg {
     -webkit-background-size: cover !important;

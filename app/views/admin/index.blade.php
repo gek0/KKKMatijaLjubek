@@ -14,6 +14,8 @@
     <li>isotope nije responsive</li>
     <li>css datoteke uredi po google pravilima</li>
     <li>isotope no item event - vrati poruku</li>
+    <li>public ispis vijesti/sportasa - link na admin edit?</li>
+    <li>custom tooltip?</li>
 </ul>
 
 

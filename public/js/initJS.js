@@ -101,6 +101,43 @@ jQuery(document).ready(function(){
         }, {"featureType": "water", "elementType": "all", "stylers": [{"color": "#46bcec"}, {"visibility": "on"}]}];
         map.setOptions({styles: styles});
     }
+
+    /*
+    *   live taqs filtering
+    */
+    if($("#filter").length > 0) {
+        //prevent submit action if user tried
+        $("#live-search").submit(function(event){
+            event.preventDefault();
+        })
+
+        //start search/filter function
+        $("#filter").keyup(function () {
+            $("#filter-count").text("Tražim..");
+
+            var filter = $(this).val(), count = 0;
+
+            $(".tags li").each(function () {
+                if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                    $(this).fadeOut();
+                }
+                else {
+                    $(this).show();
+                    count++;
+                }
+            });
+
+            setTimeout(function () {
+                if(count > 0) {
+                    $("#filter-count").text('Broj vijesti s odabranim tagom = ' + count);
+                }
+                else{
+                    $("#filter-count").text('Nije pronađen niti jedan tag.');
+                }
+            }, 1500);
+        });
+    }
+
 });
 
 /*

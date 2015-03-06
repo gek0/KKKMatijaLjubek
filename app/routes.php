@@ -40,4 +40,5 @@ Route::get('logout', function(){
  */
 Route::get('tag/{id}', array('as' => 'tag', 'uses' => 'HomeController@tag'))->where(array('id' => '[0-9]+'));
 Route::get('clan/{slug}', array('as' => 'clan', 'uses' => 'HomeController@showPerson'))->where(array('slug' => '[a-zA-Z\-]+'));
+Route::get('tagovi', array('as' => 'tagovi', 'uses' => 'HomeController@showTagsList'));
 Route::controller('/', 'HomeController');
