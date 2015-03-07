@@ -322,7 +322,7 @@
                             <div class="image-box">
                                 <div class="overlay-container">
                                     @if($person->images->count() > 0)
-                                        {{ HTML::image('/person_uploads/'.$person->id.'/'.$person->images->first()->file_name, imageAlt($person->images->first()->file_name), array('class' => 'thumbnail img-responsive lazy')) }}
+                                        {{ HTML::image('/person_uploads/'.$person->id.'/'.$person->images->first()->file_name, imageAlt($person->images->first()->file_name), array('class' => 'img-responsive lazy')) }}
                                     @else
                                         {{ HTML::image('css/assets/images/logo_main_log.png', 'Nema slike', array('class' => 'thumbnail img-responsive lazy')) }}
                                     @endif

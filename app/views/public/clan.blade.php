@@ -40,7 +40,7 @@
 
             <div class="row padded">
                 <div class="col-md-12" id="content-description-body">
-                    {{ removeEmptyP(nl2p(BBCode::parse($personData->person_description))) }}
+                    {{ removeEmptyP(nl2p((new BBCParser)->parse($personData->person_description))) }}
                 </div>
             </div>
             <hr>

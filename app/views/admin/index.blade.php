@@ -7,7 +7,6 @@
     <li>prevedi sve iz hr u eng (kod) ako je šta ostalo</li>
     <li>camelCase za JS, snake_trail za PHP - pretvori sve zaostalo</li>
     <li>dodavanje osobe/vijesti sa 'š/Š' u imenu/naslovu?</li>
-    <li>galeriju slika dodat i u admin dio</li>
 
     <li>lazy load na sve</li>
     <li>dodaj captchu na mail</li>

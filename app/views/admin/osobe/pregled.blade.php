@@ -18,7 +18,7 @@
     </div>
     <div class="row padded">
         <div class="col-md-9">
-            {{ removeEmptyP(nl2p(BBCode::parse($personData->person_description))) }}
+            {{ removeEmptyP(nl2p((new BBCParser)->parse($personData->person_description))) }}
         </div>
         <div class="col-md-3">
             <div class="sidebar-content">
@@ -41,7 +41,9 @@
                     <h2>Galerija slika  <small id="image_gallery_counter">{{ $personData->images->count() }}</small></h2>
                     @foreach($personData->images as $img)
                         <div class="col-lg-3 col-sm-4 col-6 small-marg" id="img-container-{{ $img->id }}">
-                            <img data-original="{{ URL::to('/person_uploads/'.$personData->id.'/'.$img->file_name) }}" alt="{{ imageAlt($img->file_name) }}" class="thumbnail img-responsive lazy" />
+                            <a href="{{ URL::to('/person_uploads/'.$personData->id.'/'.$img->file_name) }}" data-imagelightbox="gallery-images">
+                                <img data-original="{{ URL::to('/person_uploads/'.$personData->id.'/'.$img->file_name) }}" alt="{{ imageAlt($img->file_name) }}" class="thumbnail img-responsive lazy" />
+                            </a>
                             <button id="{{ $img->id }}" class="btn btn-danger btn-delete-image" title="Brisanje slike {{ $img->file_name }}"><span class="glyphicon glyphicon-trash"></span></button>
                         </div>
                         <div class="clearfix visible-xs"></div>

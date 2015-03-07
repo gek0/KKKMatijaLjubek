@@ -40,7 +40,7 @@
 
             <div class="row padded">
                 <div class="col-md-9" id="content-description-body">
-                    {{ removeEmptyP(nl2p(BBCode::parse($newsData->news_body))) }}
+                    {{ removeEmptyP(nl2p((new BBCParser)->parse($newsData->news_body))) }}
                 </div>
                 <div class="col-md-3">
                     <div class="sidebar-content">
