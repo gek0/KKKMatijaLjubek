@@ -37,6 +37,29 @@ jQuery(document).ready(function(){
     });
 
     /*
+     *   news container resizer
+     */
+    if($(".news-all-header").length > 0 || $(".news-all-content").length > 0) {
+        //set news header (title & logo) height equal (biggest dimension on page)
+        var maxHeightHeader = 0;
+        $(".news-all-header").each(function () {
+            if ($(this).height() > maxHeightHeader) {
+                maxHeightHeader = $(this).height();
+            }
+        });
+        $(".news-all-header").height(maxHeightHeader);
+
+        //set whole news div height equal (biggest div height dimension on page)
+        var maxHeightContent = 0;
+        $(".news-all-content").each(function () {
+            if ($(this).height() > maxHeightContent) {
+                maxHeightContent = $(this).height();
+            }
+        });
+        $(".news-all-content").height(maxHeightContent);
+    }
+
+    /*
      *   latest news slider
      */
     if($('#main-news-slider').length > 0) {

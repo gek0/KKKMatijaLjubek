@@ -105,3 +105,9 @@ App::missing(function($exception)
 require app_path().'/filters.php';
 require app_path().'/functions.php';
 require app_path().'/validators.php';
+
+/**
+ * @default 'page'
+ * change laravel paginator page name
+ */
+Paginator::setPageName('stranica');

@@ -1,6 +1,5 @@
 <ul>
     <li>tagovi - tražilica (public)</li>
-    <li>ispis svih vijesti - infinite scroll</li>
     <li>RSS za vijesti</li>
     <li>kalendar natjecanja?</li>
     <li>uredi admin notification css</li>
