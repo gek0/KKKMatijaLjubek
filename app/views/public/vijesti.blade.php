@@ -4,6 +4,22 @@
 <section class="section translucent-bg blue full-height-section">
     <div class="container object-non-visible" data-animation-effect="fadeIn">
         <h1 id="news" class="text-center title-offtop">Vijesti</h1>
+
+        <section id="news_sort">
+            <div class="row" id="person_sort">
+                <div class="formSort padded">
+                    {{ Form::open(array('url' => 'vijesti/sort', 'method' => 'GET', 'id' => 'formSort', 'role' => 'form')) }}
+                        <div class="form-group">
+                            {{ Form::label('sort_option', 'Sortiranje vijesti:') }}<br>
+                            {{ Form::select('sort_option', array('Vrsta sortiranja...' => $sort_data),
+                                              $sort_category, array('class' => 'selectpicker show-tick', 'data-style' => 'btn-square', 'title' => 'Vrsta sortiranja...', 'data-size' => '5'))
+                            }}
+                        </div>
+                    {{ Form::close() }}
+                </div>
+            </div>
+        </section> <!-- end news_sort section -->
+
         <article class="article-container">
 
             @if(count($newsData->all()) > 0)
@@ -46,7 +62,7 @@
                 @endforeach
 
                 <div class="pagination-layout pagination-centered">
-                    {{ $newsData->links() }}
+                    {{ $newsData->appends(Request::except('stranica'))->links() }}
                 </div> <!-- end pagination -->
             @else
                 <div class="text-center">

@@ -40,6 +40,7 @@ Route::get('logout', function(){
  */
 Route::get('tag/{id}', array('as' => 'tag', 'uses' => 'HomeController@tag'))->where(array('id' => '[0-9]+'));
 Route::get('clan/{slug}', array('as' => 'clan', 'uses' => 'HomeController@showPerson'))->where(array('slug' => '[a-zA-Z\-]+'));
+Route::get('vijesti/sort', array('as' => 'vijesti-sort', 'uses' => 'HomeController@getSort'));
 Route::get('vijesti/{slug}', array('as' => 'vijest', 'uses' => 'HomeController@showNews'))->where(array('slug' => '[a-zA-Z\-]+'));
 Route::get('vijesti', array('as' => 'vijesti', 'uses' => 'HomeController@showNewsList'));
 Route::get('tagovi', array('as' => 'tagovi', 'uses' => 'HomeController@showTagsList'));

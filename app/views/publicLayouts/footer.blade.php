@@ -16,6 +16,7 @@
 {{ HTML::script('js/bootstrap.min.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/modernizr.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/jquery.backstretch.min.js', array('charset' => 'utf-8')) }}
+{{ HTML::script('js/bootstrap-select.min.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/jquery.appear.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/jquery.easing.min.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/jquery.lazyload.min.js', array('charset' => 'utf-8')) }}

@@ -2,7 +2,7 @@
  * main JS file for initialization
  */
 
-jQuery(document).ready(function(){
+jQuery(document).ready(function() {
     /*
      *   gallery image scroll
      */
@@ -11,6 +11,15 @@ jQuery(document).ready(function(){
         cycle: true,
         pause: "false"
     });
+
+    /*
+     *   submit form if option changed in dropdown menu
+     */
+    if($('#sort_option').length > 0) {
+        $(this).change(function () {
+            $('#formSort').submit();
+        });
+    }
 
     /*
      *   content font resize

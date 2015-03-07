@@ -11,6 +11,18 @@ class HomeController extends Controller {
 		$this->beforeFilter('crfs', array('on' => array('post', 'put', 'patch', 'delete')));
 	}
 
+    /**
+     * @var int
+     * news paginate option
+     */
+    protected $news_paginate = 6;
+    protected $sort_data = array('added_desc' => 'Najnovije vijesti',
+                                 'added_asc' => 'Najstarije vijesti',
+                                 'visits_desc' => 'S najviše pregleda',
+                                 'visits_asc' => 'S najmanje pregleda'
+                            );
+
+
 	/**
 	 * @return mixed
 	 * homepage
@@ -104,15 +116,21 @@ class HomeController extends Controller {
 
     /**
      * @return mixed
-     * news collection view - paginated by 6 / 3 rows
+     * news collection view - paginated by @news_paginate
      */
     public function showNewsList()
     {
-        $newsData = News::orderBy('id', 'DESC')->paginate(6);
+        $newsData = News::orderBy('id', 'DESC')->paginate($this->news_paginate);
         $page_title = 'Vijesti';
 
+        //default form sort value
+        $sort_category = null;
+        $sort_data = $this->sort_data;
+
         return View::make('public.vijesti')->with(array('newsData' => $newsData,
-                                                        'page_title' => $page_title
+                                                        'page_title' => $page_title,
+                                                        'sort_data' => $sort_data,
+                                                        'sort_category' => $sort_category
                                                     )
                                                 );
     }
@@ -161,6 +179,44 @@ class HomeController extends Controller {
         else{
             App::abort(404, 'Članak nije pronađen.');
         }
+    }
+
+    /**
+     * @return mixed
+     * sort news by selected category and return to main view, list all news by @news_paginate per page
+     */
+    public function getSort()
+    {
+        $page_title = 'Vijesti';
+
+        //get form data and set default sort options
+        $sort_category = e(Input::get('sort_option'));
+        $sort_data = $this->sort_data;
+
+        //check sort category selected in form and get data
+        switch($sort_category){
+            case 'added_desc':
+                $newsData = News::orderBy('id', 'DESC')->paginate($this->news_paginate);
+                break;
+            case 'added_asc':
+                $newsData = News::orderBy('id', 'ASC')->paginate($this->news_paginate);
+                break;
+            case 'visits_desc':
+                $newsData = News::orderBy('num_visited', 'DESC')->paginate($this->news_paginate);
+                break;
+            case 'visits_asc':
+                $newsData = News::orderBy('num_visited', 'ASC')->paginate($this->news_paginate);
+                break;
+            default:
+                $newsData = News::orderBy('id', 'DESC')->paginate($this->news_paginate);
+        }
+
+        return View::make('public.vijesti')->with(array('newsData' => $newsData,
+                                                        'page_title' => $page_title,
+                                                        'sort_data' => $sort_data,
+                                                        'sort_category' => $sort_category
+                                                    )
+                                                );
     }
 
 }

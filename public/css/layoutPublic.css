@@ -1,5 +1,6 @@
 @charset "utf-8";
 @import 'animate.css';
+@import 'bootstrap-select.min.css';
 @import '../fonts/font-awesome/css/font-awesome.min.css';
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,300&subset=latin,latin-ext);
