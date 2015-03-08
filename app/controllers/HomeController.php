@@ -219,4 +219,38 @@ class HomeController extends Controller {
                                                 );
     }
 
+    /**
+     * @return mixed
+     * cached news feed for 5 latest news on the site
+     */
+    public function getRssFeed()
+    {
+        //generate feed and cache for 60 min
+        $feed = Feed::make();
+        $feed->setCache(60, 'ljubekRssKey');
+
+        //check if there is cached version
+        if(!$feed->isCached()){
+            //grab news data from database
+            $newsData = News::orderBy('id', 'DESC')->take(5)->get();
+
+            //set feed parameters
+            $feed->title = 'KKK Matija Ljubek RSS';
+            $feed->description = 'Najnovije vijesti na KKK Matija Ljubek portalu';
+            $feed->logo = URL::to('css/assets/images/logo_main_log.png');
+            $feed->link = URL::to('rss');
+            $feed->setDateFormat('datetime');
+            $feed->pubdate = $newsData[0]->created_at;
+            $feed->lang = 'hr';
+            $feed->setShortening(true);
+            $feed->setTextLimit(500);
+
+            foreach($newsData as $news){
+                $feed->add($news->news_title, $news->author->username, URL::to('vijesti/'.$news->slug), $news->created_at, (new BBCParser)->unparse($news->news_body), '');
+            }
+        }
+
+        return $feed->render('atom');
+    }
+
 }

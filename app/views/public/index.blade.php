@@ -388,6 +388,9 @@
                             <span class="social-link" title="O Matiji Ljubeku">
                                 <a href="http://en.wikipedia.org/wiki/Matija_Ljubek" target="_blank">{{ HTML::image('css/assets/images/social_links/wikipedia.png', 'Wikipedia', array('class' => 'img-responsive')) }}</a>
                             </span>
+                            <span class="social-link" title="KKK Matija Ljubek RSS">
+                                <a href="{{ URL::to('rss') }}" target="_blank">{{ HTML::image('css/assets/images/social_links/rss.png', 'RSS', array('class' => 'img-responsive')) }}</a>
+                            </span>
                         </div>
                     </div>
                 </div>
