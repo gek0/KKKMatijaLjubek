@@ -1,6 +1,6 @@
 <?php
 
-Validator::extend('alpha_spaces', function($attribute, $value)
+Validator::extend('alpha_spaces_dash', function($attribute, $value, $parameters)
 {
     return preg_match('/^[\pL\s\-]+$/u', $value);
 });

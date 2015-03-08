@@ -29,14 +29,14 @@ class Person extends Eloquent implements SluggableInterface{
      *
      */
     public static $rules = array(
-        'person_full_name' => 'required|between:1,255|alpha_spaces|unique:persons',
+        'person_full_name' => 'required|between:1,255|unique:persons',
         'person_description' => 'required',
         'person_category' => 'integer|between:1,7',
         'person_birthday' => 'date'
     );
 
     public static $rulesLessStrict = array(
-        'person_full_name' => 'required|between:1,255|alpha_spaces',
+        'person_full_name' => 'required|between:1,255',
         'person_description' => 'required',
         'person_category' => 'integer|between:1,7',
         'person_birthday' => 'date'
@@ -53,7 +53,6 @@ class Person extends Eloquent implements SluggableInterface{
     public static $messages = array(
         'person_full_name.required' => 'Ime i prezime osobe je obavezno.',
         'person_full_name.between' => 'Ime i prezime mora biti kraće od 255 znakova.',
-        'person_full_name.alpha_spaces' => 'Ime i prezime osobe može sadržavati samo slova, razmak i crticu.',
         'person_full_name.unique' => 'Osoba s istim imenom i prezimenom već postoji.',
         'person_description.required' => 'Opis osobe je obavezan.',
         'person_category.integer' => 'Kategorija osobe je obavezna.',
