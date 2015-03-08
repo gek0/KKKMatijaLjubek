@@ -6,24 +6,40 @@ jQuery(document).ready(function(){
     /**
      * add new user
      */
-    $("#noviKorisnik").submit(function(event){
+    $("#newUser").submit(function(event){
         event.preventDefault();
 
         //disable button click and show loader
         $('button#addUser').addClass('disabled');
-        $('#noviKorisnikLoad').css('visibility', 'visible').fadeIn();
+        $('#newUserLoad').css('visibility', 'visible').fadeIn();
 
         //get input fields values
         var values = {};
         $.each($(this).serializeArray(), function(i, field) {
             values[field.name] = field.value;
         });
-        var token = $('#noviKorisnik > input[name="_token"]').val();
+        var token = $('#newUser > input[name="_token"]').val();
 
         //user output
         var outputMsg = $('#outputMsg');
         var errorMsg = "";
         var successMsg = "<h3>Korisnički račun je uspješno kreiran.</h3>";
+
+        function restoreNotification(){
+            outputMsg.fadeOut(1000, function(){
+                //enable button click and hide loader
+                $('button#addUser').removeClass('disabled');
+                $('#newUserLoad').css('visibility', 'hidden').fadeOut();
+                $("#newUser").trigger('reset');
+
+                outputMsg.find('h3').remove();
+                $('#notificationTimer').empty();
+
+                setTimeout(function () {
+                    outputMsg.attr('class', 'notificationOutput');
+                }, 1000);
+            });
+        }
 
         $.ajax({
             type: 'post',
@@ -32,24 +48,32 @@ jQuery(document).ready(function(){
             headers: { 'X-CSRF-Token' : token },
             data: { _token: token, formData: values },
             success: function(data){
-                outputMsg.fadeOut().empty();
 
                 //check status of validation and query
                 if(data.status === 'success'){
                     outputMsg.append(successMsg).addClass('successNotif').slideDown();
 
-                    setTimeout(function(){
-                        //enable button click and hide loader
-                        $('button#addUser').attr('class', 'btn btn-primary btn-info');
-                        $('#noviKorisnikLoad').css('visibility', 'hidden').fadeOut();
+                    //timer
+                    var numSeconds = 3;
+                    var timer = 3;
+                    function countDown(){
+                        numSeconds--;
+                        if(numSeconds == 0){
+                            clearInterval(timer);
+                        }
+                        $('#notificationTimer').html(numSeconds);
+                    }
+                    timer = setInterval(countDown, 1000);
 
-                        setTimeout(function() {
-                            outputMsg.slideUp().empty();
-                            //restore old class to output div
-                            outputMsg.attr('class', 'notificationOutput');
-                            $("#noviKorisnik").trigger('reset');
-                        }, 2500);
-                    }, 1500);
+                    //hide notification if user clicked
+                    $('#notifTool').click(function(){
+                        restoreNotification();
+
+                    });
+
+                    setTimeout(function(){
+                        restoreNotification();
+                    }, numSeconds * 1000);
                 }
                 else{
                     $.each(data.errors, function(index, value) {
@@ -59,17 +83,27 @@ jQuery(document).ready(function(){
                     });
                     outputMsg.append(errorMsg).addClass('warningNotif').slideDown();
 
-                    setTimeout(function(){
-                        //enable button click and hide loader
-                        $('button#addUser').attr('class', 'btn btn-primary btn-info');
-                        $('#noviKorisnikLoad').css('visibility', 'hidden').fadeOut();
+                    //timer
+                    var numSeconds = 5;
+                    var timer = 5;
+                    function countDown(){
+                        numSeconds--;
+                        if(numSeconds == 0){
+                            clearInterval(timer);
+                        }
+                        $('#notificationTimer').html(numSeconds);
+                    }
+                    timer = setInterval(countDown, 1000);
 
-                        setTimeout(function() {
-                            outputMsg.slideUp().empty();
-                            //restore old class to output div
-                            outputMsg.attr('class', 'notificationOutput');
-                        }, 3500);
-                    }, 1500);
+                    //hide notification if user clicked
+                    $('#notifTool').click(function(){
+                        restoreNotification();
+
+                    });
+
+                    setTimeout(function(){
+                        restoreNotification();
+                    }, numSeconds * 1000);
                 }
             }
         });
@@ -78,22 +112,38 @@ jQuery(document).ready(function(){
     /**
      * change user settings
      */
-    $("#novePostavke").submit(function(event){
+    $("#newUserSettings").submit(function(event){
         event.preventDefault();
 
         //disable button click and show loader
         $('button#changeData').addClass('disabled');
-        $('#novePostavkeLoad').css('visibility', 'visible').fadeIn();
+        $('#newUserSettingsLoad').css('visibility', 'visible').fadeIn();
 
         //get input fields values
         var values = {};
         $.each($(this).serializeArray(), function(i, field) {
             values[field.name] = field.value;
         });
-        var token = $('#novePostavke > input[name="_token"]').val();
+        var token = $('#newUserSettings > input[name="_token"]').val();
         var outputMsg = $('#outputMsg');
         var errorMsg = "";
         var successMsg = "<h3>Korisnički račun je uspješno izmjenjen.</h3>";
+
+        function restoreNotification(){
+            outputMsg.fadeOut(1000, function(){
+                //enable button click and hide loader
+                $('button#changeData').removeClass('disabled');
+                $('#newUserSettingsLoad').css('visibility', 'hidden').fadeOut();
+                $("#newUserSettings").trigger('reset');
+
+                outputMsg.find('h3').remove();
+                $('#notificationTimer').empty();
+
+                setTimeout(function () {
+                    outputMsg.attr('class', 'notificationOutput');
+                }, 1000);
+            });
+        }
 
         $.ajax({
             type: 'post',
@@ -102,24 +152,32 @@ jQuery(document).ready(function(){
             headers: { 'X-CSRF-Token' : token },
             data: { _token: token, formData: values },
             success: function(data){
-                outputMsg.fadeOut().empty();
 
                 //check status of validation and query
                 if(data.status === 'success'){
                     outputMsg.append(successMsg).addClass('successNotif').slideDown();
 
-                    setTimeout(function(){
-                        //enable button click and hide loader
-                        $('button#changeData').attr('class', 'btn btn-primary btn-info');
-                        $('#novePostavkeLoad').css('visibility', 'hidden').fadeOut();
+                    //timer
+                    var numSeconds = 3;
+                    var timer = 3;
+                    function countDown(){
+                        numSeconds--;
+                        if(numSeconds == 0){
+                            clearInterval(timer);
+                        }
+                        $('#notificationTimer').html(numSeconds);
+                    }
+                    timer = setInterval(countDown, 1000);
 
-                        setTimeout(function() {
-                            outputMsg.slideUp().empty();
-                            //restore old class to output div
-                            outputMsg.attr('class', 'notificationOutput');
-                            $("#noviKorisnik").trigger('reset');
-                        }, 2500);
-                    }, 1500);
+                    //hide notification if user clicked
+                    $('#notifTool').click(function(){
+                        restoreNotification();
+
+                    });
+
+                    setTimeout(function(){
+                        restoreNotification();
+                    }, numSeconds * 1000);
                 }
                 else{
                     $.each(data.errors, function(index, value) {
@@ -129,134 +187,33 @@ jQuery(document).ready(function(){
                     });
                     outputMsg.append(errorMsg).addClass('warningNotif').slideDown();
 
+                    //timer
+                    var numSeconds = 5;
+                    var timer = 5;
+                    function countDown(){
+                        numSeconds--;
+                        if(numSeconds == 0){
+                            clearInterval(timer);
+                        }
+                        $('#notificationTimer').html(numSeconds);
+                    }
+                    timer = setInterval(countDown, 1000);
+
+                    //hide notification if user clicked
+                    $('#notifTool').click(function(){
+                        restoreNotification();
+                    });
+
                     setTimeout(function(){
-                        //enable button click and hide loader
-                        $('button#changeData').attr('class', 'btn btn-primary btn-info');
-                        $('#novePostavkeLoad').css('visibility', 'hidden').fadeOut();
-
-                        setTimeout(function() {
-                            outputMsg.slideUp().empty();
-                            //restore old class to output div
-                            outputMsg.attr('class', 'notificationOutput');
-                        }, 3500);
-                    }, 1500);
+                        restoreNotification();
+                    }, numSeconds * 1000);
                 }
             }
         });
     });
 
     /**
-     * delete image from news gallery
-     */
-    $('.btn-delete-image').click(function(){
-        var imageID = $(this).attr('id'); //image ID to delete
-        var token = $('meta[name="_token"]').attr('content');
-        var outputMsg = $('#outputMsg');
-        var errorMsg = "";
-        var successMsg = "<h3>Slika je uspješno obrisana.</h3>";
-
-        //gallery counter
-        var imageGallery = $('#news_image_gallery');
-        var imageCount = parseInt($('#image_gallery_counter').html()) - 1;
-        var dataURL = $('#news_image_gallery').attr('data-role-link');
-
-        $.ajax({
-            type: 'post',
-            url: dataURL,
-            dataType: 'json',
-            headers: { 'X-CSRF-Token' : token },
-            data: { imageData: imageID },
-            success: function(data){
-                outputMsg.fadeOut().empty();
-
-                //check status of validation and query
-                if(data.status === 'success'){
-                    outputMsg.append(successMsg).addClass('successNotif').slideDown();
-                    $('#img-container-'+imageID).fadeOut();   //hide parent div
-
-                    //update gallery counter and hide gallery if counter equals 0
-                    $('#image_gallery_counter').html(imageCount);
-                    if(imageCount < 1){
-                        imageGallery.fadeOut();
-                    }
-
-                    setTimeout(function() {
-                        outputMsg.slideUp().empty();
-                        //restore old class to output div
-                        outputMsg.attr('class', 'notificationOutput');
-                    }, 2500);
-                }
-                else{
-                    errorMsg = "<h3>" + data.errors + "</h3>";
-                    outputMsg.append(errorMsg).addClass('warningNotif').slideDown();
-
-                    setTimeout(function() {
-                        outputMsg.slideUp().empty();
-                        //restore old class to output div
-                        outputMsg.attr('class', 'notificationOutput');
-                    }, 2500);
-                }
-            }
-        });
-    });
-
-    /**
-     * delete image from person gallery
-     */
-    $('.btn-delete-image').click(function(){
-        var imageID = $(this).attr('id'); //image ID to delete
-        var token = $('meta[name="_token"]').attr('content');
-        var outputMsg = $('#outputMsg');
-        var errorMsg = "";
-        var successMsg = "<h3>Slika je uspješno obrisana.</h3>";
-
-        //gallery counter
-        var imageGallery = $('#person_image_gallery');
-        var imageCount = parseInt($('#image_gallery_counter').html()) - 1;
-        var dataURL = $('#person_image_gallery').attr('data-role-link');
-
-        $.ajax({
-            type: 'post',
-            url: dataURL,
-            dataType: 'json',
-            headers: { 'X-CSRF-Token' : token },
-            data: { imageData: imageID },
-            success: function(data){
-                outputMsg.fadeOut().empty();
-
-                //check status of validation and query
-                if(data.status === 'success'){
-                    outputMsg.append(successMsg).addClass('successNotif').slideDown();
-                    $('#img-container-'+imageID).fadeOut();   //hide parent div
-
-                    //update gallery counter and hide gallery if counter equals 0
-                    $('#image_gallery_counter').html(imageCount);
-                    if(imageCount < 1){
-                        imageGallery.fadeOut();
-                    }
-
-                    setTimeout(function() {
-                        outputMsg.slideUp().empty();
-                        //restore old class to output div
-                        outputMsg.attr('class', 'notificationOutput');
-                    }, 2500);
-                }
-                else{
-                    errorMsg = "<h3>" + data.errors + "</h3>";
-                    outputMsg.append(errorMsg).addClass('warningNotif').slideDown();
-
-                    setTimeout(function() {
-                        outputMsg.slideUp().empty();
-                        //restore old class to output div
-                        outputMsg.attr('class', 'notificationOutput');
-                    }, 2500);
-                }
-            }
-        });
-    });
-
-    /**
-     * delete image from homepage image gallery
+     * delete image from news/person/cover gallery
      */
     $('.btn-delete-image').click(function(){
         var imageID = $(this).attr('id'); //image ID to delete
@@ -270,6 +227,17 @@ jQuery(document).ready(function(){
         var imageCount = parseInt($('#image_gallery_counter').html()) - 1;
         var dataURL = $('#image_gallery').attr('data-role-link');
 
+        function restoreNotification(){
+            outputMsg.fadeOut(1000, function(){
+                outputMsg.find('h3').remove();
+                $('#notificationTimer').empty();
+
+                setTimeout(function () {
+                    outputMsg.attr('class', 'notificationOutput');
+                }, 1000);
+            });
+        }
+
         $.ajax({
             type: 'post',
             url: dataURL,
@@ -277,7 +245,6 @@ jQuery(document).ready(function(){
             headers: { 'X-CSRF-Token' : token },
             data: { imageData: imageID },
             success: function(data){
-                outputMsg.fadeOut().empty();
 
                 //check status of validation and query
                 if(data.status === 'success'){
@@ -290,21 +257,51 @@ jQuery(document).ready(function(){
                         imageGallery.fadeOut();
                     }
 
-                    setTimeout(function() {
-                        outputMsg.slideUp().empty();
-                        //restore old class to output div
-                        outputMsg.attr('class', 'notificationOutput');
-                    }, 2500);
+                    //timer
+                    var numSeconds = 3;
+                    var timer = 3;
+                    function countDown(){
+                        numSeconds--;
+                        if(numSeconds == 0){
+                            clearInterval(timer);
+                        }
+                        $('#notificationTimer').html(numSeconds);
+                    }
+                    timer = setInterval(countDown, 1000);
+
+                    //hide notification if user clicked
+                    $('#notifTool').click(function(){
+                        restoreNotification();
+                    });
+
+                    setTimeout(function(){
+                        restoreNotification();
+                    }, numSeconds * 1000);
                 }
                 else{
                     errorMsg = "<h3>" + data.errors + "</h3>";
                     outputMsg.append(errorMsg).addClass('warningNotif').slideDown();
 
-                    setTimeout(function() {
-                        outputMsg.slideUp().empty();
-                        //restore old class to output div
-                        outputMsg.attr('class', 'notificationOutput');
-                    }, 2500);
+                    //timer
+                    var numSeconds = 5;
+                    var timer = 5;
+                    function countDown(){
+                        numSeconds--;
+                        if(numSeconds == 0){
+                            clearInterval(timer);
+                        }
+                        $('#notificationTimer').html(numSeconds);
+                    }
+                    timer = setInterval(countDown, 1000);
+
+                    //hide notification if user clicked
+                    $('#notifTool').click(function(){
+                        restoreNotification();
+                    });
+
+                    setTimeout(function(){
+                        restoreNotification();
+                    }, numSeconds * 1000);
                 }
             }
         });
@@ -314,10 +311,22 @@ jQuery(document).ready(function(){
      *   edit image caption from homepage image gallery
      */
     $(".btn-edit-image").click(function(){
-        var imgCaption = $(this).siblings('img:first').attr('data-caption');
+        var imgCaption = $(this).parent().children().children().attr('data-caption');
         var imageID = $(this).attr('id'); //image ID to edit
         var outputMsg = $('#outputMsg');
         var errorMsg = "";
+
+        function restoreNotification(){
+            outputMsg.fadeOut(1000, function(){
+                outputMsg.find('h3').remove();
+                $('#notificationTimer').empty();
+
+                setTimeout(function () {
+                    outputMsg.attr('class', 'notificationOutput');
+                }, 1000);
+            });
+        }
+
         bootbox.prompt({
             title: "Tekst slike:",
             value: imgCaption,
@@ -326,11 +335,26 @@ jQuery(document).ready(function(){
                     errorMsg = "<h3>Tekst slike je obavezan.</h3>";
                     outputMsg.append(errorMsg).addClass('warningNotif').slideDown();
 
-                    setTimeout(function() {
-                        outputMsg.slideUp().empty();
-                        //restore old class to output div
-                        outputMsg.attr('class', 'notificationOutput');
-                    }, 2500);
+                    //timer
+                    var numSeconds = 5;
+                    var timer = 5;
+                    function countDown(){
+                        numSeconds--;
+                        if(numSeconds == 0){
+                            clearInterval(timer);
+                        }
+                        $('#notificationTimer').html(numSeconds);
+                    }
+                    timer = setInterval(countDown, 1000);
+
+                    //hide notification if user clicked
+                    $('#notifTool').click(function(){
+                        restoreNotification();
+                    });
+
+                    setTimeout(function(){
+                        restoreNotification();
+                    }, numSeconds * 1000);
                 }
                 else if(result !== null) {
                     var token = $('meta[name="_token"]').attr('content');
@@ -345,7 +369,6 @@ jQuery(document).ready(function(){
                         headers: { 'X-CSRF-Token' : token },
                         data: { imageID: imageID, imageCaption: imageCaption },
                         success: function(data){
-                            outputMsg.fadeOut().empty();
 
                             //check status of validation and query
                             if(data.status === 'success'){
@@ -354,21 +377,51 @@ jQuery(document).ready(function(){
                                 //set new caption to DOM
                                 $('.btn-edit-image').siblings('img:first').attr('data-caption', imageCaption);
 
-                                setTimeout(function() {
-                                    outputMsg.slideUp().empty();
-                                    //restore old class to output div
-                                    outputMsg.attr('class', 'notificationOutput');
-                                }, 2500);
+                                //timer
+                                var numSeconds = 3;
+                                var timer = 3;
+                                function countDown(){
+                                    numSeconds--;
+                                    if(numSeconds == 0){
+                                        clearInterval(timer);
+                                    }
+                                    $('#notificationTimer').html(numSeconds);
+                                }
+                                timer = setInterval(countDown, 1000);
+
+                                //hide notification if user clicked
+                                $('#notifTool').click(function(){
+                                    restoreNotification();
+                                });
+
+                                setTimeout(function(){
+                                    restoreNotification();
+                                }, numSeconds * 1000);
                             }
                             else{
                                 errorMsg = "<h3>" + data.errors + "</h3>";
                                 outputMsg.append(errorMsg).addClass('warningNotif').slideDown();
 
-                                setTimeout(function() {
-                                    outputMsg.slideUp().empty();
-                                    //restore old class to output div
-                                    outputMsg.attr('class', 'notificationOutput');
-                                }, 2500);
+                                //timer
+                                var numSeconds = 5;
+                                var timer = 5;
+                                function countDown(){
+                                    numSeconds--;
+                                    if(numSeconds == 0){
+                                        clearInterval(timer);
+                                    }
+                                    $('#notificationTimer').html(numSeconds);
+                                }
+                                timer = setInterval(countDown, 1000);
+
+                                //hide notification if user clicked
+                                $('#notifTool').click(function(){
+                                    restoreNotification();
+                                });
+
+                                setTimeout(function(){
+                                    restoreNotification();
+                                }, numSeconds * 1000);
                             }
                         }
                     });

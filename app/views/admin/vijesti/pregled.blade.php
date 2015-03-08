@@ -54,7 +54,7 @@
     </div>
 
     @if($newsData->images->count() > 0)
-    <section id="news_image_gallery" data-role-link="{{ URL::to('admin/vijesti/gallery-image-delete') }}">
+    <section id="image_gallery" data-role-link="{{ URL::to('admin/vijesti/gallery-image-delete') }}">
         <hr>
         <div class="container-fluid">
             <div class="row padded text-center">

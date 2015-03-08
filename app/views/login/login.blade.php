@@ -46,7 +46,13 @@
 </head>
 <body>
     <!-- notifications -->
-    <div class="notificationOutput" id="outputMsg"></div>
+    <div class="notificationOutput" id="outputMsg">
+
+        <div class="notificationTools" id="notifTool">
+            <span class="glyphicon glyphicon-remove glyphicon-large" id="notificationRemove"></span>
+            <span id="notificationTimer"></span>
+        </div>
+    </div>
 
     <!-- login container -->
     <div class="container" id="login-block">
@@ -122,7 +128,7 @@
                     //check status of validation and query
                     if (data.status === 'success') {
                         //enable button click and hide loader
-                        $('button#loginSubmit').attr('class', 'btn btn-primary btn-info');
+                        $('button#loginSubmit').removeClass('disabled');
                         $('#adminLoginLoad').css('visibility', 'hidden').fadeOut();
 
                         //redirect to intended page
@@ -132,17 +138,37 @@
                         errorMsg = '<h3>' + data.errors + '</h3>';
                         outputMsg.append(errorMsg).addClass('warningNotif').slideDown();
 
-                        setTimeout(function(){
-                            //enable button click and hide loader
-                            $('button#loginSubmit').attr('class', 'btn btn-primary btn-info');
-                            $('#adminLoginLoad').css('visibility', 'hidden').fadeOut();
+                        //timer
+                        var numSeconds = 3;
+                        function countDown(){
+                            numSeconds--;
+                            if(numSeconds == 0){
+                                clearInterval(timer);
+                            }
+                            $('#notificationTimer').html(numSeconds);
+                        }
+                        var timer = setInterval(countDown, 1000);
 
-                            setTimeout(function() {
-                                outputMsg.slideUp().empty();
-                                //restore old class to output div
-                                outputMsg.attr('class', 'notificationOutput');
-                            }, 1500);
-                        }, 1500);
+                        function restoreNotification(){
+                            outputMsg.fadeOut(1000, function(){
+                                //enable button click and hide loader
+                                $('button#loginSubmit').removeClass('disabled');
+                                $('#adminLoginLoad').css('visibility', 'hidden').fadeOut();
+
+                                setTimeout(function () {
+                                    outputMsg.empty().attr('class', 'notificationOutput');
+                                }, 1000);
+                            });
+                        }
+
+                        //hide notification if user clicked
+                        $('#notifTool').click(function(){
+                            restoreNotification();
+                        });
+
+                        setTimeout(function () {
+                            restoreNotification();
+                        }, numSeconds * 1000);
                     }
                 }
             });

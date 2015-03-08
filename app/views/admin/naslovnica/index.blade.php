@@ -26,7 +26,9 @@
                     <h2>Galerija slika <small id="image_gallery_counter">{{ $galleryData->count() }}</small></h2>
                     @foreach($galleryData as $img)
                         <div class="col-lg-3 col-sm-4 col-6 small-marg" id="img-container-{{ $img->id }}">
-                            <img data-original="{{ URL::to('/gallery_uploads/'.$img->file_name) }}" alt="{{ imageAlt($img->file_name) }}" class="thumbnail img-responsive lazy" data-caption="{{ $img->caption }}" />
+                            <a href="{{ URL::to('/gallery_uploads/'.$img->file_name) }}" data-imagelightbox="gallery-images">
+                                <img data-original="{{ URL::to('/gallery_uploads/'.$img->file_name) }}" alt="{{ imageAlt($img->file_name) }}" class="thumbnail img-responsive lazy" data-caption="{{ $img->caption }}" />
+                            </a>
                             <button id="{{ $img->id }}" class="btn btn-danger btn-delete-image" title="Brisanje slike {{ $img->file_name }}"><span class="glyphicon glyphicon-trash"></span></button>
                             <button id="{{ $img->id }}" class="btn btn-info btn-edit-image" title="Uredi sliku {{ $img->file_name }}"><span class="glyphicon glyphicon-pencil"></span></button>
                         </div>

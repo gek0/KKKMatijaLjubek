@@ -268,8 +268,8 @@ button.btn-half{
 /**
 *   notifications
 */
-div.notificationOutput{
-    width: 75%; height: auto;
+.notificationOutput{
+    width: 100%; height: auto;
     margin: 0 auto;
     display: none;
     font-weight: bold;
@@ -281,11 +281,27 @@ div.notificationOutput{
     overflow: hidden;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); -o-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
 }
+.notificationOutput h3{
+    display: inline-block;
+    width: 60%;
+    margin: 0.625em auto;
+}
+.notificationTools{
+    width: 100px; height: 25px;
+    line-height: 25px;
+    position: absolute;
+    z-index: 100;
+    right: 50px;
+    top: 30%;
+    margin: auto;
+    cursor: pointer;
+}
+#notificationTimer{ font-size: 1.45em; }
 .warningNotif{
     background: #df1c3c;
 }
 .successNotif{
-    background: #3ced5e;
+    background: #5ccb71;
 }
 
 /**
@@ -871,6 +887,14 @@ footer:hover .pulseAnim {
 
     .imagelightbox-arrow-left{ left: 0; }
     .imagelightbox-arrow-right{ right: 0; }
+}
+
+@media (max-width: 991px) {
+    .notificationTools{
+        position: static;
+        display: block;
+        margin: 0.2em auto;
+    }
 }
 
 

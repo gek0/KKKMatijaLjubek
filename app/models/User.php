@@ -16,7 +16,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *  - 	email VARCHAR(50) / UNIQUE
 	 *  -	password VARCHAR(60)
 	 *  -	remember_token VARCHAR(100)
-	 *  -	last_login TIMESTAMP
 	 *  - 	created_at TIMESTAMP
 	 *  - 	updated_at TIMESTAMP
 	 */

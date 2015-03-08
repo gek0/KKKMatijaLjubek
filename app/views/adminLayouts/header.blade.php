@@ -49,7 +49,13 @@
 </head>
 <body class="cbp-spmenu-push">
     <!-- notifications -->
-    <div class="notificationOutput" id="outputMsg"></div>
+    <div class="notificationOutput" id="outputMsg">
+
+        <div class="notificationTools" id="notifTool">
+            <span class="glyphicon glyphicon-remove glyphicon-large" id="notificationRemove"></span>
+            <span id="notificationTimer"></span>
+        </div>
+    </div>
     <header>
         <!-- navigation -->
         <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" role="navigation">
