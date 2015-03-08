@@ -375,10 +375,20 @@
                             <li title="Fax"><i class="fa fa-fax pr-10 fa-med text-colored"></i> 01/3011 - 202</li>
                             <li title="E-mail"><i class="fa fa-envelope pr-10 fa-med text-colored"></i> {{ HTML::mailto('kkk-matija.ljubek@zg.t-com.hr') }}</li>
                         </ul>
-                        <ul class="social-links">
-                            <li class="facebook"><a target="_blank" href="https://www.facebook.com/klub.matijaljubek"><i class="fa fa-facebook"></i></a></li>
-                            <li class="youtube"><a target="_blank" href="https://www.youtube.com/watch?v=M0XxYLrqdjc"><i class="fa fa-youtube"></i></a></li>
-                        </ul>
+                        <div class="social-links-container">
+                            <span class="social-link" title="KKK Matija Ljubek">
+                                <a href="https://www.facebook.com/klub.matijaljubek" target="_blank">{{ HTML::image('css/assets/images/social_links/facebook.png', 'Facebook', array('class' => 'img-responsive')) }}</a>
+                            </span>
+                            <span class="social-link" title="Sjećanje na Matiju Ljubeka">
+                                <a href="https://www.youtube.com/watch?v=kOnh_5DVBMI" target="_blank">{{ HTML::image('css/assets/images/social_links/youtube.png', 'YouTube', array('class' => 'img-responsive')) }}</a>
+                            </span>
+                            <span class="social-link" title="Memorijalna utrka Matija Ljubek">
+                                <a href="https://www.youtube.com/watch?v=M0XxYLrqdjc" target="_blank">{{ HTML::image('css/assets/images/social_links/youtube.png', 'YouTube', array('class' => 'img-responsive')) }}</a>
+                            </span>
+                            <span class="social-link" title="O Matiji Ljubeku">
+                                <a href="http://en.wikipedia.org/wiki/Matija_Ljubek" target="_blank">{{ HTML::image('css/assets/images/social_links/wikipedia.png', 'Wikipedia', array('class' => 'img-responsive')) }}</a>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -429,6 +439,7 @@
 {{ HTML::script('js/jquery.touchSwipe.min.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/jquery.liquid-slider.min.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/jquery.lazyload.min.js', array('charset' => 'utf-8')) }}
+{{ HTML::script('js/imagelightbox.min.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/gmaps.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/initJS.js', array('charset' => 'utf-8')) }}

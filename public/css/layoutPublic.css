@@ -839,18 +839,14 @@ body {
 /**
 *   social links
 */
-.social-links {
-    padding: 0;
-    list-style: none;
-    margin: 15px 0;
+.social-links-container {
+    padding: 0.5em;
+    margin: 0.625em auto;
+    text-align: center;
 }
-.social-links li {
-    margin: 10px 25px 10px 0;
+.social-link{
+    width: 75px; height: 75px;
     display: inline-block;
-    font-size: 36px;
-}
-.social-links li a {
-    color: #333333;
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
@@ -858,11 +854,9 @@ body {
     transition: all 0.2s ease-in-out;
 }
 
-.social-links li.youtube a:hover {
-    color: #b31217;
-}
-.social-links li.facebook a:hover {
-    color: #3b5998;
+.social-link:hover {
+    -moz-animation: bounce 1s;    -webkit-animation: bounce 1s;    animation: bounce 1s;
+    -moz-animation-iteration-count: 1;    -webkit-animation-iteration-count: 1;    animation-iteration-count: 1;
 }
 
 /**
