@@ -161,7 +161,7 @@ jQuery(document).ready(function() {
 
             setTimeout(function () {
                 if(count > 0) {
-                    $("#filter-count").text('Broj vijesti s odabranim tagom = ' + count);
+                    $("#filter-count").text('Klknite na traženi tag za prikaz svih vijesti s istim.');
                 }
                 else{
                     $("#filter-count").text('Nije pronađen niti jedan tag.');

@@ -51,7 +51,7 @@
                             @if($newsData->tags->count() > 0)
                                 <ul class="tags">
                                     @foreach($newsData->tags as $tag)
-                                        <a href="{{ URL::to('tag/'.$tag->id) }}"><li>{{ $tag->tag }}</li></a>
+                                        <a href="{{ URL::to('vijesti/tagovi/'.$tag->slug) }}"><li>{{ $tag->tag }}</li></a>
                                     @endforeach
                                 </ul>
                             @else
@@ -59,6 +59,16 @@
                             @endif
                         </div>
                     </div>
+                    @if(Auth::user())
+                        <div class="sidebar-content">
+                            <div class="sidebar-header" title="Admin alati">
+                                <i class="fa fa-cog fa-big pr-10"></i> <span class="info-text">Admin alati</span>
+                            </div>
+                            <div class="sidebar-body text-center">
+                                <a href="{{ URL::to('admin/vijesti/izmjena/'.$newsData->slug) }}" target="_blank"><button class="btn btn-primary btn-square"><i class="fa-med pr-10 fa fa-pencil"></i> Uredi članak</button></a>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
             <hr>

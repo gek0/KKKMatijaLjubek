@@ -54,6 +54,17 @@ function safe_name($string) {
 }
 
 /**
+ * @param $string
+ * @return string
+ * string like slug URL, uses @safe_name() function
+ */
+function string_like_slug($string){
+    $trans = array("_" => "-");
+
+    return strtr(safe_name($string), $trans);
+}
+
+/**
  * @param $dir
  * remove directory and all its content
  */

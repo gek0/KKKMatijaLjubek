@@ -262,7 +262,7 @@
                                 <div class="text-center tags-collection">
                                     <ul class="tags">
                                         @foreach($news->tags as $tag)
-                                            <a href="{{ URL::to('tag/'.$tag->id) }}"><li>{{ $tag->tag }}</li></a>
+                                            <a href="{{ URL::to('vijesti/tagovi/'.$tag->slug) }}"><li>{{ $tag->tag }}</li></a>
                                         @endforeach
                                     </ul>
                                 </div>

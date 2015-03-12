@@ -84,9 +84,18 @@ class NewsController extends AdminController{
            //tags
            if($news_tags_unique == true){
                 foreach($news_tags_unique as $tags){
-                    $tag = new Tag;
-                    $tag->tag = e($tags);
-                    $news->tags()->save($tag);
+                    $new_tag = string_like_slug(e($tags));
+                    $db_tag = DB::table('tags')->where('tags.slug', '=', $new_tag)->first();
+
+                    //if tag is not found in database - add it
+                    if(!$db_tag){
+                        $tag = new Tag;
+                        $tag->tag = e($tags);
+                        $news->tags()->save($tag);
+                    }
+                    else{   //if found - attach it to news
+                        $news->tags()->attach($db_tag->id);
+                    }
                 }
            }
 
@@ -159,8 +168,16 @@ class NewsController extends AdminController{
                         foreach($old_tags as $tags){
                             //delete tags from db if removed in form
                             if(!in_array($tags->tag, $news_tags)){
+                                //check if other news is using same tag
+                                $tag_counter = DB::table('tags')->join('news_tag', 'tags.id', '=', 'news_tag.tag_id')
+                                                                ->where('news_tag.tag_id', '=', $tags->tag_id)
+                                                                ->count();
                                 $news->tags()->detach($tags->tag_id);
-                                $tag = Tag::where('id', '=', $tags->tag_id)->delete();
+
+                                //delete tag if no news uses it
+                                if($tag_counter <= 1) {
+                                    Tag::where('id', '=', $tags->tag_id)->delete();
+                                }
                             }
                             else{
                                 if(($key = array_search($tags->tag, $news_tags)) !== false) {
@@ -171,8 +188,16 @@ class NewsController extends AdminController{
                     }
                     else{   //delete all tags from db
                         foreach($old_tags as $tags){
+                            //check if other news is using same tag
+                            $tag_counter = DB::table('tags')->join('news_tag', 'tags.id', '=', 'news_tag.tag_id')
+                                                            ->where('news_tag.tag_id', '=', $tags->tag_id)
+                                                            ->count();
                             $news->tags()->detach($tags->tag_id);
-                            $tag = Tag::where('id', '=', $tags->tag_id)->delete();
+
+                            //delete tag if no news uses it
+                            if($tag_counter <= 1) {
+                                Tag::where('id', '=', $tags->tag_id)->delete();
+                            }
                         }
                     }
                 }
@@ -221,10 +246,18 @@ class NewsController extends AdminController{
                     //add new tags if any
                     if($news_tags){
                         foreach($news_tags as $tags){
-                            $tag = new Tag;
-                            $tag->tag = e($tags);
-                            $tag->save();
-                            $news->tags()->attach($tag);
+                            $new_tag = string_like_slug(e($tags));
+                            $db_tag = DB::table('tags')->where('tags.slug', '=', $new_tag)->first();
+
+                            //if tag is not found in database - add it
+                            if(!$db_tag){
+                                $tag = new Tag;
+                                $tag->tag = e($tags);
+                                $news->tags()->save($tag);
+                            }
+                            else{   //if found - attach it to news
+                                $news->tags()->attach($db_tag->id);
+                            }
                         }
                     }
 
@@ -338,11 +371,30 @@ class NewsController extends AdminController{
             //check if news exists
             if($news){
                 try{
-                    $newsID = $news->id;
+                    //get all news tags, if tag is unique to news - delete from DB
+                    $tags_array = $news->tags;
+                    $tags_to_delete = array();
+
+                    foreach($tags_array as $tag){
+                        $tag_counter = DB::table('tags')->join('news_tag', 'tags.id', '=', 'news_tag.tag_id')
+                                                        ->where('news_tag.tag_id', '=', $tag->id)
+                                                        ->count();
+
+                        if($tag_counter == 1){
+                            $tags_to_delete[] = $tag->id;
+                        }
+                    }
+
                     //delete data from database
                     $news->delete();
+
+                    //delete tags if any
+                    if(count($tags_to_delete) > 0){
+                        Tag::whereIn('id', $tags_to_delete)->delete();
+                    }
+
                     //delete images from disk
-                    File::deleteDirectory(public_path().'/news_uploads/'.$newsID.'/');
+                    File::deleteDirectory(public_path().'/news_uploads/'.$news->id.'/');
 
                     return Redirect::to('admin/vijesti')->with(array('success' => 'Vijest je uspješno obrisana.'));
                 }
