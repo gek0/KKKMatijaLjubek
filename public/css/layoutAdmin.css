@@ -514,6 +514,18 @@ span.loader{
 }
 
 .padded{ padding: 1.1em; }
+.marginated{ margin: 0.625em; }
+.marginated-center{ margin: 0.625em auto; }
+.pr-10 {
+    padding-right: 10px;
+}
+.pl-10 {
+    padding-left: 10px;
+}
+.pb-clear {
+    padding-bottom: 0;
+}
+
 .glyphicon-large{ font-size: 1.45em; }
 span.info-text{ margin-left: 0.5em; }
 
