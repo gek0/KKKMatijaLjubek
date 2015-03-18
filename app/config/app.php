@@ -126,6 +126,7 @@ return array(
         'Roumen\Feed\FeedServiceProvider',
         'RyanNielson\Shareable\ShareableServiceProvider',
         'Jelovac\Bitly4laravel\Bitly4laravelServiceProvider',
+        'Intervention\Image\ImageServiceProvider',
 	),
 
 	/*
@@ -196,6 +197,7 @@ return array(
         'Feed'              => 'Roumen\Feed\Facades\Feed',
         'Shareable'         => 'RyanNielson\Shareable\Facades\Shareable',
         'Bitly'             => 'Jelovac\Bitly4laravel\Facades\Bitly4laravel',
+        'Image'             => 'Intervention\Image\Facades\Image',
 	),
 
 );

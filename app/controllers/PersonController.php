@@ -111,11 +111,20 @@ class PersonController extends AdminController{
 
                 foreach($person_images as $img){
                     $file_name = $personName.'_'.Str::random(5);
-                    $file_exstension = $img->getClientOriginalExtension();
-                    $full_name = $file_name.'.'.$file_exstension;
+                    $file_extension = $img->getClientOriginalExtension();
+                    $full_name = $file_name.'.'.$file_extension;
                     $file_size = $img->getSize();
 
                     $file_uploaded = $img->move($path, $full_name);
+
+                    //resize image
+                    $img_resizer = Image::make($path.$full_name);
+                    $img_resizer->resize(1000, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                        $constraint->upsize();
+                    });
+                    $img_resizer->save();
+
                     if($file_uploaded){
                         $image = new PersonImage;
                         $image->file_name = $full_name;
@@ -203,11 +212,20 @@ class PersonController extends AdminController{
 
                         foreach($person_images as $img){
                             $file_name = $personName.'_'.Str::random(5);
-                            $file_exstension = $img->getClientOriginalExtension();
-                            $full_name = $file_name.'.'.$file_exstension;
+                            $file_extension = $img->getClientOriginalExtension();
+                            $full_name = $file_name.'.'.$file_extension;
                             $file_size = $img->getSize();
 
                             $file_uploaded = $img->move($path, $full_name);
+
+                            //resize image
+                            $img_resizer = Image::make($path.$full_name);
+                            $img_resizer->resize(1000, null, function ($constraint) {
+                                $constraint->aspectRatio();
+                                $constraint->upsize();
+                            });
+                            $img_resizer->save();
+
                             if($file_uploaded){
                                 $image = new PersonImage;
                                 $image->file_name = $full_name;

@@ -1218,6 +1218,9 @@ body {
     }
     .imagelightbox-arrow-left{ left: 1.25em; }
     .imagelightbox-arrow-right{ right: 1.25em; }
+
+    .isotope-item{ width: 80%; margin: 0.5em auto; }
+
 }
 
 @media all and (max-width: 480px) {
@@ -1234,6 +1237,8 @@ body {
     .btn-square{
         font-size: 0.625em;
     }
+
+    .isotope-item{ width: 75%; margin: 0.5em auto; }
 }
 
 

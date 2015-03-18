@@ -43,11 +43,20 @@ class GalleryController extends AdminController{
             $path = public_path().'/gallery_uploads/';
 
             $file_name = 'gallery-cover-'.Str::random(10);
-            $file_exstension = $gallery_image->getClientOriginalExtension();
-            $full_name = $file_name.'.'.$file_exstension;
+            $file_extension = $gallery_image->getClientOriginalExtension();
+            $full_name = $file_name.'.'.$file_extension;
             $file_size = $gallery_image->getSize();
 
             $file_uploaded = $gallery_image->move($path, $full_name);
+
+            //resize image
+            $img_resizer = Image::make($path.$full_name);
+            $img_resizer->resize(1280, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            $img_resizer->save();
+
             if($file_uploaded){
                 $image = new Gallery;
                 $image->file_name = $full_name;

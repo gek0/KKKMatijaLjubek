@@ -109,11 +109,20 @@ class NewsController extends AdminController{
 
                 foreach($news_images as $img){
                     $file_name = substr($newsName, 0, 15).'_'.Str::random(5);
-                    $file_exstension = $img->getClientOriginalExtension();
-                    $full_name = $file_name.'.'.$file_exstension;
+                    $file_extension = $img->getClientOriginalExtension();
+                    $full_name = $file_name.'.'.$file_extension;
                     $file_size = $img->getSize();
 
                     $file_uploaded = $img->move($path, $full_name);
+
+                    //resize image
+                    $img_resizer = Image::make($path.$full_name);
+                    $img_resizer->resize(1280, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                        $constraint->upsize();
+                    });
+                    $img_resizer->save();
+
                     if($file_uploaded){
                         $image = new NewsImage;
                         $image->file_name = $full_name;
@@ -271,11 +280,20 @@ class NewsController extends AdminController{
 
                         foreach($news_images as $img){
                             $file_name = substr($newsName, 0, 15).'_'.Str::random(5);
-                            $file_exstension = $img->getClientOriginalExtension();
-                            $full_name = $file_name.'.'.$file_exstension;
+                            $file_extension = $img->getClientOriginalExtension();
+                            $full_name = $file_name.'.'.$file_extension;
                             $file_size = $img->getSize();
 
                             $file_uploaded = $img->move($path, $full_name);
+
+                            //resize image
+                            $img_resizer = Image::make($path.$full_name);
+                            $img_resizer->resize(1280, null, function ($constraint) {
+                                $constraint->aspectRatio();
+                                $constraint->upsize();
+                            });
+                            $img_resizer->save();
+
                             if($file_uploaded){
                                 $image = new NewsImage;
                                 $image->file_name = $full_name;

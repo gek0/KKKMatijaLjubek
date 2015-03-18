@@ -10,7 +10,8 @@
 		"cviebrock/eloquent-sluggable": "2.*",
 		"roumen/feed": "2.8.1",
 		"ryannielson/shareable": "1.0.*",
-		"jelovac/bitly4laravel": "3.*"
+		"jelovac/bitly4laravel": "3.*",
+        "intervention/image": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
