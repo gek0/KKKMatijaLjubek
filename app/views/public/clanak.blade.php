@@ -59,6 +59,20 @@
                             @endif
                         </div>
                     </div>
+                    <div class="sidebar-content">
+                        <div class="sidebar-header" title="Društvene mreže">
+                            <i class="fa fa-facebook fa-big pr-10"></i>
+                            <i class="fa fa-twitter fa-big pr-10"></i>
+                            <span class="info-text">Društvene mreže</span>
+                        </div>
+                        <div class="sidebar-body line-fx">
+                            {{ Shareable::facebook($options = array('url' => Request::url())) }}
+                            {{ Shareable::twitter($options = array('url' => Request::url(),
+                                                                    'text' => Str::limit($newsData->news_title, 50)
+                                                             )
+                                                  ) }}
+                        </div>
+                    </div>
                     @if(Auth::user())
                         <div class="sidebar-content">
                             <div class="sidebar-header" title="Admin alati">

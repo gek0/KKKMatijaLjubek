@@ -124,6 +124,8 @@ return array(
 		'Golonka\BBCode\BBCodeParserServiceProvider',
         'Cviebrock\EloquentSluggable\SluggableServiceProvider',
         'Roumen\Feed\FeedServiceProvider',
+        'RyanNielson\Shareable\ShareableServiceProvider',
+        'Jelovac\Bitly4laravel\Bitly4laravelServiceProvider',
 	),
 
 	/*
@@ -191,7 +193,9 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 		'BBCode' 			=> 'Golonka\BBCode\Facades\BBCodeParser',
-        'Feed' => 'Roumen\Feed\Facades\Feed',
+        'Feed'              => 'Roumen\Feed\Facades\Feed',
+        'Shareable'         => 'RyanNielson\Shareable\Facades\Shareable',
+        'Bitly'             => 'Jelovac\Bitly4laravel\Facades\Bitly4laravel',
 	),
 
 );

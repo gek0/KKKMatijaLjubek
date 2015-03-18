@@ -1332,6 +1332,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
 .pb-clear {
     padding-bottom: 0;
 }
+.line-fx{ line-height: 12px; }
 
 .fa-gig{
     font-size: 3.125em;
