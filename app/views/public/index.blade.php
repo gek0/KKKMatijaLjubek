@@ -378,19 +378,19 @@
                             <li title="E-mail"><i class="fa fa-envelope pr-10 fa-med text-colored"></i> {{ HTML::mailto('kkk-matija.ljubek@zg.t-com.hr') }}</li>
                         </ul>
                         <div class="social-links-container">
-                            <span class="social-link" title="KKK Matija Ljubek">
-                                <a href="https://www.facebook.com/klub.matijaljubek" target="_blank">{{ HTML::image('css/assets/images/social_links/facebook.png', 'Facebook', array('class' => 'img-responsive')) }}</a>
+                            <span class="social-link tooltip-bottom" data-tooltip="KKK Matija Ljubek">
+                                <a href="https://www.facebook.com/matijaljubek2000" target="_blank">{{ HTML::image('css/assets/images/social_links/facebook.png', 'Facebook', array('class' => 'img-responsive')) }}</a>
                             </span>
-                            <span class="social-link" title="Sjećanje na Matiju Ljubeka">
+                            <span class="social-link tooltip-bottom" data-tooltip="Sjećanje na Matiju Ljubeka">
                                 <a href="https://www.youtube.com/watch?v=kOnh_5DVBMI" target="_blank">{{ HTML::image('css/assets/images/social_links/youtube.png', 'YouTube', array('class' => 'img-responsive')) }}</a>
                             </span>
-                            <span class="social-link" title="Memorijalna utrka Matija Ljubek">
+                            <span class="social-link tooltip-bottom" data-tooltip="Memorijalna utrka Matija Ljubek">
                                 <a href="https://www.youtube.com/watch?v=M0XxYLrqdjc" target="_blank">{{ HTML::image('css/assets/images/social_links/youtube.png', 'YouTube', array('class' => 'img-responsive')) }}</a>
                             </span>
-                            <span class="social-link" title="O Matiji Ljubeku">
+                            <span class="social-link tooltip-bottom" data-tooltip="O Matiji Ljubeku">
                                 <a href="http://en.wikipedia.org/wiki/Matija_Ljubek" target="_blank">{{ HTML::image('css/assets/images/social_links/wikipedia.png', 'Wikipedia', array('class' => 'img-responsive')) }}</a>
                             </span>
-                            <span class="social-link" title="KKK Matija Ljubek RSS">
+                            <span class="social-link tooltip-bottom" data-tooltip="KKK Matija Ljubek RSS">
                                 <a href="{{ URL::to('rss') }}" target="_blank">{{ HTML::image('css/assets/images/social_links/rss.png', 'RSS', array('class' => 'img-responsive')) }}</a>
                             </span>
                         </div>
