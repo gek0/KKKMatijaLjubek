@@ -262,9 +262,22 @@ jQuery(document).ready(function() {
                 // filter items on button click
                 $('.filters').on( 'click', 'ul.nav li a', function() {
                     var filterValue = $(this).attr('data-filter');
-                    $(".filters").find("li.active").removeClass("active");
-                    $(this).parent().addClass("active");
-                    $container.isotope({ filter: filterValue });
+
+                    //return message if no person with selected filter found
+                    $('.isotope-item-empty-filter h3').html('');
+                    $('.isotope-item-empty-filter').fadeOut(100);
+
+                    if($(filterValue).length == 0 && $('.isotope-item-empty-filter h3').html().length <= 0){
+                        $('.isotope-item-empty-filter h3').append('Nema članova u traženoj kategoriji.');
+                        $('.isotope-item-empty-filter').fadeIn(100);
+                    }
+
+                    setTimeout(function(){
+                        $(".filters").find("li.active").removeClass("active");
+                        $(this).parent().addClass("active");
+                        $container.isotope({ filter: filterValue });
+                    }, 150);
+
                     return false;
                 });
             });

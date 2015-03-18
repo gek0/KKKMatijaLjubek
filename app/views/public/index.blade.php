@@ -316,6 +316,8 @@
                 </div> <!-- isotope filters end -->
 
                 <!-- persons list start -->
+                <div class="col-md-12 text-center isotope-item-empty-filter"><h3></h3></div>
+
                 <div class="isotope-container row grid-space-20">
                     @foreach($personsData as $person)
                         <div class="col-sm-6 col-md-3 isotope-item {{ safe_name($person->category->category_name) }}">
