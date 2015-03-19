@@ -42,6 +42,18 @@
 <body class="no-trans">
 <div class="scrollToTop"><i class="icon-up-open-big"></i></div>
 
+<!-- facebook SDK -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0&appId=283742071785556";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<!-- end facebook SDK -->
+
 <!-- header start -->
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
@@ -377,6 +389,10 @@
                             <li title="Fax"><i class="fa fa-fax pr-10 fa-med text-colored"></i> 01/3011 - 202</li>
                             <li title="E-mail"><i class="fa fa-envelope pr-10 fa-med text-colored"></i> {{ HTML::mailto('kkk-matija.ljubek@zg.t-com.hr') }}</li>
                         </ul>
+
+                        <!-- facebook SDK container -->
+                        <div class="fb-like" data-href="https://www.facebook.com/matijaljubek2000" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+
                         <div class="social-links-container">
                             <span class="social-link tooltip-bottom" data-tooltip="KKK Matija Ljubek">
                                 <a href="https://www.facebook.com/matijaljubek2000" target="_blank">{{ HTML::image('css/assets/images/social_links/facebook.png', 'Facebook', array('class' => 'img-responsive')) }}</a>

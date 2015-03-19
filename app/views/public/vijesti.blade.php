@@ -6,14 +6,22 @@
         <h1 id="news" class="text-center title-offtop">Vijesti</h1>
 
         <section id="news_sort">
-            <div class="row" id="person_sort">
+            <div class="row text-center" id="person_sort">
                 <div class="formSort padded">
                     {{ Form::open(array('url' => 'vijesti/sort', 'method' => 'GET', 'id' => 'formSort', 'role' => 'form')) }}
-                        <div class="form-group">
-                            {{ Form::label('sort_option', 'Sortiranje vijesti:') }}<br>
-                            {{ Form::select('sort_option', array('Vrsta sortiranja...' => $sort_data),
-                                              $sort_category, array('class' => 'selectpicker show-tick', 'data-style' => 'btn-square', 'title' => 'Vrsta sortiranja...', 'data-size' => '5'))
-                            }}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ Form::label('sort_option', 'Sortiranje vijesti:') }}<br>
+                                {{ Form::select('sort_option', array('Vrsta sortiranja...' => $sort_data),
+                                                  $sort_category, array('class' => 'selectpicker show-tick', 'data-style' => 'btn-square', 'title' => 'Vrsta sortiranja...', 'data-size' => '5'))
+                                }}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{ Form::label('news_text_sort', 'Pretraga po tekstu vijesti:') }}
+                                {{ Form::text('news_text_sort', $news_text_sort, array('id' => 'news_text', 'class' => 'form-control', 'placeholder' => 'Tekst vijesti...')) }}
+                            </div>
                         </div>
                     {{ Form::close() }}
                 </div>

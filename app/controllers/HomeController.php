@@ -124,13 +124,15 @@ class HomeController extends Controller {
         $page_title = 'Vijesti';
 
         //default form sort value
+        $news_text_sort = null;
         $sort_category = null;
         $sort_data = $this->sort_data;
 
         return View::make('public.vijesti')->with(array('newsData' => $newsData,
                                                         'page_title' => $page_title,
                                                         'sort_data' => $sort_data,
-                                                        'sort_category' => $sort_category
+                                                        'sort_category' => $sort_category,
+                                                        'news_text_sort' => $news_text_sort
                                                     )
                                                 );
     }
@@ -190,31 +192,58 @@ class HomeController extends Controller {
         $page_title = 'Vijesti';
 
         //get form data and set default sort options
+        $news_text_sort = e(Input::get('news_text_sort'));
         $sort_category = e(Input::get('sort_option'));
         $sort_data = $this->sort_data;
 
         //check sort category selected in form and get data
         switch($sort_category){
             case 'added_desc':
-                $newsData = News::orderBy('id', 'DESC')->paginate($this->news_paginate);
+                if($news_text_sort == '') {
+                    $newsData = News::orderBy('id', 'DESC')->paginate($this->news_paginate);
+                }
+                else{
+                    $newsData = News::where('news_body', 'LIKE', '%'.$news_text_sort.'%')->orderBy('id', 'DESC')->paginate($this->news_paginate);
+                }
                 break;
             case 'added_asc':
-                $newsData = News::orderBy('id', 'ASC')->paginate($this->news_paginate);
+                if($news_text_sort == '') {
+                    $newsData = News::orderBy('id', 'ASC')->paginate($this->news_paginate);
+                }
+                else{
+                    $newsData = News::where('news_body', 'LIKE', '%'.$news_text_sort.'%')->orderBy('id', 'ASC')->paginate($this->news_paginate);
+                }
                 break;
             case 'visits_desc':
-                $newsData = News::orderBy('num_visited', 'DESC')->paginate($this->news_paginate);
+                if($news_text_sort == '') {
+                    $newsData = News::orderBy('num_visited', 'DESC')->paginate($this->news_paginate);
+                }
+                else{
+                    $newsData = News::where('news_body', 'LIKE', '%'.$news_text_sort.'%')->orderBy('num_visited', 'DESC')->paginate($this->news_paginate);
+                }
                 break;
             case 'visits_asc':
-                $newsData = News::orderBy('num_visited', 'ASC')->paginate($this->news_paginate);
+                if($news_text_sort == '') {
+                    $newsData = News::orderBy('num_visited', 'ASC')->paginate($this->news_paginate);
+                }
+                else{
+                    $newsData = News::where('news_body', 'LIKE', '%'.$news_text_sort.'%')->orderBy('num_visited', 'ASC')->paginate($this->news_paginate);
+                }
                 break;
             default:
-                $newsData = News::orderBy('id', 'DESC')->paginate($this->news_paginate);
+                if($news_text_sort == '') {
+                    $newsData = News::orderBy('id', 'DESC')->paginate($this->news_paginate);
+                }
+                else{
+                    $newsData = News::where('news_body', 'LIKE', '%'.$news_text_sort.'%')->orderBy('id', 'DESC')->paginate($this->news_paginate);
+                }
         }
 
         return View::make('public.vijesti')->with(array('newsData' => $newsData,
                                                         'page_title' => $page_title,
                                                         'sort_data' => $sort_data,
-                                                        'sort_category' => $sort_category
+                                                        'sort_category' => $sort_category,
+                                                        'news_text_sort' => $news_text_sort
                                                     )
                                                 );
     }
