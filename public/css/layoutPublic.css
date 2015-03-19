@@ -558,13 +558,8 @@ a#news-data-link{
     position: relative;
 }
 .bg-image-1 {
-    background: url("") 50% 0px no-repeat;
+    background: url("assets/images/wave-bg-small.png") 50% 0px no-repeat;
 }
-.bg-image-2 {
-    background: url("") 50% 0px no-repeat;
-}
-
-
 
 /**
 *   forms

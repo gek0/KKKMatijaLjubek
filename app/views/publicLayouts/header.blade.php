@@ -20,12 +20,12 @@
 
     <!-- favicons and apple icon -->
     <!--[if IE]><link rel="shortcut icon" href="{{ asset('favicon.ico') }}"><![endif]-->
+    <link rel="icon" href="{{ asset('favicon.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('touch-icon-iphone.png') }}">
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('touch-icon-ipad.png') }}">
     <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('touch-icon-iphone-retina.png') }}">
     <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('touch-icon-ipad-retina.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('touch-icon-iphone-6-plus.png') }}">
-    <link rel="icon" href="{{ asset('favicon.png') }}">
     <link rel="canonical" href="{{ Request::url() }}" />
 
     <!-- scripts -->
@@ -79,6 +79,7 @@
                                         <li><a href="{{ URL::to('/') }}#news">Vijesti</a></li>
                                         <li><a href="{{ URL::to('/') }}#persons">Članovi</a></li>
                                         <li><a href="{{ URL::to('/') }}#young-members">Škola</a></li>
+                                        <li><a href="{{ URL::to('/') }}#regatta-program">Raspis</a></li>
                                         <li><a href="{{ URL::to('/') }}#contact">Kontakt</a></li>
                                     </ul>
                                 </div>

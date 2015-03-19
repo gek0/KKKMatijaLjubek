@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9363a560-d63c-466a-b4f2-df87f83b744e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/controllers/HomeController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/touch-icon-ipad-retina.png" afterPath="$PROJECT_DIR$/public/touch-icon-ipad-retina.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/touch-icon-ipad.png" afterPath="$PROJECT_DIR$/public/touch-icon-ipad.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/touch-icon-iphone-6-plus.png" afterPath="$PROJECT_DIR$/public/touch-icon-iphone-6-plus.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/touch-icon-iphone-retina.png" afterPath="$PROJECT_DIR$/public/touch-icon-iphone-retina.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/touch-icon-iphone.png" afterPath="$PROJECT_DIR$/public/touch-icon-iphone.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/publicLayouts/header.blade.php" afterPath="$PROJECT_DIR$/app/views/publicLayouts/header.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/public/index.blade.php" afterPath="$PROJECT_DIR$/app/views/public/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/public/vijesti.blade.php" afterPath="$PROJECT_DIR$/app/views/public/vijesti.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/layoutPublic.css" afterPath="$PROJECT_DIR$/public/css/layoutPublic.css" />
     </list>
     <ignored path="KKKMatijaLjubek.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,13 +85,13 @@
         <option value="$PROJECT_DIR$/app/controllers/PersonController.php" />
         <option value="$PROJECT_DIR$/app/controllers/NewsController.php" />
         <option value="$PROJECT_DIR$/app/controllers/GalleryController.php" />
-        <option value="$PROJECT_DIR$/app/views/publicLayouts/header.blade.php" />
         <option value="$PROJECT_DIR$/public/js/initJS.js" />
-        <option value="$PROJECT_DIR$/public/css/layoutPublic.css" />
         <option value="$PROJECT_DIR$/app/views/public/clan.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/public/index.blade.php" />
         <option value="$PROJECT_DIR$/app/controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/app/views/public/vijesti.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/publicLayouts/header.blade.php" />
+        <option value="$PROJECT_DIR$/public/css/layoutPublic.css" />
+        <option value="$PROJECT_DIR$/app/views/public/index.blade.php" />
       </list>
     </option>
   </component>
@@ -153,6 +157,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KKKMatijaLjubek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KKKMatijaLjubek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KKKMatijaLjubek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KKKMatijaLjubek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -172,6 +208,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KKKMatijaLjubek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KKKMatijaLjubek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="publicLayouts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -647,14 +705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/publicLayouts/header.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63870245" vertical-offset="551" max-vertical-offset="1649">
-          <caret line="66" column="78" selection-start-line="66" selection-start-column="78" selection-end-line="66" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/initJS.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8500551" vertical-offset="3955" max-vertical-offset="6103">
@@ -663,26 +713,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/layoutPublic.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1565601" vertical-offset="24440" max-vertical-offset="30243">
-          <caret line="1446" column="22" selection-start-line="1446" selection-start-column="22" selection-end-line="1446" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/public/clan.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.07606264" vertical-offset="0" max-vertical-offset="1496">
           <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/public/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6106697" vertical-offset="5888" max-vertical-offset="8075">
-          <caret line="378" column="31" selection-start-line="378" selection-start-column="31" selection-end-line="378" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -702,6 +736,30 @@
           <folding>
             <marker date="1426798010755" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/publicLayouts/header.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.72483224" vertical-offset="729" max-vertical-offset="1666">
+          <caret line="81" column="95" selection-start-line="81" selection-start-column="95" selection-end-line="81" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/layoutPublic.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6810934" vertical-offset="8922" max-vertical-offset="30158">
+          <caret line="560" column="48" selection-start-line="560" selection-start-column="48" selection-end-line="560" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/public/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7037457" vertical-offset="5772" max-vertical-offset="8806">
+          <caret line="376" column="158" selection-start-line="376" selection-start-column="158" selection-end-line="376" selection-end-column="158" />
+          <folding />
         </state>
       </provider>
     </entry>

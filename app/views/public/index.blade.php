@@ -91,6 +91,7 @@
                                         <li><a href="#news">Vijesti</a></li>
                                         <li><a href="#persons">Članovi</a></li>
                                         <li><a href="#young-members">Škola</a></li>
+                                        <li><a href="#regatta-program">Raspis</a></li>
                                         <li><a href="#contact">Kontakt</a></li>
                                     </ul>
                                 </div>
@@ -244,9 +245,9 @@
                                 </div>
                                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                     <div class="panel-body">
-                                        <p>Život i djelo Matije Ljubeka možete pogledati <a href="" target="_blank" title="Život i djelo">ovdje</a>.</p>
-                                        <p>Pravilnik nagrade Matija Ljubek možete pogledati <a href="" target="_blank" title="Pravilnik">ovdje</a>.</p>
-                                        <p>Pjesmu Matiji Ljubeku možete pogledati <a href="" target="_blank" title="Pjesma">ovdje</a>.</p>
+                                        <p>Život i djelo Matije Ljubeka možete pogledati <a href="{{ url('file_uploads/ljubek.pdf') }}" target="_blank" title="Život i djelo">ovdje</a>.</p>
+                                        <p>Pravilnik nagrade Matija Ljubek možete pogledati <a href="{{ url('file_uploads/pravilnik.pdf') }}" target="_blank" title="Pravilnik">ovdje</a>.</p>
+                                        <p>Pjesmu Matiji Ljubeku možete pogledati <a href="{{ url('file_uploads/pjesma.pdf') }}" target="_blank" title="Pjesma">ovdje</a>.</p>
                                     </div>
                                 </div>
                             </div>
@@ -259,7 +260,7 @@
 </section> <!-- section about-us end -->
 
 <!-- section news start -->
-<section class="section translucent-bg bg-image-1 blue">
+<section class="section translucent-bg blue">
     <div class="container object-non-visible" data-animation-effect="fadeIn">
         <h1 id="news" class="text-center title">Zadnje vijesti</h1>
         <div class="row">
@@ -357,13 +358,55 @@
 </section> <!-- section persons end -->
 
 <!-- section young-members start -->
-<section class="section translucent-bg bg-image-2 blue">
+<section class="section translucent-bg bg-image-1 blue">
     <div class="container object-non-visible" data-animation-effect="fadeIn">
         <h1 id="young-members" class="title text-center">Škola kajaka i kanua</h1>
         <div class="space"></div>
-        ......
+
+        <div class="row text-center">
+            <div class="col-md-12">
+                <p>Pozivamo svu djecu da nam se pridruže u školi kajaka i kanua na mirnim vodama.</p>
+            </div>
+        </div>
+        <div class="space"></div>
+
+        <div class="row text-center">
+            <div class="col-md-12">
+                <p>Primjere treninga možete pogledati <a href="{{ url('file_uploads/trening.pdf') }}" target="_blank" title="Primjeri treninga">ovdje</a>.</p>
+                <p>Selekciju i metodiku poduke kanuista možete pogledati <a href="{{ url('file_uploads/poduka.pdf') }}" target="_blank" title="Poduka kanuista">ovdje</a>.</p>
+                <p>Planiranje godišnjeg ciklusa treninga možete pogledati <a href="{{ url('file_uploads/planiranje.pdf') }}" target="_blank" title="Planiranje">ovdje</a>.</p>
+            </div>
+        </div>
+
     </div>
 </section> <!-- section young-members end -->
+
+<!-- section regatta-program start -->
+<section class="section">
+    <div class="container object-non-visible" data-animation-effect="fadeIn">
+        <h1 id="regatta-program" class="title text-center">Raspis/Regatta program</h1>
+        <div class="space"></div>
+            <p>Dragi prijatelji i poštovani sportaši,<br><br>
+
+            Pozivamo Vas na još jedno Otvoreno prvenstvo grada Zagreba i 14. međunarodnu memorijalnu utrku "Matija Ljubek"<br> koja će se održati 30. 05. 2015 na ŠRC Jarun s početkom u 10h.<br>
+            Prijave za sudjelovanje moraju biti dostavljene organizatoru KKK " Matija Ljubek" najkasnije do 15.05.2015 do 16h na adresu:<br>
+            KAJAK KANU KLUB "MATIJA LJUBEK" Aleja Matije Ljubeka 5, ŠRC Jarun 10 000 Zagreb, Hrvatska / Croatia Tel /fax: +385 1 301 12 02<br>
+            Za ostale pojedinosti vezane za regatu slobodno nam se javite na e-mail ili putem inboxa na facebooku. Radujemo se Vašem dolasku!<br>
+            Putem e-maila: {{ HTML::mailto('kkkmatijaljubek@yahoo.com') }}</p><br>
+
+            <p>Dear Sport Friends,<br><br>
+
+            The Kayak-Canoe club "Matija Ljubek" and town Zagreb are pleased to inform you that 14th Memorial race "Matija Ljubek" will be held at Regatta Course in Jarun Sport Centre on May 30, 2015,
+            and corially invites all Sportsman of Kayaking and Canoeing to take a part in this tradicional reggata.<br>
+            We are looking forward to welcome all of you to our regatta.<br>
+            Your's friendly, KKK "Matija Ljubek"</p>
+
+            <div class="space"></div>
+            <p>Raspis međunarodne regate Zagreb i 14. Memorijal Matija Ljubek skinite <a href="{{ url('file_uploads/Raspis2015web.pdf') }}" target="_blank" title="Program regate">ovdje</a>.</p>
+            <p>Download Regatta program and 14th Memorial Matija Ljubek race <a href="{{ url('file_uploads/Raspis2015ENweb.pdf') }}" target="_blank" title="Regatta program">here</a>.</p>
+    </div>
+</section> <!-- section regatta-program end -->
+
 
 <!-- section map start -->
 <section class="section" id="map">
