@@ -272,9 +272,12 @@ jQuery(document).ready(function() {
                         $('.isotope-item-empty-filter').fadeIn(100);
                     }
 
+
+                    $(".filters").find("li.active").removeClass("active");
+                    $(this).parent().addClass("active");
+
+                    //for isotope animation if previous filter was empty
                     setTimeout(function(){
-                        $(".filters").find("li.active").removeClass("active");
-                        $(this).parent().addClass("active");
                         $container.isotope({ filter: filterValue });
                     }, 150);
 

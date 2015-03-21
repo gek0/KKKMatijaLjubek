@@ -22,7 +22,6 @@ class HomeController extends Controller {
                                  'visits_asc' => 'S najmanje pregleda'
                             );
 
-
 	/**
 	 * @return mixed
 	 * homepage
@@ -50,11 +49,6 @@ class HomeController extends Controller {
                                                      )
                                                 );
 	}
-
-    public function tag($id)
-    {
-        return View::make('public.tag');
-    }
 
     /**
      * @param $slug
@@ -112,6 +106,39 @@ class HomeController extends Controller {
                                                        'page_title' => $page_title
                                                       )
                                                 );
+    }
+
+    /**
+     * @param $tag_slug
+     * @return mixed
+     * news collection view - paginated by @news_paginate / news with selected tag slug
+     */
+    public function showNewsByTag($tag_slug)
+    {
+        $page_title = 'Vijesti';
+
+        //check if tag exists
+        $tag_data = Tag::findBySlug(e($tag_slug));
+
+        if($tag_data){
+            $news_data = DB::table('news')->select(DB::raw('news.*, (SELECT news_images.`file_name` FROM news_images
+                                                                        WHERE news_images.news_id= news.id
+                                                                        ORDER BY news_images.`id` ASC
+                                                                        LIMIT 1) AS newsImage'))
+                                            ->join('news_tag', 'news.id', '=', 'news_tag.news_id')
+                                            ->where('news_tag.tag_id', '=', $tag_data->id)
+                                            ->orderBy('news.id', 'DESC')
+                                            ->paginate($this->news_paginate);
+
+            return View::make('public.news_tags')->with(array('page_title' => $page_title,
+                                                              'tag_data' => $tag_data,
+                                                              'news_data' => $news_data
+                                                            )
+                                                        );
+        }
+        else{
+            App::abort(404, 'Tag vijesti ne postoji.');
+        }
     }
 
     /**

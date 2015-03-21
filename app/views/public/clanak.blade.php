@@ -51,7 +51,7 @@
                             @if($newsData->tags->count() > 0)
                                 <ul class="tags">
                                     @foreach($newsData->tags as $tag)
-                                        <a href="{{ URL::to('vijesti/tagovi/'.$tag->slug) }}"><li>{{ $tag->tag }}</li></a>
+                                        <a href="{{ URL::to('vijesti/tag/'.$tag->slug) }}"><li>{{ $tag->tag }}</li></a>
                                     @endforeach
                                 </ul>
                             @else
@@ -115,7 +115,7 @@
 
             <div class="space"></div>
             <div class="text-center padded">
-                <a href="{{ URL::to('vijesti') }}"><button class="btn btn-primary btn-square"><i class="fa fa-angle-left fa-med pr-10"></i> Povratak na vijesti</button></a>
+                <a href="{{ URL::previous() }}"><button class="btn btn-primary btn-square"><i class="fa fa-angle-left fa-med pr-10"></i> Povratak na vijesti</button></a>
             </div>
 
         </article> <!-- end article-container -->

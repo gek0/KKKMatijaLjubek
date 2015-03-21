@@ -39,8 +39,8 @@ Route::get('logout', function(){
  * public area
  */
 Route::get('rss', array('as' => 'rss', 'uses' => 'HomeController@getRssFeed'));
-Route::get('tag/{id}', array('as' => 'tag', 'uses' => 'HomeController@tag'))->where(array('id' => '[0-9]+'));
 Route::get('clan/{slug}', array('as' => 'person', 'uses' => 'HomeController@showPerson'))->where(array('slug' => '[a-zA-Z\-]+'));
+Route::get('vijesti/tag/{slug}', array('as' => 'news-tag', 'uses' => 'HomeController@showNewsByTag'))->where(array('id' => '[0-9a-zA-Z\-]+'));
 Route::get('vijesti/sort', array('as' => 'news-sort', 'uses' => 'HomeController@getSort'));
 Route::get('vijesti/{slug}', array('as' => 'news-individual', 'uses' => 'HomeController@showNews'))->where(array('slug' => '[a-zA-Z\-]+'));
 Route::get('vijesti', array('as' => 'news', 'uses' => 'HomeController@showNewsList'));

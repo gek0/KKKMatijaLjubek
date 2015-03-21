@@ -275,7 +275,7 @@
                                 <div class="text-center tags-collection">
                                     <ul class="tags">
                                         @foreach($news->tags as $tag)
-                                            <a href="{{ URL::to('vijesti/tagovi/'.$tag->slug) }}"><li>{{ $tag->tag }}</li></a>
+                                            <a href="{{ URL::to('vijesti/tag/'.$tag->slug) }}"><li>{{ $tag->tag }}</li></a>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -451,6 +451,15 @@
                             </span>
                             <span class="social-link tooltip-bottom" data-tooltip="KKK Matija Ljubek RSS">
                                 <a href="{{ URL::to('rss') }}" target="_blank">{{ HTML::image('css/assets/images/social_links/rss.png', 'RSS', array('class' => 'img-responsive')) }}</a>
+                            </span><br>
+                            <span class="social-link tooltip-bottom" data-tooltip="Hrvatski Olimpijski Odbor">
+                                <a href="http://www.hoo.hr/hr/" target="_blank">{{ HTML::image('css/assets/images/social_links/hoo.png', 'HOO', array('class' => 'img-responsive')) }}</a>
+                            </span>
+                            <span class="social-link tooltip-bottom" data-tooltip="International Canoe Federation">
+                                <a href="http://www.canoeicf.com/icf/" target="_blank">{{ HTML::image('css/assets/images/social_links/icf.png', 'ICF', array('class' => 'img-responsive')) }}</a>
+                            </span>
+                            <span class="social-link tooltip-bottom" data-tooltip="Hrvatski Kajakaški Savez">
+                                <a href="http://www.kajak.hr/" target="_blank">{{ HTML::image('css/assets/images/social_links/hks.png', 'HKS', array('class' => 'img-responsive')) }}</a>
                             </span>
                         </div>
                     </div>

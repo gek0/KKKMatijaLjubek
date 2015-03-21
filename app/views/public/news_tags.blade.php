@@ -4,45 +4,22 @@
 <section class="section translucent-bg blue full-height-section">
     <div class="container object-non-visible" data-animation-effect="fadeIn">
         <h1 id="news" class="text-center title-offtop">Vijesti</h1>
-
-        <section id="news_sort">
-            <div class="row text-center" id="person_sort">
-                <div class="col-md-12">
-                    <a href="{{ url('tagovi') }}"><button class="btn btn-primary btn-square"><i class="fa fa-tags fa-med pr-10"></i> Lista svih tagova</button></a>
-                </div>
-                <div class="space"></div>
-                <div class="formSort padded">
-                    {{ Form::open(array('url' => 'vijesti/sort', 'method' => 'GET', 'id' => 'formSort', 'role' => 'form')) }}
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {{ Form::label('sort_option', 'Sortiranje vijesti:') }}<br>
-                                {{ Form::select('sort_option', array('Vrsta sortiranja...' => $sort_data),
-                                                  $sort_category, array('class' => 'selectpicker show-tick', 'data-style' => 'btn-square', 'title' => 'Vrsta sortiranja...', 'data-size' => '5'))
-                                }}
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                {{ Form::label('news_text_sort', 'Pretraga po tekstu vijesti:') }}
-                                {{ Form::text('news_text_sort', $news_text_sort, array('id' => 'news_text', 'class' => 'form-control', 'placeholder' => 'Tekst vijesti...')) }}
-                            </div>
-                        </div>
-                    {{ Form::close() }}
-                </div>
-            </div>
-        </section> <!-- end news_sort section -->
+        <div class="text-center">
+            <h3>Traženi tag: <strong>{{ $tag_data->tag }}</strong></h3>
+            <a href="{{ url('tagovi') }}"><button class="btn btn-primary btn-square"><i class="fa fa-tags fa-med pr-10"></i> Lista svih tagova</button></a>
+        </div>
         <div class="space"></div>
 
         <article class="article-container">
-            @if(count($newsData->all()) > 0)
-                @foreach(array_chunk($newsData->all(), 2) as $news)
+            @if(count($news_data->all()) > 0)
+                @foreach(array_chunk($news_data->all(), 2) as $news)
                     <div class="row padded">
                         @foreach($news as $item)
                             <div class="col-md-6 news-all-content" id="news-{{ $item->id }}">
                                 <div class="news-all-header">
                                     <h3 class="news-all-header-title">{{{ $item->news_title }}}</h3>
-                                    @if($item->images->count() > 0)
-                                        {{ HTML::image('/news_uploads/'.$item->id.'/'.$item->images->first()->file_name, imageAlt($item->images->first()->file_name), array('class' => 'thumbnail img-responsive')) }}
+                                    @if($item->newsImage != '')
+                                        {{ HTML::image('/news_uploads/'.$item->id.'/'.$item->newsImage, imageAlt($item->newsImage), array('class' => 'thumbnail img-responsive')) }}
                                     @else
                                         {{ HTML::image('css/assets/images/logo_main_log.png', 'Nema slike', array('class' => 'thumbnail img-responsive')) }}
                                     @endif
@@ -52,7 +29,7 @@
                                         <div class="col-md-6" title="Datum objave">
                                             <span class="fa fa-calendar fa-big pr-10"></span>
                                             <span class="info-text">
-                                                <time datetime="{{ $item->getDateCreatedFormatedHTML() }}">{{ $item->getDateCreatedFormated() }}</time>
+                                                <time datetime="{{ date('Y-m-d', strtotime($item->created_at)) }}">{{ date('d.m.Y. \u H:i\h', strtotime($item->created_at)) }}</time>
                                             </span>
                                         </div>
                                         <div class="col-md-6" title="Broj pregleda">
@@ -74,11 +51,11 @@
                 @endforeach
 
                 <div class="pagination-layout pagination-centered">
-                    {{ $newsData->appends(Request::except('stranica'))->links() }}
+                    {{ $news_data->appends(Request::except('stranica'))->links() }}
                 </div> <!-- end pagination -->
             @else
                 <div class="text-center">
-                    Trenutno nema vijesti.
+                    Trenutno nema vijesti s traženim tagom.
                 </div>
                 <div class="space"></div>
             @endif
