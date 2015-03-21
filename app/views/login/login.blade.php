@@ -132,7 +132,7 @@
                         $('#adminLoginLoad').css('visibility', 'hidden').fadeOut();
 
                         //redirect to intended page
-                        window.location = "<?php echo $intendedUrl; ?>";
+                        window.location = "<?php echo $intended_url; ?>";
                     }
                     else {
                         errorMsg = '<h3>' + data.errors + '</h3>';

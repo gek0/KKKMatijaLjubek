@@ -14,8 +14,8 @@
 </section> <!-- end person_sort section -->
 
 <section id="persons_data_all" data-role="persons_data">
-    @if(count($personsData->all()) > 0)
-        @foreach(array_chunk($personsData->all(), 3) as $person)
+    @if(count($persons_data->all()) > 0)
+        @foreach(array_chunk($persons_data->all(), 3) as $person)
             <div class="row padded">
                 @foreach($person as $item)
                     <div class="col-md-4 persons-all-content" id="person-{{ $item->id }}">
@@ -45,7 +45,7 @@
         @endforeach
 
         <div class="pagination-layout pagination-centered">
-            {{ $personsData->appends(Request::except('stranica'))->links() }}
+            {{ $persons_data->appends(Request::except('stranica'))->links() }}
         </div> <!-- end pagination -->
     @else
         <div class="text-center">

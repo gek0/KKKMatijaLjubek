@@ -18,13 +18,13 @@
         </div>
     </div>
 
-    @if($galleryData->count() > 0)
+    @if($gallery_data->count() > 0)
         <section id="image_gallery" data-role-link="{{ URL::to('admin/naslovnica/gallery-image-delete') }}" data-role-edit-link="{{ URL::to('admin/naslovnica/gallery-image-edit') }}">
             <hr>
             <div class="container-fluid">
                 <div class="row padded text-center">
-                    <h2>Galerija slika <small id="image_gallery_counter">{{ $galleryData->count() }}</small></h2>
-                    @foreach($galleryData as $img)
+                    <h2>Galerija slika <small id="image_gallery_counter">{{ $gallery_data->count() }}</small></h2>
+                    @foreach($gallery_data as $img)
                         <div class="col-lg-3 col-sm-4 col-6 small-marg" id="img-container-{{ $img->id }}">
                             <a href="{{ URL::to('/gallery_uploads/'.$img->file_name) }}" data-imagelightbox="gallery-images">
                                 <img data-original="{{ URL::to('/gallery_uploads/'.$img->file_name) }}" alt="{{ imageAlt($img->file_name) }}" class="thumbnail img-responsive lazy" data-caption="{{ $img->caption }}" />

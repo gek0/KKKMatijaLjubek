@@ -1,14 +1,14 @@
 @include('publicLayouts.header')
 
 <!-- content directives start -->
-@if($previousNews == true)
+@if($previous_news == true)
     <div class="previousContent">
-        <a href="{{ URL::to('vijesti/'.$previousNews['slug']) }}" title="{{ $previousNews['news_title'] }}"><i class="fa fa-arrow-left fa-gig"></i></a>
+        <a href="{{ URL::to('vijesti/'.$previous_news['slug']) }}" title="{{ $previous_news['news_title'] }}"><i class="fa fa-arrow-left fa-gig"></i></a>
     </div>
 @endif
-@if($nextNews == true)
+@if($next_news == true)
     <div class="nextContent">
-        <a href="{{ URL::to('vijesti/'.$nextNews['slug']) }}" title="{{ $nextNews['news_title'] }}"><i class="fa fa-arrow-right fa-gig"></i></a>
+        <a href="{{ URL::to('vijesti/'.$next_news['slug']) }}" title="{{ $next_news['news_title'] }}"><i class="fa fa-arrow-right fa-gig"></i></a>
     </div>
 @endif
 <!-- content directives end -->
@@ -16,7 +16,7 @@
 <!-- section news start -->
 <section class="section translucent-bg blue full-height-section">
     <div class="container object-non-visible" data-animation-effect="fadeIn">
-        <h1 id="news" class="text-center title-offtop">{{ $newsData->news_title }}</h1>
+        <h1 id="news" class="text-center title-offtop">{{ $news_data->news_title }}</h1>
         <article class="article-container">
 
             <div class="data_info">
@@ -24,12 +24,12 @@
                     <div class="col-md-4" title="Datum objave">
                         <span class="fa fa-calendar fa-big pr-10"></span>
                         <span class="info-text">
-                            <time datetime="{{ $newsData->getDateCreatedFormatedHTML() }}">{{ $newsData->getDateCreatedFormated() }}</time>
+                            <time datetime="{{ $news_data->getDateCreatedFormatedHTML() }}">{{ $news_data->getDateCreatedFormated() }}</time>
                         </span>
                     </div>
                     <div class="col-md-4" title="Broj pregleda">
                         <span class="fa fa-eye fa-big pr-10"></span>
-                        <span class="info-text">{{{ $newsData->num_visited }}}</span>
+                        <span class="info-text">{{{ $news_data->num_visited }}}</span>
                     </div>
                     <div class="col-md-4">
                         <i class="fa fa-search-plus fa-big pr-10 js-active-link" title="Povećaj font teksta" id="fontUp"></i>
@@ -40,17 +40,17 @@
 
             <div class="row padded">
                 <div class="col-md-9" id="content-description-body">
-                    {{ removeEmptyP(nl2p((new BBCParser)->parse($newsData->news_body))) }}
+                    {{ removeEmptyP(nl2p((new BBCParser)->parse($news_data->news_body))) }}
                 </div>
                 <div class="col-md-3">
                     <div class="sidebar-content">
                         <div class="sidebar-header" title="Tagovi članka">
-                            <i class="fa fa-tags fa-big pr-10"></i> <span class="info-text">Tagovi članka <small>({{ $newsData->tags->count() }})</small></span>
+                            <i class="fa fa-tags fa-big pr-10"></i> <span class="info-text">Tagovi članka <small>({{ $news_data->tags->count() }})</small></span>
                         </div>
                         <div class="sidebar-body">
-                            @if($newsData->tags->count() > 0)
+                            @if($news_data->tags->count() > 0)
                                 <ul class="tags">
-                                    @foreach($newsData->tags as $tag)
+                                    @foreach($news_data->tags as $tag)
                                         <a href="{{ URL::to('vijesti/tag/'.$tag->slug) }}"><li>{{ $tag->tag }}</li></a>
                                     @endforeach
                                 </ul>
@@ -68,7 +68,7 @@
                         <div class="sidebar-body line-fx">
                             {{ Shareable::facebook($options = array('url' => Request::url())) }}
                             {{ Shareable::twitter($options = array('url' => Request::url(),
-                                                                    'text' => Str::limit($newsData->news_title, 50)
+                                                                    'text' => Str::limit($news_data->news_title, 50)
                                                              )
                                                   ) }}
                         </div>
@@ -79,7 +79,7 @@
                                 <i class="fa fa-cog fa-big pr-10"></i> <span class="info-text">Admin alati</span>
                             </div>
                             <div class="sidebar-body text-center">
-                                <a href="{{ URL::to('admin/vijesti/izmjena/'.$newsData->slug) }}" target="_blank"><button class="btn btn-primary btn-square"><i class="fa-med pr-10 fa fa-pencil"></i> Uredi članak</button></a>
+                                <a href="{{ URL::to('admin/vijesti/izmjena/'.$news_data->slug) }}" target="_blank"><button class="btn btn-primary btn-square"><i class="fa-med pr-10 fa fa-pencil"></i> Uredi članak</button></a>
                             </div>
                         </div>
                     @endif
@@ -87,15 +87,15 @@
             </div>
             <hr>
 
-            @if($newsData->images->count() > 0)
+            @if($news_data->images->count() > 0)
                 <section id="news_image_gallery">
                     <div class="container-fluid">
                         <div class="row padded text-center">
-                            <h2>Galerija slika <small id="image_gallery_counter" class="text-colored">{{ $newsData->images->count() }}</small></h2>
-                            @foreach($newsData->images as $img)
+                            <h2>Galerija slika <small id="image_gallery_counter" class="text-colored">{{ $news_data->images->count() }}</small></h2>
+                            @foreach($news_data->images as $img)
                                 <div class="col-lg-3 col-sm-4 col-6 small-marg" id="img-container-{{ $img->id }}">
-                                    <a href="{{ URL::to('/news_uploads/'.$newsData->id.'/'.$img->file_name) }}" data-imagelightbox="gallery-images">
-                                        <img data-original="{{ URL::to('/news_uploads/'.$newsData->id.'/'.$img->file_name) }}" alt="{{ imageAlt($img->file_name) }}" class="thumbnail img-responsive lazy" />
+                                    <a href="{{ URL::to('/news_uploads/'.$news_data->id.'/'.$img->file_name) }}" data-imagelightbox="gallery-images">
+                                        <img data-original="{{ URL::to('/news_uploads/'.$news_data->id.'/'.$img->file_name) }}" alt="{{ imageAlt($img->file_name) }}" class="thumbnail img-responsive lazy" />
                                     </a>
                                 </div>
                                 <div class="clearfix visible-xs"></div>

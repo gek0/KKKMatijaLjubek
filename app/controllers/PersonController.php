@@ -7,12 +7,12 @@ class PersonController extends AdminController{
      */
     public function getIndex()
     {
-        $personsData = Person::paginate(6);
+        $persons_data = Person::paginate(6);
         //get all categories from DB to populate dropdown
         $person_categories = PersonCategory::orderBy('id')->lists('category_name', 'id');
         $category_id = null; //default value
 
-        $this->layout->content = View::make('admin.osobe.index', compact('person_categories'))->with(array('personsData' => $personsData, 'category_id' => $category_id));
+        $this->layout->content = View::make('admin.osobe.index', compact('person_categories'))->with(array('persons_data' => $persons_data, 'category_id' => $category_id));
     }
 
     /**
@@ -22,7 +22,7 @@ class PersonController extends AdminController{
     {
         $category_id = e(Input::get('category'));
 
-        $personsData = Person::where('category_id', '=', $category_id)->paginate(6);
+        $persons_data = Person::where('category_id', '=', $category_id)->paginate(6);
 
         //get all categories from DB to populate dropdown
         $person_categories = PersonCategory::orderBy('id')->lists('category_name', 'id');
@@ -32,10 +32,10 @@ class PersonController extends AdminController{
         $validator = Validator::make($category_data, Person::$rulesCategorySort, Person::$messages);
         if($validator->fails()){
             $error = $validator->messages();
-            $this->layout->content = View::make('admin.osobe.index', compact('person_categories'))->with(array('personsData' => $personsData, 'category_id' => $category_id))->withErrors($error);
+            $this->layout->content = View::make('admin.osobe.index', compact('person_categories'))->with(array('persons_data' => $persons_data, 'category_id' => $category_id))->withErrors($error);
         }
         else{
-            $this->layout->content = View::make('admin.osobe.index', compact('person_categories'))->with(array('personsData' => $personsData, 'category_id' => $category_id));
+            $this->layout->content = View::make('admin.osobe.index', compact('person_categories'))->with(array('persons_data' => $persons_data, 'category_id' => $category_id));
         }
     }
 
@@ -98,19 +98,18 @@ class PersonController extends AdminController{
             $person->is_athlete = $is_athlete;
             $person->save();
 
-            $personID = $person->id;
-            $personName = safe_name($person->person_full_name);
+            $person_name = safe_name($person->person_full_name);
 
             //images
             if($person_images == true && $person_images[0] != null){
                 //check for image directory
-                $path = public_path().'/person_uploads/'.$personID.'/';
+                $path = public_path().'/person_uploads/'.$person->id.'/';
                 if(!File::exists($path)){
                     File::makeDirectory($path, 0777);
                 }
 
                 foreach($person_images as $img){
-                    $file_name = $personName.'_'.Str::random(5);
+                    $file_name = $person_name.'_'.Str::random(5);
                     $file_extension = $img->getClientOriginalExtension();
                     $full_name = $file_name.'.'.$file_extension;
                     $file_size = $img->getSize();
@@ -129,7 +128,7 @@ class PersonController extends AdminController{
                         $image = new PersonImage;
                         $image->file_name = $full_name;
                         $image->file_size = $file_size;
-                        $image->person_id = $personID;
+                        $image->person_id = $person->id;
                         $image->save();
                     }
                 }
@@ -261,11 +260,11 @@ class PersonController extends AdminController{
     public function getPregled($slug = null)
     {
         if ($slug !== null){
-            $personData = Person::findBySlug(e($slug));
+            $person_data = Person::findBySlug(e($slug));
 
             //check if news exists
-            if($personData){
-                $this->layout->content = View::make('admin/osobe/pregled')->with(array('personData' => $personData));
+            if($person_data){
+                $this->layout->content = View::make('admin/osobe/pregled')->with(array('person_data' => $person_data));
             }
             else{
                 return Redirect::to('admin/osobe')->withErrors('Osoba ne postoji.');
@@ -283,13 +282,13 @@ class PersonController extends AdminController{
      */
     public function getIzmjena($slug = null){
         if($slug !== null){
-            $personData = Person::findBySlug(e($slug));
+            $person_data = Person::findBySlug(e($slug));
 
             //check if person exists
-            if($personData){
+            if($person_data){
                 //get all categories from DB to populate dropdown
                 $person_categories = PersonCategory::orderBy('id')->lists('category_name', 'id');
-                $this->layout->content = View::make('admin/osobe/izmjena')->with(array('personData' => $personData, 'person_categories' => $person_categories));
+                $this->layout->content = View::make('admin/osobe/izmjena')->with(array('person_data' => $person_data, 'person_categories' => $person_categories));
             }
             else{
                 return Redirect::to('admin/osobe')->withErrors('Osoba ne postoji.');
@@ -313,11 +312,10 @@ class PersonController extends AdminController{
             //check if person exists
             if($person){
                 try{
-                    $personID = $person->id;
+                    //delete images from disk
+                    File::deleteDirectory(public_path().'/person_uploads/'.$person->id.'/');
                     //delete data from database
                     $person->delete();
-                    //delete images from disk
-                    File::deleteDirectory(public_path().'/person_uploads/'.$personID.'/');
 
                     return Redirect::to('admin/osobe')->with(array('success' => 'Osoba je uspješno obrisana.'));
                 }
@@ -355,17 +353,17 @@ class PersonController extends AdminController{
                 ));
             }
             else{
-                $personImage = PersonImage::find($image_id);
-                $personID = $personImage->person_id;
+                $person_image = PersonImage::find($image_id);
+                $person_id = $person_image->person_id;
 
                 //delete image if exists and return JSON response
-                if($personImage){
+                if($person_image){
                     try{
-                        $file_name = public_path().'/person_uploads/'.$personID.'/'.$personImage->file_name;
+                        $file_name = public_path().'/person_uploads/'.$person_id.'/'.$person_image->file_name;
                         if(File::exists($file_name)){
                             File::delete($file_name);
                         }
-                        $personImage->delete();
+                        $person_image->delete();
 
                         return Response::json(array(
                             'status' => 'success'

@@ -16,9 +16,9 @@ HTML::macro('smartRoute_link', function($route, $text) {
 /**
  * button link
  */
-HTML::macro('buttonLink', function($route, $text, $buttonClass = '') {
-    if($buttonClass !== ''){
-        $class = " class='".$buttonClass."'";
+HTML::macro('buttonLink', function($route, $text, $button_class = '') {
+    if($button_class !== ''){
+        $class = " class='".$button_class."'";
     }
     else{
         $class = "";
@@ -33,13 +33,13 @@ HTML::macro('buttonLink', function($route, $text, $buttonClass = '') {
  */
 function random_string($length = 10) {
     $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $randomString = '';
+    $random_string = '';
 
     for ($i = 0; $i < $length; $i++) {
-        $randomString .= $chars[rand(0, strlen($chars) - 1)];
+        $random_string .= $chars[rand(0, strlen($chars) - 1)];
     }
 
-    return $randomString;
+    return $random_string;
 }
 
 /**

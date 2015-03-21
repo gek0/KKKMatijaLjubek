@@ -34,8 +34,8 @@
         <div class="space"></div>
 
         <article class="article-container">
-            @if(count($newsData->all()) > 0)
-                @foreach(array_chunk($newsData->all(), 2) as $news)
+            @if(count($news_data->all()) > 0)
+                @foreach(array_chunk($news_data->all(), 2) as $news)
                     <div class="row padded">
                         @foreach($news as $item)
                             <div class="col-md-6 news-all-content" id="news-{{ $item->id }}">
@@ -74,7 +74,7 @@
                 @endforeach
 
                 <div class="pagination-layout pagination-centered">
-                    {{ $newsData->appends(Request::except('stranica'))->links() }}
+                    {{ $news_data->appends(Request::except('stranica'))->links() }}
                 </div> <!-- end pagination -->
             @else
                 <div class="text-center">

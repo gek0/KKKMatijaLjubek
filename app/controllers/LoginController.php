@@ -17,10 +17,10 @@ class LoginController extends Controller{
     public function getIndex()
     {
         if(Auth::guest()){
-            $intendedUrl = Session::get('url.intended', url('admin'));
+            $intended_url = Session::get('url.intended', url('admin'));
             Session::forget('url.intended');
 
-            return View::make('login.login')->with('intendedUrl', $intendedUrl);
+            return View::make('login.login')->with('intended_url', $intended_url);
         }
         else{
             return Redirect::to('admin');
@@ -38,19 +38,19 @@ class LoginController extends Controller{
         }
 
         if (Request::ajax()) {
-            $inputData = Input::get('formData');
-            $userData = array(
-                'username' => e($inputData['username']),
-                'password' => $inputData['password'],
-                'rememberMe' => e($inputData['rememberMe'])
+            $input_data = Input::get('formData');
+            $user_data = array(
+                'username' => e($input_data['username']),
+                'password' => $input_data['password'],
+                'rememberMe' => e($input_data['rememberMe'])
             );
 
-            $rememberMe = false;
-            if($userData['rememberMe'] == '1'){
-                $rememberMe = true;
+            $remember_me = false;
+            if($user_data['rememberMe'] == '1'){
+                $remember_me = true;
             }
 
-            if (Auth::attempt(array('username' => $userData['username'], 'password' => $userData['password']), $rememberMe)) {
+            if (Auth::attempt(array('username' => $user_data['username'], 'password' => $user_data['password']), $remember_me)) {
                 return Response::json(array(
                     'status' => 'success'
                 ));

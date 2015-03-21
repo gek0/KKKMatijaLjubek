@@ -29,23 +29,23 @@ class HomeController extends Controller {
 	public function getIndex()
 	{
         //get gallery images for cover slider
-        $galleryData = Gallery::orderBy('id', 'DESC')->get();
-        $galleryCount = $galleryData->count();
+        $gallery_data = Gallery::orderBy('id', 'DESC')->get();
+        $gallery_count = $gallery_data->count();
 
         //get people categories
         $person_categories = PersonCategory::orderBy('id')->get();
 
         //get all persons
-        $personsData = Person::orderBy('person_full_name', 'ASC')->get();
+        $persons_data = Person::orderBy('person_full_name', 'ASC')->get();
 
         //get last 2 news
-        $newsData = News::orderBy('id', 'DESC')->take(2)->get();
+        $news_data = News::orderBy('id', 'DESC')->take(2)->get();
 
-        return View::make('public.index')->with(array('galleryData' => $galleryData,
-                                                      'galleryCount' => $galleryCount,
+        return View::make('public.index')->with(array('gallery_data' => $gallery_data,
+                                                      'gallery_count' => $gallery_count,
                                                       'person_categories' => $person_categories,
-                                                      'personsData' => $personsData,
-                                                      'newsData' => $newsData
+                                                      'persons_data' => $persons_data,
+                                                      'news_data' => $news_data
                                                      )
                                                 );
 	}
@@ -58,33 +58,33 @@ class HomeController extends Controller {
     public function showPerson($slug)
     {
         //find person and get data if exists
-        $personData = Person::findBySlug(e($slug));
+        $person_data = Person::findBySlug(e($slug));
 
         //check if person exists
-        if($personData){
+        if($person_data){
             //find previous and next person after current
-            $previousPerson = $personData->previousPerson();
-            $nextPerson = $personData->nextPerson();
+            $previous_person = $person_data->previousPerson();
+            $next_person = $person_data->nextPerson();
 
             //check if there are persons before/after or not
-            if($previousPerson){
-                $previousPerson = array('slug' => $previousPerson->slug, 'full_name' => $previousPerson->person_full_name);
+            if($previous_person){
+                $previous_person = array('slug' => $previous_person->slug, 'full_name' => $previous_person->person_full_name);
             }
             else{
-                $previousPerson = false;
+                $previous_person = false;
             }
 
-            if($nextPerson){
-                $nextPerson = array('slug' => $nextPerson->slug, 'full_name' => $nextPerson->person_full_name);
+            if($next_person){
+                $next_person = array('slug' => $next_person->slug, 'full_name' => $next_person->person_full_name);
             }
             else{
-                $nextPerson = false;
+                $next_person = false;
             }
 
-            return View::make('public.clan')->with(array('personData' => $personData,
-                                                         'page_title' => $personData->person_full_name,
-                                                         'previousPerson' => $previousPerson,
-                                                         'nextPerson' => $nextPerson
+            return View::make('public.clan')->with(array('person_data' => $person_data,
+                                                         'page_title' => $person_data->person_full_name,
+                                                         'previous_person' => $previous_person,
+                                                         'next_person' => $next_person
                                                         )
                                                   );
         }
@@ -99,10 +99,10 @@ class HomeController extends Controller {
      */
     public function showTagsList()
     {
-        $tagsData = Tag::all();
+        $tags_data = Tag::all();
         $page_title = 'Tagovi';
 
-        return View::make('public.tagovi')->with(array('tagsData' => $tagsData,
+        return View::make('public.tagovi')->with(array('tags_data' => $tags_data,
                                                        'page_title' => $page_title
                                                       )
                                                 );
@@ -147,7 +147,7 @@ class HomeController extends Controller {
      */
     public function showNewsList()
     {
-        $newsData = News::orderBy('id', 'DESC')->paginate($this->news_paginate);
+        $news_data = News::orderBy('id', 'DESC')->paginate($this->news_paginate);
         $page_title = 'Vijesti';
 
         //default form sort value
@@ -155,7 +155,7 @@ class HomeController extends Controller {
         $sort_category = null;
         $sort_data = $this->sort_data;
 
-        return View::make('public.vijesti')->with(array('newsData' => $newsData,
+        return View::make('public.vijesti')->with(array('news_data' => $news_data,
                                                         'page_title' => $page_title,
                                                         'sort_data' => $sort_data,
                                                         'sort_category' => $sort_category,
@@ -172,36 +172,36 @@ class HomeController extends Controller {
     public function showNews($slug)
     {
         //find news and get data if exists
-        $newsData = News::findBySlug(e($slug));
+        $news_data = News::findBySlug(e($slug));
 
         //check if news exists
-        if($newsData){
+        if($news_data){
             //increment number of news views
-            $newsData->increment('num_visited');
+            $news_data->increment('num_visited');
 
             //find previous and next person after current
-            $previousNews = $newsData->previousNews();
-            $nextNews = $newsData->nextNews();
+            $previous_news = $news_data->previousNews();
+            $next_news = $news_data->nextNews();
 
             //check if there are persons before/after or not
-            if($previousNews){
-                $previousNews = array('slug' => $previousNews->slug, 'news_title' => $previousNews->news_title);
+            if($previous_news){
+                $previous_news = array('slug' => $previous_news->slug, 'news_title' => $previous_news->news_title);
             }
             else{
-                $previousNews = false;
+                $previous_news = false;
             }
 
-            if($nextNews){
-                $nextNews = array('slug' => $nextNews->slug, 'news_title' => $nextNews->news_title);
+            if($next_news){
+                $next_news = array('slug' => $next_news->slug, 'news_title' => $next_news->news_title);
             }
             else{
-                $nextNews = false;
+                $next_news = false;
             }
 
-            return View::make('public.clanak')->with(array('newsData' => $newsData,
-                    'page_title' => $newsData->news_title,
-                    'previousNews' => $previousNews,
-                    'nextNews' => $nextNews
+            return View::make('public.clanak')->with(array('news_data' => $news_data,
+                    'page_title' => $news_data->news_title,
+                    'previous_news' => $previous_news,
+                    'next_news' => $next_news
                 )
             );
         }
@@ -227,46 +227,46 @@ class HomeController extends Controller {
         switch($sort_category){
             case 'added_desc':
                 if($news_text_sort == '') {
-                    $newsData = News::orderBy('id', 'DESC')->paginate($this->news_paginate);
+                    $news_data = News::orderBy('id', 'DESC')->paginate($this->news_paginate);
                 }
                 else{
-                    $newsData = News::where('news_body', 'LIKE', '%'.$news_text_sort.'%')->orderBy('id', 'DESC')->paginate($this->news_paginate);
+                    $news_data = News::where('news_body', 'LIKE', '%'.$news_text_sort.'%')->orderBy('id', 'DESC')->paginate($this->news_paginate);
                 }
                 break;
             case 'added_asc':
                 if($news_text_sort == '') {
-                    $newsData = News::orderBy('id', 'ASC')->paginate($this->news_paginate);
+                    $news_data = News::orderBy('id', 'ASC')->paginate($this->news_paginate);
                 }
                 else{
-                    $newsData = News::where('news_body', 'LIKE', '%'.$news_text_sort.'%')->orderBy('id', 'ASC')->paginate($this->news_paginate);
+                    $news_data = News::where('news_body', 'LIKE', '%'.$news_text_sort.'%')->orderBy('id', 'ASC')->paginate($this->news_paginate);
                 }
                 break;
             case 'visits_desc':
                 if($news_text_sort == '') {
-                    $newsData = News::orderBy('num_visited', 'DESC')->paginate($this->news_paginate);
+                    $news_data = News::orderBy('num_visited', 'DESC')->paginate($this->news_paginate);
                 }
                 else{
-                    $newsData = News::where('news_body', 'LIKE', '%'.$news_text_sort.'%')->orderBy('num_visited', 'DESC')->paginate($this->news_paginate);
+                    $news_data = News::where('news_body', 'LIKE', '%'.$news_text_sort.'%')->orderBy('num_visited', 'DESC')->paginate($this->news_paginate);
                 }
                 break;
             case 'visits_asc':
                 if($news_text_sort == '') {
-                    $newsData = News::orderBy('num_visited', 'ASC')->paginate($this->news_paginate);
+                    $news_data = News::orderBy('num_visited', 'ASC')->paginate($this->news_paginate);
                 }
                 else{
-                    $newsData = News::where('news_body', 'LIKE', '%'.$news_text_sort.'%')->orderBy('num_visited', 'ASC')->paginate($this->news_paginate);
+                    $news_data = News::where('news_body', 'LIKE', '%'.$news_text_sort.'%')->orderBy('num_visited', 'ASC')->paginate($this->news_paginate);
                 }
                 break;
             default:
                 if($news_text_sort == '') {
-                    $newsData = News::orderBy('id', 'DESC')->paginate($this->news_paginate);
+                    $news_data = News::orderBy('id', 'DESC')->paginate($this->news_paginate);
                 }
                 else{
-                    $newsData = News::where('news_body', 'LIKE', '%'.$news_text_sort.'%')->orderBy('id', 'DESC')->paginate($this->news_paginate);
+                    $news_data = News::where('news_body', 'LIKE', '%'.$news_text_sort.'%')->orderBy('id', 'DESC')->paginate($this->news_paginate);
                 }
         }
 
-        return View::make('public.vijesti')->with(array('newsData' => $newsData,
+        return View::make('public.vijesti')->with(array('news_data' => $news_data,
                                                         'page_title' => $page_title,
                                                         'sort_data' => $sort_data,
                                                         'sort_category' => $sort_category,
@@ -288,7 +288,7 @@ class HomeController extends Controller {
         //check if there is cached version
         if(!$feed->isCached()){
             //grab news data from database
-            $newsData = News::orderBy('id', 'DESC')->take(5)->get();
+            $news_data = News::orderBy('id', 'DESC')->take(5)->get();
 
             //set feed parameters
             $feed->title = 'KKK Matija Ljubek RSS';
@@ -296,12 +296,12 @@ class HomeController extends Controller {
             $feed->logo = URL::to('css/assets/images/logo_main_log.png');
             $feed->link = URL::to('rss');
             $feed->setDateFormat('datetime');
-            $feed->pubdate = $newsData[0]->created_at;
+            $feed->pubdate = $news_data[0]->created_at;
             $feed->lang = 'hr';
             $feed->setShortening(true);
             $feed->setTextLimit(500);
 
-            foreach($newsData as $news){
+            foreach($news_data as $news){
                 $feed->add($news->news_title, $news->author->username, URL::to('vijesti/'.$news->slug), $news->created_at, (new BBCParser)->unparse($news->news_body), '');
             }
         }

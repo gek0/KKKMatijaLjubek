@@ -7,8 +7,8 @@ class NewsController extends AdminController{
      */
     public function getIndex()
     {
-        $newsData = News::orderBy('id', 'DESC')->paginate(9);
-        $this->layout->content = View::make('admin.vijesti.index')->with('newsData', $newsData);
+        $news_data = News::orderBy('id', 'DESC')->paginate(9);
+        $this->layout->content = View::make('admin.vijesti.index')->with('news_data', $news_data);
     }
 
     /**
@@ -78,8 +78,7 @@ class NewsController extends AdminController{
             $news->news_author = Auth::user()->id;
             $news->save();
 
-            $newsID = $news->id;
-            $newsName = safe_name($news->news_title);
+            $news_name = safe_name($news->news_title);
 
            //tags
            if($news_tags_unique == true){
@@ -102,13 +101,13 @@ class NewsController extends AdminController{
             //images
             if($news_images == true && $news_images[0] != null){
                 //check for image directory
-                $path = public_path().'/news_uploads/'.$newsID.'/';
+                $path = public_path().'/news_uploads/'.$news->id.'/';
                 if(!File::exists($path)){
                     File::makeDirectory($path, 0777);
                 }
 
                 foreach($news_images as $img){
-                    $file_name = substr($newsName, 0, 15).'_'.Str::random(5);
+                    $file_name = substr($news_name, 0, 15).'_'.Str::random(5);
                     $file_extension = $img->getClientOriginalExtension();
                     $full_name = $file_name.'.'.$file_extension;
                     $file_size = $img->getSize();
@@ -127,7 +126,7 @@ class NewsController extends AdminController{
                         $image = new NewsImage;
                         $image->file_name = $full_name;
                         $image->file_size = $file_size;
-                        $image->news_id = $newsID;
+                        $image->news_id = $news->id;
                         $image->save();
                     }
                 }
@@ -250,7 +249,7 @@ class NewsController extends AdminController{
                     $news->news_body = $news_data['news_body'];
                     $news->save();
 
-                    $newsName = safe_name($news->news_title);
+                    $news_name = safe_name($news->news_title);
 
                     //add new tags if any
                     if($news_tags){
@@ -279,7 +278,7 @@ class NewsController extends AdminController{
                         }
 
                         foreach($news_images as $img){
-                            $file_name = substr($newsName, 0, 15).'_'.Str::random(5);
+                            $file_name = substr($news_name, 0, 15).'_'.Str::random(5);
                             $file_extension = $img->getClientOriginalExtension();
                             $full_name = $file_name.'.'.$file_extension;
                             $file_size = $img->getSize();
@@ -329,11 +328,11 @@ class NewsController extends AdminController{
     public function getPregled($slug = null)
     {
         if ($slug !== null){
-            $newsData = News::findBySlug(e($slug));
+            $news_data = News::findBySlug(e($slug));
 
             //check if news exists
-            if($newsData){
-                $this->layout->content = View::make('admin/vijesti/pregled')->with(array('newsData' => $newsData));
+            if($news_data){
+                $this->layout->content = View::make('admin/vijesti/pregled')->with(array('news_data' => $news_data));
             }
             else{
                 return Redirect::to('admin/vijesti')->withErrors('Vijest ne postoji.');
@@ -351,21 +350,25 @@ class NewsController extends AdminController{
      */
     public function getIzmjena($slug = null){
         if($slug !== null){
-            $newsData = News::findBySlug(e($slug));
+            $news_data = News::findBySlug(e($slug));
 
             //check if news exists
-            if($newsData){
+            if($news_data){
                 //check if news has tags
                 $tags = array();
-                if($newsData->tags){
-                    foreach($newsData->tags as $tag){
+                if($news_data->tags){
+                    foreach($news_data->tags as $tag){
                         $tags[] = $tag->tag;
                     }
                     $tags = json_encode($tags);
                 }
 
                 $tag_collection = Tag::distinct()->select('tag')->get();    //get all tags for input suggestion
-                $this->layout->content = View::make('admin/vijesti/izmjena')->with(array('newsData' => $newsData, 'newsTags' => $tags, 'tag_collection' => $tag_collection));
+                $this->layout->content = View::make('admin/vijesti/izmjena')->with(array('news_data' => $news_data,
+                                                                                         'news_tags' => $tags,
+                                                                                         'tag_collection' => $tag_collection
+                                                                                        )
+                                                                                    );
             }
             else{
                 return Redirect::to('admin/vijesti')->withErrors('Vijest ne postoji.');
@@ -430,25 +433,6 @@ class NewsController extends AdminController{
     }
 
     /**
-     * @param $tagQuery
-     * @return mixed
-     * return list of tags as JSON (used it in autocomplete forms)
-     */
-    public function getDohvatiTagove($tagQuery)
-    {
-        $tagData = array();
-        $tagQuery = e($tagQuery); //sanitize input
-
-        //fetch tags by name
-        $results = Tag::select('tag')->where('tag', 'LIKE', $tagQuery.'%')->take(10)->get();
-        foreach($results as $result){
-            $tagData[] = $result->tag;
-        }
-
-        return Response::json($tagData);
-    }
-
-    /**
      * @return mixed
      * AJAX image delete form news gallery
      */
@@ -469,17 +453,17 @@ class NewsController extends AdminController{
                  ));
             }
             else{
-                $newsImage = NewsImage::find($image_id);
-                $newsID = $newsImage->news_id;
+                $news_image = NewsImage::find($image_id);
+                $news_id = $news_image->news_id;
 
                 //delete image if exists and return JSON response
-                if($newsImage){
+                if($news_image){
                     try{
-                        $file_name = public_path().'/news_uploads/'.$newsID.'/'.$newsImage->file_name;
+                        $file_name = public_path().'/news_uploads/'.$news_id.'/'.$news_image->file_name;
                         if(File::exists($file_name)){
                             File::delete($file_name);
                         }
-                        $newsImage->delete();
+                        $news_image->delete();
 
                         return Response::json(array(
                             'status' => 'success'

@@ -19,10 +19,10 @@
                 </div>
             {{ Form::close() }}
 
-            @if($tagsData->count() > 0)
+            @if($tags_data->count() > 0)
                 <div class="text-center tags-collection">
                     <ul class="tags">
-                        @foreach($tagsData as $tag)
+                        @foreach($tags_data as $tag)
                             <a href="{{ URL::to('vijesti/tag/'.$tag->slug) }}"><li class="marginated-tags">{{ $tag->tag }}</li></a>
                         @endforeach
                     </ul>

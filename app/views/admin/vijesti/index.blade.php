@@ -1,6 +1,6 @@
 <section id="news_data_all" data-role="news_data">
-    @if(count($newsData->all()) > 0)
-        @foreach(array_chunk($newsData->all(), 3) as $news)
+    @if(count($news_data->all()) > 0)
+        @foreach(array_chunk($news_data->all(), 3) as $news)
             <div class="row padded">
                 @foreach($news as $item)
                     <div class="col-md-4 news-all-content" id="news-{{ $item->id }}">
@@ -37,7 +37,7 @@
         @endforeach
 
         <div class="pagination-layout pagination-centered">
-            {{ $newsData->links() }}
+            {{ $news_data->links() }}
         </div> <!-- end pagination -->
     @else
         <div class="text-center">

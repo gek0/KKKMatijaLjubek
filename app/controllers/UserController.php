@@ -19,17 +19,17 @@ class UserController extends AdminController{
         if (Request::ajax()){
 
             //get user input data
-            $inputData = Input::get('formData');
+            $input_data = Input::get('formData');
             $token = Request::ajax() ? Request::header('X-CSRF-Token') : Input::get('_token');
-            $userData = array(
-                'username' => $inputData['username'],
-                'email' => $inputData['email'],
-                'password' => $inputData['password'],
-                'passwordAgain' => $inputData['passwordAgain'],
+            $user_data = array(
+                'username' => $input_data['username'],
+                'email' => $input_data['email'],
+                'password' => $input_data['password'],
+                'passwordAgain' => $input_data['passwordAgain'],
             );
 
             //validation
-            $validator = Validator::make($userData, User::$rulesLessStrict, User::$messages);
+            $validator = Validator::make($user_data, User::$rulesLessStrict, User::$messages);
 
             //check if csrf token is valid
             if(Session::token() != $token){
@@ -49,11 +49,11 @@ class UserController extends AdminController{
                 }
                 else{
                     $user = User::find(Auth::user()->id);
-                    $user->username = e($userData['username']);
-                    $user->email = e($userData['email']);
+                    $user->username = e($user_data['username']);
+                    $user->email = e($user_data['email']);
                     //change user password if new is in input
-                    if(strlen($userData['password']) > 0) {
-                        $user->password = Hash::make($userData['password']);
+                    if(strlen($user_data['password']) > 0) {
+                        $user->password = Hash::make($user_data['password']);
                     }
                     $user->save();
 
@@ -80,17 +80,17 @@ class UserController extends AdminController{
         if (Request::ajax()){
 
             //get user input data
-            $inputData = Input::get('formData');
+            $input_data = Input::get('formData');
             $token = Request::ajax() ? Request::header('X-CSRF-Token') : Input::get('_token');
-            $userData = array(
-                'username' => $inputData['newUsername'],
-                'email' => $inputData['newEmail'],
-                'password' => $inputData['newPassword'],
-                'passwordAgain' => $inputData['newPasswordAgain'],
+            $user_data = array(
+                'username' => $input_data['newUsername'],
+                'email' => $input_data['newEmail'],
+                'password' => $input_data['newPassword'],
+                'passwordAgain' => $input_data['newPasswordAgain'],
             );
 
             //validation
-            $validator = Validator::make($userData, User::$rules, User::$messages);
+            $validator = Validator::make($user_data, User::$rules, User::$messages);
 
             //check if csrf token is valid
             if(Session::token() != $token){
@@ -110,9 +110,9 @@ class UserController extends AdminController{
                 }
                 else{
                     $user = new User;
-                    $user->username = e($userData['username']);
-                    $user->email = e($userData['email']);
-                    $user->password = Hash::make($userData['password']);
+                    $user->username = e($user_data['username']);
+                    $user->email = e($user_data['email']);
+                    $user->password = Hash::make($user_data['password']);
                     $user->save();
 
                     return Response::json(array(

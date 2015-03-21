@@ -1,28 +1,28 @@
 <div class="row">
     <div class="formInput">
-        <h2 class="text-center">Izmjena osobe<br> <b>{{ $personData->person_full_name }}</b></h2>
-        {{ Form::open(array('url' => 'admin/osobe/izmjena/'.$personData->slug, 'id' => 'izmjeniOsobu', 'files' => true, 'role' => 'form')) }}
+        <h2 class="text-center">Izmjena osobe<br> <b>{{ $person_data->person_full_name }}</b></h2>
+        {{ Form::open(array('url' => 'admin/osobe/izmjena/'.$person_data->slug, 'id' => 'izmjeniOsobu', 'files' => true, 'role' => 'form')) }}
             <div class="form-group">
                 {{ Form::label('person_full_name', 'Ime i prezime:') }}
-                {{ Form::text('person_full_name', $personData->person_full_name, array('class' => 'form-control', 'placeholder' => 'Ime i prezime', 'id' => 'person_full_name', 'required')) }}
+                {{ Form::text('person_full_name', $person_data->person_full_name, array('class' => 'form-control', 'placeholder' => 'Ime i prezime', 'id' => 'person_full_name', 'required')) }}
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6">
                         {{ Form::label('person_category', 'Kategorija osobe:') }}<br>
                         {{ Form::select('person_category', array('Izaberi kategoriju osobe...' => $person_categories),
-                                                  $personData->category_id, array('class' => 'selectpicker show-tick', 'data-style' => 'btn-info', 'title' => 'Odaberi kategoriju osobe...', 'data-size' => '5'))
+                                                  $person_data->category_id, array('class' => 'selectpicker show-tick', 'data-style' => 'btn-info', 'title' => 'Odaberi kategoriju osobe...', 'data-size' => '5'))
                         }}
                     </div>
                     <div class="col-md-6">
                         {{ Form::label('person_birthday', 'Datum rođenja osobe:') }}
-                        {{ Form::text('person_birthday', $personData->getDateBirthdayInput(), array('class' => 'form-control', 'placeholder' => 'Datum rođenja', 'id' => 'person_birthday', 'required')) }}
+                        {{ Form::text('person_birthday', $person_data->getDateBirthdayInput(), array('class' => 'form-control', 'placeholder' => 'Datum rođenja', 'id' => 'person_birthday', 'required')) }}
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 {{ Form::label('person_description', 'Opis osobe:') }}
-                {{ Form::textarea('person_description', $personData->person_description, array('class' => 'form-control', 'placeholder' => 'Opis osobe', 'id' => 'codeEditor')) }}
+                {{ Form::textarea('person_description', $person_data->person_description, array('class' => 'form-control', 'placeholder' => 'Opis osobe', 'id' => 'codeEditor')) }}
             </div>
             <div class="form-group">
                 {{ Form::label('person_images', 'Dodaj nove slike osobe:') }}

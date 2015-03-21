@@ -108,8 +108,8 @@
 <section id="banner" class="carousel slide carousel-fade" data-animation-effect="fadeIn">
     <!-- indicators -->
     <ol class="carousel-indicators">
-        @if($galleryCount > 0)
-            @for($i = 0; $i < $galleryCount; $i++)
+        @if($gallery_count > 0)
+            @for($i = 0; $i < $gallery_count; $i++)
                 @if($i == 0)
                     <li data-target="#banner" data-slide-to="{{ $i }}" class="active"></li>
                 @else
@@ -123,20 +123,20 @@
 
     <!-- slides -->
     <div class="carousel-inner">
-        @if($galleryCount > 0)
-            @for($i = 0; $i < $galleryCount; $i++)
+        @if($gallery_count > 0)
+            @for($i = 0; $i < $gallery_count; $i++)
                 @if($i == 0)
                     <div class="item active">
-                        <div class="fill" style="background-image:url('{{ URL::to('gallery_uploads/'.$galleryData[$i]->file_name) }}');"></div>
+                        <div class="fill" style="background-image:url('{{ URL::to('gallery_uploads/'.$gallery_data[$i]->file_name) }}');"></div>
                         <div class="carousel-caption">
-                            <h2>{{ $galleryData[$i]->caption }}</h2>
+                            <h2>{{ $gallery_data[$i]->caption }}</h2>
                         </div>
                     </div>
                 @else
                     <div class="item">
-                        <div class="fill" style="background-image:url('{{ URL::to('gallery_uploads/'.$galleryData[$i]->file_name) }}');"></div>
+                        <div class="fill" style="background-image:url('{{ URL::to('gallery_uploads/'.$gallery_data[$i]->file_name) }}');"></div>
                         <div class="carousel-caption">
-                            <h2>{{ $galleryData[$i]->caption }}</h2>
+                            <h2>{{ $gallery_data[$i]->caption }}</h2>
                         </div>
                     </div>
                 @endif
@@ -264,9 +264,9 @@
     <div class="container object-non-visible" data-animation-effect="fadeIn">
         <h1 id="news" class="text-center title">Zadnje vijesti</h1>
         <div class="row">
-            @if($newsData->count() > 0)
+            @if($news_data->count() > 0)
                 <div id="main-news-slider" class="liquid-slider">
-                    @foreach($newsData as $news)
+                    @foreach($news_data as $news)
                         <article id="news-post-{{ $news->id }}">
                             <h3 class="text-center">{{ $news->news_title }}</h3>
                             <p>{{ Str::limit(removeEmptyP(nl2p((new BBCParser)->unparse($news->news_body))), 500)  }}</p>
@@ -332,7 +332,7 @@
                 <div class="col-md-12 text-center isotope-item-empty-filter"><h3></h3></div>
 
                 <div class="isotope-container row grid-space-20">
-                    @foreach($personsData as $person)
+                    @foreach($persons_data as $person)
                         <div class="col-sm-6 col-md-3 isotope-item {{ safe_name($person->category->category_name) }}">
                             <div class="image-box">
                                 <div class="overlay-container">

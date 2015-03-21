@@ -7,8 +7,8 @@ class GalleryController extends AdminController{
      */
     public function getIndex()
     {
-        $galleryData = Gallery::orderBy('id', 'DESC')->get();
-        $this->layout->content = View::make('admin.naslovnica.index')->with('galleryData', $galleryData);
+        $gallery_data = Gallery::orderBy('id', 'DESC')->get();
+        $this->layout->content = View::make('admin.naslovnica.index')->with('gallery_data', $gallery_data);
     }
 
     /**
@@ -48,15 +48,6 @@ class GalleryController extends AdminController{
             $file_size = $gallery_image->getSize();
 
             $file_uploaded = $gallery_image->move($path, $full_name);
-
-            //resize image
-            $img_resizer = Image::make($path.$full_name);
-            $img_resizer->resize(1280, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
-            $img_resizer->save();
-
             if($file_uploaded){
                 $image = new Gallery;
                 $image->file_name = $full_name;
@@ -142,7 +133,7 @@ class GalleryController extends AdminController{
 
             //get image data and token
             $image_id = e(Input::get('imageID'));
-            $imageData = array('caption' => e(Input::get('imageCaption')));
+            $image_data = array('caption' => e(Input::get('imageCaption')));
             $token = Request::header('X-CSRF-Token');
 
             //check if csrf token is valid
@@ -159,7 +150,7 @@ class GalleryController extends AdminController{
                 //edit image caption if exists and return JSON response
                 if($image){
                     try{
-                        $image->caption = $imageData['caption'];
+                        $image->caption = $image_data['caption'];
                         $image->save();
 
                         return Response::json(array(

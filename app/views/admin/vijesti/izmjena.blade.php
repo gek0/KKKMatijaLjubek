@@ -1,14 +1,14 @@
 <div class="row">
     <div class="formInput">
-        <h2 class="text-center">Izmjena vijesti<br> <b>{{ $newsData->news_title }}</b></h2>
-        {{ Form::open(array('url' => 'admin/vijesti/izmjena/'.$newsData->slug, 'id' => 'izmjeniVijest', 'files' => true, 'role' => 'form')) }}
+        <h2 class="text-center">Izmjena vijesti<br> <b>{{ $news_data->news_title }}</b></h2>
+        {{ Form::open(array('url' => 'admin/vijesti/izmjena/'.$news_data->slug, 'id' => 'izmjeniVijest', 'files' => true, 'role' => 'form')) }}
         <div class="form-group">
             {{ Form::label('news_title', 'Naslov vijesti:') }}
-            {{ Form::text('news_title', $newsData->news_title, array('class' => 'form-control', 'placeholder' => 'Naslov vijesti', 'id' => 'news_title', 'required')) }}
+            {{ Form::text('news_title', $news_data->news_title, array('class' => 'form-control', 'placeholder' => 'Naslov vijesti', 'id' => 'news_title', 'required')) }}
         </div>
         <div class="form-group">
             {{ Form::label('news_body', 'Tekst vijesti:') }}
-            {{ Form::textarea('news_body', $newsData->news_body, array('class' => 'form-control', 'placeholder' => 'Tekst vijesti', 'id' => 'codeEditor')) }}
+            {{ Form::textarea('news_body', $news_data->news_body, array('class' => 'form-control', 'placeholder' => 'Tekst vijesti', 'id' => 'codeEditor')) }}
         </div>
         <div class="form-group">
             {{ Form::label('news_images', 'Dodaj nove slike vijesti:') }}
@@ -64,7 +64,7 @@
         /*
         *   fill tags input with news tags data if any
         */
-        var tagsData = {{ $newsTags }};
+        var tagsData = {{ $news_tags }};
         var numOfTags = tagsData.length;
 
         $('#news_tags').tagsinput('add', '');
