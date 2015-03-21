@@ -26,7 +26,7 @@ class HomeController extends Controller {
 	 * @return mixed
 	 * homepage
      */
-	public function getIndex()
+	public function showIndex()
 	{
         //get gallery images for cover slider
         $gallery_data = Gallery::orderBy('id', 'DESC')->get();
@@ -307,6 +307,82 @@ class HomeController extends Controller {
         }
 
         return $feed->render('atom');
+    }
+
+    public function sendEmail()
+    {
+        if (Request::ajax()) {
+            //define validator rules and messages
+            $rules = array('full_name' => 'required|between:2,100',
+                'email' => 'required|email',
+                'message_body' => 'required|min:10',
+                'g-recaptcha-response' => 'required|captcha'
+            );
+
+            $messages = array('full_name.required' => 'Zaboravili ste unjeti ime i prezime.',
+                'full_name.between' => 'Ime i prezime ne mogu biti dulji od 100 znakova i kraći od 2.',
+                'email.required' => 'E-mail adresa je obavezno polje.',
+                'email.email' => 'Unjeta e-mail adresa nije važeća.',
+                'message_body.required' => 'Poruka je obavezno polje.',
+                'message_body.min' => 'Poruka je prekratka, minimalno 10 znakova.',
+                'g-recaptcha-response.required' => 'Captcha je obavezna.',
+                'g-recaptcha-response.captcha' => 'Captcha nije važeća.'
+            );
+
+            //get form data
+            $input_data = Input::get('formData');
+            $token = Input::get('_token');
+            $user_data = array('full_name' => e($input_data['full_name']),
+                               'email' => e($input_data['email']),
+                               'message_body' => e($input_data['message']),
+                               'g-recaptcha-response' => e($input_data['g-recaptcha-response'])
+                         );
+
+            //validate user data
+            $validator = Validator::make($user_data, $rules, $messages);
+
+            //check if csrf token is valid
+            if(Session::token() != $token){
+                return Response::json(array(
+                    'status' => 'error',
+                    'errors' => 'CSRF token is not valid.'
+                ));
+            }
+            else {
+                //check validation results and save user if ok
+                if($validator->fails()){
+                    return Response::json(array(
+                        'status' => 'error',
+                        'errors' => $validator->getMessageBag()->toArray()
+                    ));
+                }
+                else{
+                    //send email
+                    try{
+                        Mail::send('email', $user_data, function($message) use ($user_data){
+                            $message->from($user_data['email'], $user_data['full_name']);
+                            $message->to('kkkmatijaljubek@yahoo.com')->subject('KKK Matija Ljubek - nova poruka');
+                        });
+
+                        return Response::json(array(
+                            'status' => 'success'
+                        ));
+                    }
+                    catch(Exception $e){
+                        return Response::json(array(
+                            'status' => 'error',
+                            'errors' => 'E-mail nije mogao biti poslan'
+                        ));
+                    }
+                }
+            }
+        }
+        else{
+            return Response::json(array(
+                'status' => 'error',
+                'errors' => 'Data not sent with Ajax.'
+            ));
+        }
     }
 
 }

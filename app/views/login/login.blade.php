@@ -112,7 +112,7 @@
             $.each($(this).serializeArray(), function (i, field) {
                 values[field.name] = field.value;
             });
-            var token = $('#novePostavke > input[name="_token"]').val();
+            var token = $('#adminLogin > input[name="_token"]').val();
 
             //user output
             var outputMsg = $('#outputMsg');

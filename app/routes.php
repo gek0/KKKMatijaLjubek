@@ -45,4 +45,5 @@ Route::get('vijesti/sort', array('as' => 'news-sort', 'uses' => 'HomeController@
 Route::get('vijesti/{slug}', array('as' => 'news-individual', 'uses' => 'HomeController@showNews'))->where(array('slug' => '[a-zA-Z\-]+'));
 Route::get('vijesti', array('as' => 'news', 'uses' => 'HomeController@showNewsList'));
 Route::get('tagovi', array('as' => 'tags', 'uses' => 'HomeController@showTagsList'));
-Route::controller('/', 'HomeController');
+Route::post('kontakt', array('as' => 'contact', 'uses' => 'HomeController@sendEmail'));
+Route::get('/', array('as' => 'homepage', 'uses' => 'HomeController@showIndex'));

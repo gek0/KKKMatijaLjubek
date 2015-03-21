@@ -365,7 +365,7 @@
 
         <div class="row text-center">
             <div class="col-md-12">
-                <p>Pozivamo svu djecu da nam se pridruže u školi kajaka i kanua na mirnim vodama.</p>
+                <p>Pozivamo sve dječake i djevojčice uzrasta od 9 do 14 godina da nam se pridruže u školi kajaka i kanua na mirnim vodama.</p>
             </div>
         </div>
         <div class="space"></div>
@@ -466,24 +466,37 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="footer-content">
-                        <form role="form" id="footer-form">
-                            <div class="form-group has-feedback">
-                                <label class="sr-only" for="name2">Ime i prezime</label>
-                                <input type="text" class="form-control" id="name2" placeholder="Ime i prezime" name="name2" required>
-                                <i class="fa fa-user form-control-feedback"></i>
+                       {{ Form::open(array('url' => 'kontakt', 'role' => 'form', 'id' => 'footer-form')) }}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ Form::label('full_name', 'Ime i prezime:') }}
+                                        {{ Form::text('full_name', null, array('class' => 'form-control', 'placeholder' => 'Ime i prezime', 'id' => 'full_name', 'required')) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ Form::label('email', 'E-mail adresa:') }}
+                                        {{ Form::email('email', null, array('class' => 'form-control', 'placeholder' => 'E-mail adresa', 'id' => 'email', 'required')) }}
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group has-feedback">
-                                <label class="sr-only" for="email2">E-mail adresa</label>
-                                <input type="email" class="form-control" id="email2" placeholder="E-mail adresa" name="email2" required>
-                                <i class="fa fa-envelope form-control-feedback"></i>
+                            <div class="form-group">
+                                {{ Form::label('message', 'Poruka:') }}
+                                {{ Form::textarea('message', null, array('class' => 'form-control', 'placeholder' => 'Poruka', 'id' => 'message')) }}
                             </div>
-                            <div class="form-group has-feedback">
-                                <label class="sr-only" for="message2">Poruka</label>
-                                <textarea class="form-control" rows="8" id="message2" placeholder="Poruka" name="message2" required></textarea>
-                                <i class="fa fa-pencil form-control-feedback"></i>
+                            <div class="form-group text-center captcha">
+                                {{ Form::captcha() }}
                             </div>
-                            <input type="submit" value="Pošalji" class="btn btn-default btn-info">
-                        </form>
+                            <div class="text-center" id="contact-output">
+                                <div class="alert" role="alert" id="contact-output-inner">
+                                    <div id="contact-output-message"></div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-square-alter" id="contactSubmit">Pošalji e-mail</button>
+                            </div>
+                       {{ Form::close() }}
                     </div>
                 </div>
             </div>
@@ -515,6 +528,7 @@
 {{ HTML::script('js/imagelightbox.min.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('https://maps.googleapis.com/maps/api/js?sensor=false', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/gmaps.js', array('charset' => 'utf-8')) }}
+{{ HTML::script('js/emailAjax.js', array('charset' => 'utf-8')) }}
 {{ HTML::script('js/initJS.js', array('charset' => 'utf-8')) }}
 
 </body>

@@ -127,6 +127,7 @@ return array(
         'RyanNielson\Shareable\ShareableServiceProvider',
         'Jelovac\Bitly4laravel\Bitly4laravelServiceProvider',
         'Intervention\Image\ImageServiceProvider',
+        'Anhskohbo\NoCaptcha\NoCaptchaServiceProvider',
 	),
 
 	/*

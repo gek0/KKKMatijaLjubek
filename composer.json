@@ -11,7 +11,8 @@
 		"roumen/feed": "2.8.1",
 		"ryannielson/shareable": "1.0.*",
 		"jelovac/bitly4laravel": "3.*",
-        "intervention/image": "dev-master"
+        "intervention/image": "dev-master",
+        "anhskohbo/no-captcha": "1.*"
 	},
 	"autoload": {
 		"classmap": [
