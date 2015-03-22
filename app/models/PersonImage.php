@@ -5,7 +5,7 @@ class PersonImage extends Eloquent{
     /**
      * PersonImage Database Model
      * 	-	id INT UNSIGNED / AUTO_INCREMENT PRIMARY KEY
-     *  -	file_name_title VARCHAR(255) / UNIQUE
+     *  -	file_name VARCHAR(255) / UNIQUE
      *  -   file_size DOUBLE
      *  -   person_id INT UNSIGNED / FOREIGN KEY@persons / ON DELETE CASCADE
      *  - 	created_at TIMESTAMP

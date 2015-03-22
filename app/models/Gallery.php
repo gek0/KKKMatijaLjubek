@@ -5,7 +5,7 @@ class Gallery extends Eloquent{
     /**
      * Gallery Database Model
      * 	-	id INT UNSIGNED / AUTO_INCREMENT PRIMARY KEY
-     *  -	file_name_title VARCHAR(255) / UNIQUE
+     *  -	file_name VARCHAR(255) / UNIQUE
      *  -   file_size DOUBLE
      *  -   caption VARCHAR(255)
      *  - 	created_at TIMESTAMP
