@@ -43,9 +43,8 @@
 
     <!-- stylesheets -->
     {{ HTML::style('css/bootstrap.min.css') }}
-    {{ HTML::style('css/layoutAdmin.css') }}
+    {{ HTML::style('css/layoutAdmin.min.css') }}
     {{ HTML::style('wysibb/theme/default/wbbtheme.css') }}
-    {{ HTML::style('css/fileinput.css') }}
 </head>
 <body class="cbp-spmenu-push">
     <!-- notifications -->

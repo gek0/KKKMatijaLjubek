@@ -30,10 +30,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('touch-icon-iphone-6-plus.png') }}">
     <link rel="canonical" href="{{ Request::url() }}" />
 
-    <!-- scripts -->
-    {{ HTML::script('js/jquery.min.js') }}
-    {{ HTML::script('js/bootstrap.min.js') }}
-    {{ HTML::script('js/modernizr.custom.js') }}
     <!--[if lt IE 9]>
     {{ HTML::script('js/html5shiv.min.js') }}
     {{ HTML::script('js/respond.min.js') }}
@@ -41,8 +37,7 @@
 
     <!-- stylesheets -->
     {{ HTML::style('css/bootstrap.min.css') }}
-    {{ HTML::style('css/animate.css') }}
-    {{ HTML::style('css/layoutAdmin.css') }}
+    {{ HTML::style('css/layoutAdmin.min.css') }}
 </head>
 <body>
     <!-- notifications -->
@@ -97,6 +92,11 @@
             </div>
         </div>
     </div> <!-- end login container -->
+
+    <!-- scripts -->
+    {{ HTML::script('js/jquery.min.js') }}
+    {{ HTML::script('js/bootstrap.min.js') }}
+    {{ HTML::script('js/modernizr.custom.js') }}
 
 <script>
     jQuery(document).ready(function() {

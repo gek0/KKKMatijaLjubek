@@ -36,11 +36,23 @@
 
     <!-- stylesheets -->
     {{ HTML::style('css/bootstrap.min.css') }}
-    {{ HTML::style('css/layoutPublic.css') }}
+    {{ HTML::style('css/layoutPublic.min.css') }}
 </head>
 
 <body class="no-trans">
 <div class="scrollToTop"><i class="icon-up-open-big"></i></div>
+
+<!-- facebook SDK -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0&appId=283742071785556";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<!-- end facebook SDK -->
 
 <!-- header start -->
 <header class="header fixed clearfix navbar navbar-fixed-top">

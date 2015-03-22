@@ -28,7 +28,7 @@
 
     <!-- stylesheets -->
     {{ HTML::style('css/bootstrap.min.css') }}
-    {{ HTML::style('css/layoutPublic.css') }}
+    {{ HTML::style('css/layoutPublic.min.css') }}
 </head>
 <body class="no-trans">
     <!-- section exception start -->
