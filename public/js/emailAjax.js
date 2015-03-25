@@ -53,6 +53,7 @@ jQuery(document).ready(function() {
         setTimeout(function(){
             $('#contactSubmit').removeClass('disabled');
             $('#contact-output-inner').attr('class', 'alert').fadeOut();
+            grecaptcha.reset();
             outputMsg.empty();
         }, 5000);  /************************************************************************************************************************/
 
