@@ -80,6 +80,10 @@ class NewsController extends AdminController{
 
             $news_name = safe_name($news->news_title);
 
+            //slug regenerate - croatian letter fix
+            $news->slug = safe_name(Input::get('news_title'));
+            $news->save();
+
            //tags
            if($news_tags_unique == true){
                 foreach($news_tags_unique as $tags){
@@ -250,6 +254,10 @@ class NewsController extends AdminController{
                     $news->save();
 
                     $news_name = safe_name($news->news_title);
+
+                    //slug regenerate - croatian letter fix
+                    $news->slug = safe_name(Input::get('news_title'));
+                    $news->save();
 
                     //add new tags if any
                     if($news_tags){

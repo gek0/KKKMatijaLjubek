@@ -100,6 +100,10 @@ class PersonController extends AdminController{
 
             $person_name = safe_name($person->person_full_name);
 
+            //slug regenerate - croatian letter fix
+            $person->slug = safe_name(Input::get('person_full_name'));
+            $person->save();
+
             //images
             if($person_images == true && $person_images[0] != null){
                 //check for image directory
@@ -200,6 +204,10 @@ class PersonController extends AdminController{
                     $person->save();
 
                     $personName = safe_name($person->person_full_name);
+
+                    //slug regenerate - croatian letter fix
+                    $person->slug = safe_name(Input::get('person_full_name'));
+                    $person->save();
 
                     //add new images
                     if($person_images == true && $person_images[0] != null){
