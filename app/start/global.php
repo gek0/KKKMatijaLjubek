@@ -48,7 +48,20 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 
 App::error(function(Exception $exception, $code)
 {
-	Log::error($exception);
+    switch ($code){
+        case 403:
+            $exception_message = 'Nemate ovlasti pristupa.';
+            return Response::view('error', array('exception' => $exception_message, 'code' => $code), 403);
+            break;
+
+        case 503:
+            $exception_message = 'Poteškoće sa serverom. Pokušajte ponovo kasnije.';
+            return Response::view('error', array('exception' => $exception_message, 'code' => $code), 503);
+            break;
+
+        default:
+            Log::error($exception);
+    }
 });
 
 /*
@@ -64,7 +77,7 @@ App::error(function(Exception $exception, $code)
 
 App::down(function()
 {
-	return Response::make("Be right back!", 503);
+    return Response::make("Poteškoće sa serverom. Pokušajte ponovo kasnije.", 503);
 });
 
 /*

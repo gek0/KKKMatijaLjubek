@@ -39,10 +39,10 @@ Route::get('logout', function(){
  * public area
  */
 Route::get('rss', array('as' => 'rss', 'uses' => 'HomeController@getRssFeed'));
-Route::get('clan/{slug}', array('as' => 'person', 'uses' => 'HomeController@showPerson'))->where(array('slug' => '[a-zA-Z\-]+'));
-Route::get('vijesti/tag/{slug}', array('as' => 'news-tag', 'uses' => 'HomeController@showNewsByTag'))->where(array('id' => '[0-9a-zA-Z\-]+'));
+Route::get('clan/{slug}', array('as' => 'person', 'uses' => 'HomeController@showPerson'))->where(array('slug' => '[a-zA-Z\-_]+'));
+Route::get('vijesti/tag/{slug}', array('as' => 'news-tag', 'uses' => 'HomeController@showNewsByTag'))->where(array('id' => '[a-zA-Z0-9\-]+'));
 Route::get('vijesti/sort', array('as' => 'news-sort', 'uses' => 'HomeController@getSort'));
-Route::get('vijesti/{slug}', array('as' => 'news-individual', 'uses' => 'HomeController@showNews'))->where(array('slug' => '[a-zA-Z\-]+'));
+Route::get('vijesti/{slug}', array('as' => 'news-individual', 'uses' => 'HomeController@showNews'))->where(array('slug' => '[a-zA-Z0-9\-]+'));
 Route::get('vijesti', array('as' => 'news', 'uses' => 'HomeController@showNewsList'));
 Route::get('tagovi', array('as' => 'tags', 'uses' => 'HomeController@showTagsList'));
 Route::post('kontakt', array('as' => 'contact', 'uses' => 'HomeController@sendEmail'));
