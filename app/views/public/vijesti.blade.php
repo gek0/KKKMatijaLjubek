@@ -62,7 +62,7 @@
                                     </div>
                                 </div> <!-- end news info -->
                                 <div class="news-all-body">
-                                    {{ Str::limit(removeEmptyP(nl2p((new BBCParser)->unparse($item->news_body))), 500)  }}
+                                    <p>{{ Str::limit(removeEmptyP((new BBCParser)->unparse($item->news_body)), 500)  }}</p>
                                 </div> <!-- end news-all-body -->
                                 <hr>
                                 <div class="news-all-tools text-center">

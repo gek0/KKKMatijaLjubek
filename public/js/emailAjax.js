@@ -55,7 +55,7 @@ jQuery(document).ready(function() {
             $('#contact-output-inner').attr('class', 'alert').fadeOut();
             grecaptcha.reset();
             outputMsg.empty();
-        }, 5000);  /************************************************************************************************************************/
+        }, 5000);
 
     });
 });
