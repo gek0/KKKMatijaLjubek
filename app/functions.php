@@ -48,6 +48,7 @@ function random_string($length = 10) {
  * safe name, no croatian letters
  */
 function safe_name($string) {
+    $string = preg_replace('/scaron/', 's', $string);   //'š' letter fix
     $trans = array("š" => "s", "ć" => "c", "č" => "c", "đ" => "d", "ž" => "z", " " => "_", ">" => "", "<" => "");
 
     return strtr(mb_strtolower($string, "UTF-8"), $trans);
