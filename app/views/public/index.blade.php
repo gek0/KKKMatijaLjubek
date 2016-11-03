@@ -499,6 +499,12 @@
                        {{ Form::close() }}
                     </div>
                 </div>
+                <div class="col-sm-12 text-center">
+                    <h3><b>Klupski sponzori</b></h3>
+                    <div class="footer-content">
+                        <a href="https://www.admiral.hr/" target="_blank">{{ HTML::image('css/assets/images/sponzor_admiral.png', 'Admiral Automat Club', array('class' => 'img-responsive center-block')) }}</a>        
+                    </div>
+                </div>                
             </div>
         </div>
     </div>

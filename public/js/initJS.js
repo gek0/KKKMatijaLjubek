@@ -103,8 +103,8 @@ jQuery(document).ready(function() {
         });
 
         // add address markers
-        var image = 'css/assets/images/map-marker.png';
-        map.addMarker({lat: 45.787143, lng: 15.912107, title: 'KKK Matija Ljubek', icon: image});
+        //var image = 'css/assets/images/map-marker.png';
+        map.addMarker({lat: 45.787143, lng: 15.912107, title: 'Spektar'});
         //apply custom styles
         var styles = [{
             "featureType": "administrative",

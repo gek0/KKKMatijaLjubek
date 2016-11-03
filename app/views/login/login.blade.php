@@ -170,8 +170,14 @@
                             restoreNotification();
                         }, numSeconds * 1000);
                     }
-                }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                    alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+                }    
+
             });
+
+            return false;
         });
     });
 </script>
